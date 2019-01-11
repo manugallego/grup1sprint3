@@ -62,7 +62,7 @@ public class Cercadors {
             String arrayTot = zona_aux.toString();
             if (arrayTot.indexOf(busqueda) != -1) {
                 //SUSTITUIR POR busqueda.equalsIgnoreCase(variable)                                   //variable auxiliar per a carregar les zones que tenim en l'iterador
-                tabla.addRow(new Object[]{zona_aux.getID(), zona_aux.getNom(), zona_aux.getSuperficie(), zona_aux.getAforament()});
+                tabla.addRow(new Object[]{zona_aux.getID(), zona_aux.getNom()});
                 trobat = true;
             }
         }

@@ -21,7 +21,7 @@ public class Auxiliar {
         while (it.hasNext()) {
             /*carreguem les dades en la taula*/
             Zona zona_aux = it.next();                                          //variable auxiliar per a carregar les zones que tenim en l'iterador
-            tabla.addRow(new Object[]{zona_aux.getID(), zona_aux.getNom(), zona_aux.getSuperficie(), zona_aux.getAforament()});
+            tabla.addRow(new Object[]{zona_aux.getID(), zona_aux.getNom()});
         }
     }
     
