@@ -8,7 +8,7 @@ import Public.Public;
  */
 public class Zona {
     /* Atributs */
-    private String id_zona;                                                          //variable per a identificar una zona
+    private String id;                                                          //variable per a identificar una zona
     private String nom;                                                         //nom d'una zona
 
     /**
@@ -38,7 +38,7 @@ public class Zona {
     }
 
     public String getID(){
-        return id_zona;
+        return id;
     }
 
     /* SETTERS */

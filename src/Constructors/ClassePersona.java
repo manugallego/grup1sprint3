@@ -5,11 +5,23 @@ package Constructors;
  */
 public class ClassePersona {
 	/* Atributs */
+        private int id_usuari;
         private String nom;
 	private String cognom1;
 	private String cognom2;
-	private int id_usuari;
+	private String email;
 	private String password;
+        private String data_naixement;
+        private String adreca;
+        private String ciutat;
+        private String provincia;
+        private int codi_postal;
+        private String tipus_document;
+        private String numero_document;
+        private String sexe;
+        private String telefon;
+        
+        
 	private static int nextIdPersona;
 	private static int numPersones;
     
