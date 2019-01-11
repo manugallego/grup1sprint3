@@ -69,7 +69,7 @@ public class ClasseClient extends ClassePersona { //Classe en herencia de Classe
          */
 	@Override
 	public String toString() { //ToString per mostrar el clients de l'array amb terminal
-		return this.getIdPersona() + " " + this.getNom() + " " + this.getCognom1() + " " + this.getCognom2() + " " + this.getPasswd() + " " + this.getTargeta();
+		return this.getId_usuari() + " " + this.getNom() + " " + this.getCognom1() + " " + this.getCognom2() + " " + this.getPassword() + " " + this.getTargeta();
 	}
 	
 	

@@ -5,11 +5,11 @@ package Constructors;
  */
 public class ClassePersona {
 	/* Atributs */
-    private String nom;
+        private String nom;
 	private String cognom1;
 	private String cognom2;
-	private int idPersona;
-	private String passwd;
+	private int id_usuari;
+	private String password;
 	private static int nextIdPersona;
 	private static int numPersones;
     
@@ -18,7 +18,7 @@ public class ClassePersona {
          */
 	public ClassePersona() { 
     	numPersones++;
-    	idPersona = nextIdPersona;
+    	id_usuari = nextIdPersona;
     	nextIdPersona++;
     }
     /**
@@ -33,8 +33,8 @@ public class ClassePersona {
     	this.nom = nom;
     	this.cognom1 = cognom1;
     	this.cognom2 = cognom2;
-    	this.passwd = passwd;
-    	this.idPersona = nextIdPersona;
+    	this.password = passwd;
+    	this.id_usuari = nextIdPersona;
     	nextIdPersona++;
     }
 
@@ -68,23 +68,23 @@ public class ClassePersona {
 	}
 
 
-	public int getIdPersona() {
-		return idPersona;
+	public int getId_usuari() {
+		return id_usuari;
 	}
 
 
 	public void setId(int i) {
-		idPersona = i;
+		id_usuari = i;
 	}
 
 
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 
 
-	public void setPasswd(String pwd) {
-		passwd = pwd;
+	public void setPassword(String pwd) {
+		password = pwd;
 	}
 
 	public static int getNumPersones() {

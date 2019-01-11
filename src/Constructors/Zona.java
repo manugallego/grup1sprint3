@@ -8,10 +8,8 @@ import Public.Public;
  */
 public class Zona {
     /* Atributs */
-    private String id;                                                          //variable per a identificar una zona
+    private String id_zona;                                                          //variable per a identificar una zona
     private String nom;                                                         //nom d'una zona
-    private double superficie;                                                  //superficie que te la zona
-    private int aforament;                                                      //aforament de la zona
 
     /**
      * Constructor de Zona sense pas de parametres
@@ -21,21 +19,21 @@ public class Zona {
         nom = "";
         superficie=0;
         aforament=0;
-        id = "ID_" + Public.comptador_id_zona;
-        
+        id_zona = "ID_" + Public.comptador_id_zona;
+
     }
     /**
      * Constructor de zona amb pas de parametres
      * @param nom
      * @param superficie
-     * @param aforament 
+     * @param aforament
      */
-    public Zona(String nom, double superficie, int aforament){
+    public Zona(String nom){
         ++Public.comptador_id_zona;
         this.nom = nom;
         this.superficie = superficie;
         this.aforament = aforament;
-        id = "ID_" + Public.comptador_id_zona;
+        id_zona = "ID_" + Public.comptador_id_zona;
     }
 
     /* GETTERS */
@@ -43,16 +41,8 @@ public class Zona {
         return nom;
     }
 
-    public double getSuperficie(){
-        return superficie;
-    }
-
-    public int getAforament(){
-        return aforament;
-    }
-    
     public String getID(){
-        return id;
+        return id_zona;
     }
 
     /* SETTERS */
@@ -60,26 +50,15 @@ public class Zona {
         nom = n;
     }
 
-    public void setSuperficie(double n){
-        superficie = n;
-    }
-
-    public void setAforament(int n){
-        aforament = n;
-    }
-
     /* METODES  */
-    public void augmentaAforament(int n){
-        aforament += n;
-    }
-    
+
     /**
      * toString que retorna les dades de la zona
-     * @return 
+     * @return
      */
     @Override
     public String toString(){
         //return id + " " + nom +" "+ aforament +" "+ superficie;
-        return id + " " + nom + " " + aforament + " " + superficie;
+        return id_zona + " " + nom + " " + aforament + " " + superficie;
     }
 }

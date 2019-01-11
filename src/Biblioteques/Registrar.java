@@ -42,8 +42,8 @@ public class Registrar {
      * @param superficie
      * @param aforament
      */
-    public static void registrar_zona(String nom, double superficie, int aforament) {
-        Public.arrayZones.add(new Zona(nom, superficie, aforament));
+    public static void registrar_zona(String nom) {
+        Public.arrayZones.add(new Zona(nom));
     }
 
     /**
@@ -52,15 +52,15 @@ public class Registrar {
     public static void carregar_test() {
         /*ZONES*/
         /* Lavabos B1 */
-        Public.arrayZones.add(new Zona("Lavabos B1", 5.2, 10));
+        Public.arrayZones.add(new Zona("Lavabos B1"));
         /* Asia */
-        Public.arrayZones.add(new Zona("Asia", 200.5, 20));
+        Public.arrayZones.add(new Zona("Asia"));
         /* Hotel */
-        Public.arrayZones.add(new Zona("Hotel", 300, 2000));
+        Public.arrayZones.add(new Zona("Hotel"));
         /* Mexico */
-        Public.arrayZones.add(new Zona("Mexico", 350, 1500));
+        Public.arrayZones.add(new Zona("Mexico"));
         /* Mediterrani */
-        Public.arrayZones.add(new Zona("Mediterrani", 620, 5500));
+        Public.arrayZones.add(new Zona("Mediterrani"));
         /*USUARIS*/
         Public.arrayPersona.add(new ClasseClient("Paco", "Gutierrez", "Salvador", "abc11", "45254156"));
         Public.arrayPersona.add(new ClasseClient("Maria", "Pascual", "Pincho", "pass2", "355765"));
