@@ -17,9 +17,7 @@ public class Zona {
     public Zona(){
         ++Public.comptador_id_zona;
         nom = "";
-        superficie=0;
-        aforament=0;
-        id_zona = "ID_" + Public.comptador_id_zona;
+        id = "ID_" + Public.comptador_id_zona;
 
     }
     /**
@@ -31,9 +29,7 @@ public class Zona {
     public Zona(String nom){
         ++Public.comptador_id_zona;
         this.nom = nom;
-        this.superficie = superficie;
-        this.aforament = aforament;
-        id_zona = "ID_" + Public.comptador_id_zona;
+        id = "ID_" + Public.comptador_id_zona;
     }
 
     /* GETTERS */
@@ -59,6 +55,6 @@ public class Zona {
     @Override
     public String toString(){
         //return id + " " + nom +" "+ aforament +" "+ superficie;
-        return id_zona + " " + nom + " " + aforament + " " + superficie;
+        return id + " " + nom;
     }
 }
