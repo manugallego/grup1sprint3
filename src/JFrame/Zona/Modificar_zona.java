@@ -195,18 +195,37 @@ public class Modificar_zona extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {                                    
         
-    }//GEN-LAST:event_jTable1FocusGained
+    }                                   
     /**
      * Botó de carregar dades
      * @param evt 
      */
     //holamarcos
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         try{
-            elements = jTable1.getSelectedRows();
+           elements = jTable1.getSelectedRows();
+        
+            /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
+            if(elements.length > 1){
+                JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
+            }else{
+                Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+                posicio = -1;                                                       //variable amb la posicio de l'array
 
+                posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
+
+                if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'han pogut carregar les dades");
+                else{
+                    jTextField1.setText(Public.arrayZones.get(posicio).getNom());
+                }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error, no s'han pogut carregar les dades: " + e);
+        }
+    }
     /**
      * Botó per a modificar les dades
      * @param evt 

@@ -318,7 +318,7 @@ public class ModificarClients extends javax.swing.JFrame {
                 jTextField5ModificarTargeta.setText("");
 
                 /*Imprimim en el fitxer de logs.txt*/
-                String text_logs = "S'ha modificat el client " + dades_antigues + " " +
+                String text_logs = "S'ha modificat el client " + dades_antigues +
                         " per " + dades_noves;
                 Auxiliar.escriure_fitxer(text_logs);
                 
