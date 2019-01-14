@@ -192,6 +192,7 @@ public class Modificar_zona extends javax.swing.JFrame {
      * Botó de carregar dades
      * @param evt 
      */
+    //holamarcos
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
             elements = jTable1.getSelectedRows();
