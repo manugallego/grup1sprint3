@@ -9,7 +9,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.logging.Level;
+import javax.swing.JColorChooser;
 import javax.swing.table.DefaultTableModel;
+import sun.util.logging.PlatformLogger;
 /**
  * Classe amb metodes que s'utilitzen en el programa
  * @author Marcos Zaballos, Ferran Climent, Ivan Morte
@@ -72,3 +75,4 @@ public class Auxiliar {
         }
     }
 }
+  
