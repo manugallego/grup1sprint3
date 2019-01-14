@@ -175,6 +175,16 @@ public class Modificar_zona extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+   /**
+     * Omplimla taula quan s'obri la finestra
+     * @param evt 
+     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        Auxiliar.actualitzar_taula_zona(tabla);
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * Botó per anar enrere
      * @param evt 
@@ -197,35 +207,6 @@ public class Modificar_zona extends javax.swing.JFrame {
         try{
             elements = jTable1.getSelectedRows();
 
-            /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
-            if(elements.length > 1){
-                JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
-            }else{
-                Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-                posicio = -1;                                                       //variable amb la posicio de l'array
-
-                posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
-
-                if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'han pogut carregar les dades");
-                else{
-                    jTextField1.setText(Public.arrayZones.get(posicio).getNom());
-                    
-                    jButton4.setEnabled(true);
-                }
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error: " + e);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-    /**
-     * Omplimla taula quan s'obri la finestra
-     * @param evt 
-     */
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        Auxiliar.actualitzar_taula_zona(tabla);
-    }//GEN-LAST:event_formWindowOpened
     /**
      * Botó per a modificar les dades
      * @param evt 
@@ -254,6 +235,7 @@ public class Modificar_zona extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Error: " + e);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * Boto per cercar
      * @param evt 
@@ -262,14 +244,18 @@ public class Modificar_zona extends javax.swing.JFrame {
         /*Codi per a fer la cerca_Zona*/
         String busqueda = jTextField4.getText();                                //variable per guardar la busqueda
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        
+
         Cercadors.cerca_Zona(tabla, busqueda);
-        
+
         if (Cercadors.cerca_Zona(tabla, busqueda) == false){
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+
+    }//GEN-LAST:event_jTable1FocusGained
 
     /**
      * @param args the command line arguments

@@ -11,8 +11,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Ferran Climent - DAW2 -2018
  */
 public class ModificarClients extends javax.swing.JFrame {
-    int posicioTaula []; //Array per la posicio de la fila que triem
+    int posicioTaula [];                                                        //Array per la posicio de la fila que triem
     int posicio;
+    String dades_antigues;                                                      //Dades que tenia el client abans de la modificacio
+    
+    
     /**
      * Creates new form ModificarClients1
      */
@@ -246,6 +249,13 @@ public class ModificarClients extends javax.swing.JFrame {
                     jTextField3ModificarCognom2.setText(Public.arrayPersona.get(posicio).getCognom2()); // Introduir al texfield el COGNOM2 de la array 
                     jTextField4ModificarPasswd.setText(Public.arrayPersona.get(posicio).getPassword()); // Introduir al texfield el PASSWD de la array 
                     jTextField5ModificarTargeta.setText(Public.arrayPersona.get(posicio).getTargeta()); // Introduir al texfield el TARGETA de la array 
+                    
+                    
+                    /*Guardem les dades antigues per escriure-les en els logs*/
+                    dades_antigues = Public.arrayPersona.get(posicio).getNom() + " "
+                        + Public.arrayPersona.get(posicio).getCognom1() + " " 
+                        + Public.arrayPersona.get(posicio).getCognom2() + " "
+                        + Public.arrayPersona.get(posicio).getTargeta();
                 }
 
             }
@@ -287,6 +297,12 @@ public class ModificarClients extends javax.swing.JFrame {
                 Public.arrayPersona.get(posicio).setPassword(jTextField4ModificarPasswd.getText()); //Guardar a l'array el passwd introduit
                 Public.arrayPersona.get(posicio).setTargeta(jTextField5ModificarTargeta.getText()); //Guardar a l'array el targeta introduit */
 
+                /*Guardem les noves dades per escriure-les en el fitxer de logs*/
+                String dades_noves = jTextField1ModificarNom.getText() + " "
+                        + jTextField2ModificarCognom1.getText() + " "
+                        + jTextField3ModificarCognom2.getText() + " "
+                        + jTextField4ModificarPasswd.getText();
+                
                 DefaultTableModel model2 = (DefaultTableModel) jTableModificar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
                 Auxiliar.actualitzar_taula_client(model2);
 
@@ -301,6 +317,11 @@ public class ModificarClients extends javax.swing.JFrame {
                 jTextField4ModificarPasswd.setText("");
                 jTextField5ModificarTargeta.setText("");
 
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha modificat el client " + dades_antigues + " " +
+                        " per " + dades_noves;
+                Auxiliar.escriure_fitxer(text_logs);
+                
                 jButton2.setEnabled(false);
             }
             else{JOptionPane.showMessageDialog(null, "Has d'omplir tots els camps");}                

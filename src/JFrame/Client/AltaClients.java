@@ -1,5 +1,6 @@
 package JFrame.Client;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.Registrar;
 import javax.swing.JOptionPane;
 
@@ -179,6 +180,11 @@ public class AltaClients extends javax.swing.JFrame {
             }else{
                 Registrar.registrar_client(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField5.getText(), jTextField4.getText());
                 JOptionPane.showMessageDialog(null, "Client introduit correctament");  // Recull el la informacio dels JFIELDSTEXT i els envia al metode registrar_client, a continuacio mostra un text
+            
+                /*Imprimim en el fitxer de logs.txt*/
+                String nom = jTextField1.getText() + " " + jTextField3.getText() + " " + jTextField2.getText();
+                String text_logs = "S'ha creat el client " + nom;
+                Auxiliar.escriure_fitxer(text_logs);
             }
         }
         catch(Exception e){

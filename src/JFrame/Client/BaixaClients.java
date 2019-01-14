@@ -217,6 +217,8 @@ public class BaixaClients extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         posicioTaulaBaixa = jTable1Baixa.getSelectedRows();
         
+        String nom_client;
+        
         if(posicioTaulaBaixa.length > 1) {  //Alerta per evitar errors de mes de una fila seleccionada
             JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
         }else{
@@ -226,7 +228,19 @@ public class BaixaClients extends javax.swing.JFrame {
             posicio = Cercadors.cercar_ID_client(posicio, client_aux);
             if (posicio == -1){ JOptionPane.showMessageDialog(null, "No s'ha pogut carregar"); }
             else{
+                nom_client = Public.arrayPersona.get(posicio).getNom() + " "
+                        + Public.arrayPersona.get(posicio).getCognom1() + " " 
+                        + Public.arrayPersona.get(posicio).getCognom2();
+                
                 Public.arrayPersona.remove(posicio);
+                
+                
+                //Obrir la finestra de confirmacio 
+                JOptionPane.showMessageDialog(null,"Client eliminada");
+                
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha eliminat el client " + nom_client;
+                Auxiliar.escriure_fitxer(text_logs);
             }
         
         }

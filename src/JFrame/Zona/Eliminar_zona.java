@@ -122,7 +122,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -149,7 +149,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(37, 37, 37))
@@ -222,6 +222,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         elements = jTable1.getSelectedRows();                                   //carreguem en elements la fila de la taula seleccionada
+        String nom_zona;                                                        //guardem el nom de la zona que eliminem per a escriure'l en els logs
         
         /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
         if(elements.length > 1){
@@ -234,6 +235,9 @@ public class Eliminar_zona extends javax.swing.JFrame {
             
             if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'ha pogut borrar la zona");
             else{
+                
+                nom_zona = Public.arrayZones.get(posicio).getNom();
+                        
                 Public.arrayZones.remove(posicio);                             //eliminem la zona
         
                 /*fem invisible la confirmacio*/
@@ -245,6 +249,10 @@ public class Eliminar_zona extends javax.swing.JFrame {
                 Auxiliar.actualitzar_taula_zona(tabla);
                 //Obrir la finestra de confirmacio 
                 JOptionPane.showMessageDialog(null,"Zona eliminada");
+                
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha eliminat la zona " + nom_zona;
+                Auxiliar.escriure_fitxer(text_logs);
             }
         }
         

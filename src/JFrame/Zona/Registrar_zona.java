@@ -1,4 +1,5 @@
 package JFrame.Zona;
+import Biblioteques.Auxiliar;
 import Biblioteques.Registrar;
 import javax.swing.JOptionPane;
 
@@ -135,6 +136,10 @@ public class Registrar_zona extends javax.swing.JFrame {
 
                 /*Mostrem text de confirmacio*/
                 JOptionPane.showMessageDialog(null,"Zona registrada");
+                
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha creat la zona " + nom;
+                Auxiliar.escriure_fitxer(text_logs);
             }
         }
         catch(Exception e){

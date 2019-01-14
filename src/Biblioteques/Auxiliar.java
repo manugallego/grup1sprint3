@@ -3,6 +3,11 @@ package Biblioteques;
 import Constructors.ClasseClient;
 import Constructors.Zona;
 import Public.Public;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -39,4 +44,31 @@ public class Auxiliar {
         }
     }
     
+    public static void escriure_fitxer(String text){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date datahora = new Date();
+        
+        text = datahora + " - " + text;
+        
+        try
+        {
+            fichero = new FileWriter("/home/alumne/logs.txt",true);
+            pw = new PrintWriter(fichero);
+
+            pw.println(text);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
 }
