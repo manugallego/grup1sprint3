@@ -14,6 +14,8 @@ public class Modificar_zona extends javax.swing.JFrame {
     
     int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     int posicio;                                                                //variable per a guardar la posicio d'una zona
+    String nom_antic;                                                           //Nom de la zona abans de modificar
+    
     public Modificar_zona() {
         initComponents();
         setTitle("Modificar zona");
@@ -215,6 +217,10 @@ public class Modificar_zona extends javax.swing.JFrame {
                 if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'han pogut carregar les dades");
                 else{
                     jTextField1.setText(Public.arrayZones.get(posicio).getNom());
+                    
+                    nom_antic = Public.arrayZones.get(posicio).getNom();
+                    
+                    jButton4.setEnabled(true);
                 }
             }
         }
@@ -232,6 +238,7 @@ public class Modificar_zona extends javax.swing.JFrame {
                 /*Guardem les dades en l'array*/
                 Public.arrayZones.get(posicio).setNom(jTextField1.getText());
 
+                String nom_nou = jTextField1.getText();
                 /*Actualitzem els valor de la taula*/
                 DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
                 Auxiliar.actualitzar_taula_zona(tabla);
@@ -242,6 +249,11 @@ public class Modificar_zona extends javax.swing.JFrame {
                 /*Missatge de confirmacio*/
                 JOptionPane.showMessageDialog(null,"Canvis aplicats");
 
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha modificat la zona " + nom_antic +
+                        " per " + nom_nou;
+                Auxiliar.escriure_fitxer(text_logs);
+                
                 jButton4.setEnabled(false);
             }
             else{JOptionPane.showMessageDialog(null, "Has d'omplir tots els camps");}

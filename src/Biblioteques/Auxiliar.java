@@ -55,7 +55,7 @@ public class Auxiliar {
         
         try
         {
-            fichero = new FileWriter("/home/alumne/logs.txt",true);
+            fichero = new FileWriter("./logs/logs.txt",true);
             pw = new PrintWriter(fichero);
 
             pw.println(text);
