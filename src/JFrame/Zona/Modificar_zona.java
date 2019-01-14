@@ -194,15 +194,11 @@ public class Modificar_zona extends javax.swing.JFrame {
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {                                    
-        
-    }                                   
+                                  
     /**
      * Botó de carregar dades
      * @param evt 
      */
-    //holamarcos
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         try{
            elements = jTable1.getSelectedRows();
