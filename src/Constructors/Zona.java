@@ -18,13 +18,13 @@ public class Zona {
         ++Public.comptador_id_zona;
         nom = "";
         id = "ID_" + Public.comptador_id_zona;
-        
+
     }
     /**
      * Constructor de zona amb pas de parametres
      * @param nom
      * @param superficie
-     * @param aforament 
+     * @param aforament
      */
     public Zona(String nom){
         ++Public.comptador_id_zona;
@@ -36,7 +36,7 @@ public class Zona {
     public String getNom(){
         return nom;
     }
-    
+
     public String getID(){
         return id;
     }
@@ -47,10 +47,10 @@ public class Zona {
     }
 
     /* METODES  */
-    
+
     /**
      * toString que retorna les dades de la zona
-     * @return 
+     * @return
      */
     @Override
     public String toString(){

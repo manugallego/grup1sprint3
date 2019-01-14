@@ -244,7 +244,7 @@ public class ModificarClients extends javax.swing.JFrame {
                     jTextField1ModificarNom.setText(Public.arrayPersona.get(posicio).getNom()); // Introduir al texfield el NOM de la array 
                     jTextField2ModificarCognom1.setText(Public.arrayPersona.get(posicio).getCognom1()); // Introduir al texfield el COGNOM1 de la array 
                     jTextField3ModificarCognom2.setText(Public.arrayPersona.get(posicio).getCognom2()); // Introduir al texfield el COGNOM2 de la array 
-                    jTextField4ModificarPasswd.setText(Public.arrayPersona.get(posicio).getPasswd()); // Introduir al texfield el PASSWD de la array 
+                    jTextField4ModificarPasswd.setText(Public.arrayPersona.get(posicio).getPassword()); // Introduir al texfield el PASSWD de la array 
                     jTextField5ModificarTargeta.setText(Public.arrayPersona.get(posicio).getTargeta()); // Introduir al texfield el TARGETA de la array 
                 }
 
@@ -284,7 +284,7 @@ public class ModificarClients extends javax.swing.JFrame {
                 Public.arrayPersona.get(posicio).setNom(jTextField1ModificarNom.getText()); //Guardar a l'array el nom introduit
                 Public.arrayPersona.get(posicio).setCognom1(jTextField2ModificarCognom1.getText()); //Guardar a l'array el cognnom1 introduit
                 Public.arrayPersona.get(posicio).setCognom2(jTextField3ModificarCognom2.getText()); //Guardar a l'array el cognom2 introduit
-                Public.arrayPersona.get(posicio).setPasswd(jTextField4ModificarPasswd.getText()); //Guardar a l'array el passwd introduit
+                Public.arrayPersona.get(posicio).setPassword(jTextField4ModificarPasswd.getText()); //Guardar a l'array el passwd introduit
                 Public.arrayPersona.get(posicio).setTargeta(jTextField5ModificarTargeta.getText()); //Guardar a l'array el targeta introduit */
 
                 DefaultTableModel model2 = (DefaultTableModel) jTableModificar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
