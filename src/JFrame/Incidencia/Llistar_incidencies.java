@@ -1,9 +1,13 @@
 package JFrame.Incidencia;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Constructors.Incidencies;
 import Public.Public;
+import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Pantalla per a mostrar les incidencies
@@ -14,10 +18,14 @@ public class Llistar_incidencies extends javax.swing.JFrame {
     /**
      * Creates new form Llistar_incidencies
      */
-    public Llistar_incidencies() {
+    public Llistar_incidencies() throws IOException {
         initComponents();
         setTitle("Consultar incidencia");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -138,7 +146,12 @@ public class Llistar_incidencies extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          setVisible(false);
-         Incidencies_menu menu = new Incidencies_menu();
+         Incidencies_menu menu = null;
+        try {
+            menu = new Incidencies_menu();
+        } catch (IOException ex) {
+            Logger.getLogger(Llistar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
          menu.setVisible(true);
 
         // TODO add your handling code here:
@@ -211,7 +224,11 @@ public class Llistar_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Llistar_incidencies().setVisible(true);
+                try {
+                    new Llistar_incidencies().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Llistar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -5,21 +5,29 @@
  */
 package JFrame.Incidencia;
 
+import Biblioteques.ReadColor;
 import JFrame.Incidencia.Suprimir_incidencies;
 import JFrame.Incidencia.Llistar_incidencies;
 import JFrame.Incidencia.Modificar_incidencies;
 import JFrame.Incidencia.Alta_incidencies;
 import JFrame.Main;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Incidencies_menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Incidencies_menu
      */
-    public Incidencies_menu() {
+    public Incidencies_menu() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio d'incidencies");
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -128,7 +136,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
  */
     private void alta_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_incidenciesActionPerformed
          setVisible(false);
-         Alta_incidencies alta = new Alta_incidencies();
+         Alta_incidencies alta = null;
+        try {
+            alta = new Alta_incidencies();
+        } catch (IOException ex) {
+            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
          alta.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_alta_incidenciesActionPerformed
 /**
@@ -138,7 +151,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
 
     private void consultar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_incidenciesActionPerformed
          setVisible(false);
-         Llistar_incidencies llistar = new Llistar_incidencies();
+         Llistar_incidencies llistar = null;
+        try {
+            llistar = new Llistar_incidencies();
+        } catch (IOException ex) {
+            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
          llistar.setVisible(true);
 
         // TODO add your handling code here:
@@ -150,7 +168,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
 
     private void modificar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_incidenciesActionPerformed
         setVisible(false);
-        Modificar_incidencies modificar = new Modificar_incidencies();
+        Modificar_incidencies modificar = null;
+        try {
+            modificar = new Modificar_incidencies();
+        } catch (IOException ex) {
+            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modificar.setVisible(true);
 
         // TODO add your handling code here:
@@ -163,7 +186,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
 
     private void baixa_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_incidenciaActionPerformed
         setVisible(false);
-        Suprimir_incidencies suprimir = new Suprimir_incidencies();
+        Suprimir_incidencies suprimir = null;
+        try {
+            suprimir = new Suprimir_incidencies();
+        } catch (IOException ex) {
+            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         suprimir.setVisible(true);
     }//GEN-LAST:event_baixa_incidenciaActionPerformed
     /**
@@ -171,7 +199,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
      * @param evt 
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = new Main();
+        Main principal = null;
+        try {
+            principal = new Main();
+        } catch (IOException ex) {
+            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
@@ -206,7 +239,11 @@ public class Incidencies_menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Incidencies_menu().setVisible(true);
+                try {
+                    new Incidencies_menu().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

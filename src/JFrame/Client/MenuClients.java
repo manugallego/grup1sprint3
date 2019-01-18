@@ -1,6 +1,10 @@
 package JFrame.Client;
 
+import Biblioteques.ReadColor;
 import JFrame.Main;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Pantalla que mostra les diferents opcions de la gestio de clients
@@ -11,10 +15,14 @@ public class MenuClients extends javax.swing.JFrame {
     /**
      * Creates new form MenuClients1
      */
-    public MenuClients() {
+    public MenuClients() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio de clients");
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -126,7 +134,12 @@ public class MenuClients extends javax.swing.JFrame {
      */
     private void alta_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_clientActionPerformed
          /*******************************************************************/
-        AltaClients obj = new AltaClients(); 	//creem la nova finestra AltaClients
+        AltaClients obj = null;
+        try {
+            obj = new AltaClients(); //creem la nova finestra AltaClients
+        } catch (IOException ex) {
+            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                   //la fem visible
         dispose();                              //eliminem la finestra actual
         /*******************************************************************/
@@ -137,7 +150,12 @@ public class MenuClients extends javax.swing.JFrame {
      */
     private void baixa_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_clientActionPerformed
         /*******************************************************************/
-        BaixaClients obj = new BaixaClients(); 	//creem la nova finestra BaixaClients
+        BaixaClients obj = null;
+        try {
+            obj = new BaixaClients(); //creem la nova finestra BaixaClients
+        } catch (IOException ex) {
+            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -148,7 +166,12 @@ public class MenuClients extends javax.swing.JFrame {
      */
     private void consultar_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_clientActionPerformed
         /*******************************************************************/
-        ConsultarClients obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
+        ConsultarClients obj = null;
+        try {
+            obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
+        } catch (IOException ex) {
+            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -161,7 +184,12 @@ public class MenuClients extends javax.swing.JFrame {
     private void modificar_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_clientActionPerformed
 
         /*******************************************************************/
-        ModificarClients obj = new ModificarClients(); 	//creem la nova finestra ModificarClients
+        ModificarClients obj = null;
+        try {
+            obj = new ModificarClients(); //creem la nova finestra ModificarClients
+        } catch (IOException ex) {
+            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -171,7 +199,12 @@ public class MenuClients extends javax.swing.JFrame {
      * @param evt 
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = new Main();
+        Main principal = null;
+        try {
+            principal = new Main();
+        } catch (IOException ex) {
+            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
@@ -207,7 +240,11 @@ public class MenuClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuClients().setVisible(true);
+                try {
+                    new MenuClients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

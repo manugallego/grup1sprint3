@@ -1,6 +1,10 @@
 package JFrame.Zona;
 import Biblioteques.Auxiliar;
+import Biblioteques.ReadColor;
 import Biblioteques.Registrar;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /** 
@@ -12,10 +16,15 @@ public class Registrar_zona extends javax.swing.JFrame {
     /**
      * Creates new form Registrar_zona
      */
-    public Registrar_zona() {
+    public Registrar_zona() throws IOException {
         initComponents();
         setTitle("Alta zona");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -112,7 +121,12 @@ public class Registrar_zona extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = new Gestio_zones();
+        Gestio_zones gestio = null;
+        try {
+            gestio = new Gestio_zones();
+        } catch (IOException ex) {
+            Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -178,7 +192,11 @@ public class Registrar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrar_zona().setVisible(true);
+                try {
+                    new Registrar_zona().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

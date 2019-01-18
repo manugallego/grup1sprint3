@@ -22,6 +22,7 @@ public class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
+     * @throws java.io.IOException
      */
     public Main() throws IOException {
         initComponents();
@@ -29,8 +30,8 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
         
-        if (ReadColor.colorFons.exists()) {
-            fons.setBackground(ReadColor.llegirColorFons());
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
         
     }
@@ -181,7 +182,12 @@ public class Main extends javax.swing.JFrame {
      * @param evt 
      */
     private void clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsActionPerformed
-        MenuClients menu_client = new MenuClients();
+        MenuClients menu_client = null;
+        try {
+            menu_client = new MenuClients();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu_client.setVisible(true);
         dispose();
     }//GEN-LAST:event_clientsActionPerformed
@@ -190,7 +196,12 @@ public class Main extends javax.swing.JFrame {
      * @param evt 
      */
     private void zonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonesActionPerformed
-        Gestio_zones menu_zona = new Gestio_zones();
+        Gestio_zones menu_zona = null;
+        try {
+            menu_zona = new Gestio_zones();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu_zona.setVisible(true);
         dispose();
     }//GEN-LAST:event_zonesActionPerformed
@@ -199,7 +210,12 @@ public class Main extends javax.swing.JFrame {
      * @param evt 
      */
     private void incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidenciesActionPerformed
-        Incidencies_menu menu_incidencies = new Incidencies_menu();
+        Incidencies_menu menu_incidencies = null;
+        try {
+            menu_incidencies = new Incidencies_menu();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu_incidencies.setVisible(true);
         dispose();
     }//GEN-LAST:event_incidenciesActionPerformed
@@ -216,7 +232,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_lletraActionPerformed
 
     private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
-        SaveColor.colorFons(fons);
+        SaveColor.colorFons(jPanel1);
     }//GEN-LAST:event_fonsActionPerformed
 
     /**

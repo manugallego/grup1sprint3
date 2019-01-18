@@ -2,7 +2,11 @@ package JFrame.Zona;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,10 +18,15 @@ public class Eliminar_zona extends javax.swing.JFrame {
     
     int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     int posicio;                                                                //variable per a guardar la posicio d'una zona
-    public Eliminar_zona() {
+    public Eliminar_zona() throws IOException {
         initComponents();
         setTitle("Baixa zona");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -307,7 +316,11 @@ public class Eliminar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eliminar_zona().setVisible(true);
+                try {
+                    new Eliminar_zona().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

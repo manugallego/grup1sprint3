@@ -1,9 +1,13 @@
 package JFrame.Incidencia;
 
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Constructors.Incidencies;
 import Public.Public;
+import java.io.IOException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,10 +22,15 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
      */
     int elements[];//guarda la posicio que a fet click el usuari
     int posicio;
-    public Suprimir_incidencies() {
+    public Suprimir_incidencies() throws IOException {
         initComponents();
         setTitle("Baixa incidencia");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -191,7 +200,12 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setVisible(false);
-        Incidencies_menu menu = new Incidencies_menu();
+        Incidencies_menu menu = null;
+        try {
+            menu = new Incidencies_menu();
+        } catch (IOException ex) {
+            Logger.getLogger(Suprimir_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -305,7 +319,11 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Suprimir_incidencies().setVisible(true);
+                try {
+                    new Suprimir_incidencies().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Suprimir_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

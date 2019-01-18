@@ -2,7 +2,11 @@ package JFrame.Zona;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,11 +20,16 @@ public class Modificar_zona extends javax.swing.JFrame {
     int posicio;                                                                //variable per a guardar la posicio d'una zona
     String nom_antic;                                                           //Nom de la zona abans de modificar
     
-    public Modificar_zona() {
+    public Modificar_zona() throws IOException {
         initComponents();
         setTitle("Modificar zona");
         this.setLocationRelativeTo(null);
         jButton4.setEnabled(false);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -192,7 +201,12 @@ public class Modificar_zona extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = new Gestio_zones();
+        Gestio_zones gestio = null;
+        try {
+            gestio = new Gestio_zones();
+        } catch (IOException ex) {
+            Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -317,7 +331,11 @@ public class Modificar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modificar_zona().setVisible(true);
+                try {
+                    new Modificar_zona().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

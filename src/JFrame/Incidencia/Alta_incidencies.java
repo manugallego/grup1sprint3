@@ -1,8 +1,12 @@
 
 package JFrame.Incidencia;
 
+import Biblioteques.ReadColor;
 import Biblioteques.Registrar;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,10 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class Alta_incidencies extends javax.swing.JFrame {
 
-    public Alta_incidencies() {
+    public Alta_incidencies() throws IOException {
         initComponents();
         setTitle("Alta incidencia");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
        
         Public.usuari_incidencia = null;                                       //ens asegurem de que la variable no guarda un usuari d'una assignacio anterior
         Public.zona_indicencia = null;                                         //ens asegurem de que la variable no guarda una zona d'una assignacio anterior
@@ -186,7 +194,12 @@ public class Alta_incidencies extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           setVisible(false);
-         Incidencies_menu menu = new Incidencies_menu();
+         Incidencies_menu menu = null;
+        try {
+            menu = new Incidencies_menu();
+        } catch (IOException ex) {
+            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
          menu.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -242,7 +255,12 @@ public class Alta_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Llistar_zona llistar = new Llistar_zona();
+        Llistar_zona llistar = null;
+        try {
+            llistar = new Llistar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llistar.setVisible(true);        
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -266,7 +284,12 @@ public class Alta_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Llistar_clients llistar = new Llistar_clients();
+        Llistar_clients llistar = null;
+        try {
+            llistar = new Llistar_clients();
+        } catch (IOException ex) {
+            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llistar.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -304,7 +327,11 @@ public class Alta_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Alta_incidencies().setVisible(true);
+                try {
+                    new Alta_incidencies().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -1,9 +1,13 @@
 package JFrame.Incidencia;
 
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Constructors.Incidencies;
 import Public.Public;
+import java.io.IOException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +24,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     int elements[];//guarda la posicio que a fet click el usuari
     int posicio;
     boolean carregar = false;                                                   //boolean per a actualitzar el text de la zona i usuari
-    public Modificar_incidencies() {
+    public Modificar_incidencies() throws IOException {
         initComponents();
         setTitle("Modificar incidencies");
         this.setLocationRelativeTo(null);
@@ -30,6 +34,11 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         /*Asignem el valor false als booleans per a seleccionar zona/usuari*/
         Public.seleccio_zona = false;
         Public.seleccio_user = true;
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -365,7 +374,12 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Llistar_zona llistar = new Llistar_zona();
+        Llistar_zona llistar = null;
+        try {
+            llistar = new Llistar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llistar.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
     /**
@@ -373,7 +387,12 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        Llistar_clients llistar = new Llistar_clients();
+        Llistar_clients llistar = null;
+        try {
+            llistar = new Llistar_clients();
+        } catch (IOException ex) {
+            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llistar.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
     /**
@@ -401,7 +420,12 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        Incidencies_menu menu = new Incidencies_menu();
+        Incidencies_menu menu = null;
+        try {
+            menu = new Incidencies_menu();
+        } catch (IOException ex) {
+            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+        }
         menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -435,7 +459,11 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modificar_incidencies().setVisible(true);
+                try {
+                    new Modificar_incidencies().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

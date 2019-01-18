@@ -1,6 +1,10 @@
 package JFrame.Zona;
 
+import Biblioteques.ReadColor;
 import JFrame.Main;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Pantalla principal de la gestio de zones amb el menu per elegir que fer (eliminar, llistar, modificar o registrar zona)
@@ -11,10 +15,15 @@ public class Gestio_zones extends javax.swing.JFrame {
     /**
      * Creates new form Gestio_Zones
      */
-    public Gestio_zones() {
+    public Gestio_zones() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio de zones");
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -123,7 +132,12 @@ public class Gestio_zones extends javax.swing.JFrame {
      * @param evt 
      */
     private void alta_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_zonaActionPerformed
-        Registrar_zona registrar = new Registrar_zona();
+        Registrar_zona registrar = null;
+        try {
+            registrar = new Registrar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         registrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_alta_zonaActionPerformed
@@ -132,7 +146,12 @@ public class Gestio_zones extends javax.swing.JFrame {
      * @param evt 
      */
     private void modificar_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_zonaActionPerformed
-        Modificar_zona modificar = new Modificar_zona();
+        Modificar_zona modificar = null;
+        try {
+            modificar = new Modificar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modificar.setVisible(true);
         dispose();
     }//GEN-LAST:event_modificar_zonaActionPerformed
@@ -141,7 +160,12 @@ public class Gestio_zones extends javax.swing.JFrame {
      * @param evt 
      */
     private void consultar_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_zonaActionPerformed
-        Llistar_zona llistar = new Llistar_zona();
+        Llistar_zona llistar = null;
+        try {
+            llistar = new Llistar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         llistar.setVisible(true);
         dispose();
     }//GEN-LAST:event_consultar_zonaActionPerformed
@@ -150,7 +174,12 @@ public class Gestio_zones extends javax.swing.JFrame {
      * @param evt 
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = new Main();
+        Main principal = null;
+        try {
+            principal = new Main();
+        } catch (IOException ex) {
+            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
@@ -159,7 +188,12 @@ public class Gestio_zones extends javax.swing.JFrame {
      * @param evt 
      */
     private void baixa_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_zonaActionPerformed
-        Eliminar_zona eliminar = new Eliminar_zona();
+        Eliminar_zona eliminar = null;
+        try {
+            eliminar = new Eliminar_zona();
+        } catch (IOException ex) {
+            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+        }
         eliminar.setVisible(true);
         dispose();
     }//GEN-LAST:event_baixa_zonaActionPerformed
@@ -195,7 +229,12 @@ public class Gestio_zones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Gestio_zones gestio = new Gestio_zones();
+                Gestio_zones gestio = null;
+                try {
+                    gestio = new Gestio_zones();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 gestio.setVisible(true);
             }
         });

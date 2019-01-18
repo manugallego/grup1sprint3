@@ -1,7 +1,11 @@
 package JFrame.Client;
 
 import Biblioteques.Auxiliar;
+import Biblioteques.ReadColor;
 import Biblioteques.Registrar;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +17,14 @@ public class AltaClients extends javax.swing.JFrame {
     /**
      * Creates new form AltaClients1
      */
-    public AltaClients() {
+    public AltaClients() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Alta client");
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -197,7 +205,12 @@ public class AltaClients extends javax.swing.JFrame {
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         /*******************************************************************/
-        MenuClients obj = new MenuClients(); 	//creem la nova finestra MenuClient1
+        MenuClients obj = null;
+        try {
+            obj = new MenuClients(); //creem la nova finestra MenuClient1
+        } catch (IOException ex) {
+            Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -247,7 +260,11 @@ public class AltaClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AltaClients().setVisible(true);
+                try {
+                    new AltaClients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

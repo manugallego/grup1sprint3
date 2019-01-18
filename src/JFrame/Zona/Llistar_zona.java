@@ -2,6 +2,10 @@ package JFrame.Zona;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,10 +15,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Llistar_zona extends javax.swing.JFrame {
 
-    public Llistar_zona() {
+    public Llistar_zona() throws IOException {
         initComponents();
         setTitle("Consultar zona");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
+
     }
 
     /**
@@ -131,7 +140,12 @@ public class Llistar_zona extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = new Gestio_zones();
+        Gestio_zones gestio = null;
+        try {
+            gestio = new Gestio_zones();
+        } catch (IOException ex) {
+            Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -189,7 +203,11 @@ public class Llistar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Llistar_zona().setVisible(true);
+                try {
+                    new Llistar_zona().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

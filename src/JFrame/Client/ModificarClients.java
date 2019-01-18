@@ -2,7 +2,11 @@ package JFrame.Client;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,10 +23,14 @@ public class ModificarClients extends javax.swing.JFrame {
     /**
      * Creates new form ModificarClients1
      */
-    public ModificarClients() {
+    public ModificarClients() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         jButton2.setEnabled(false);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -270,7 +278,12 @@ public class ModificarClients extends javax.swing.JFrame {
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         /*******************************************************************/
-        MenuClients obj = new MenuClients(); 	//creem la nova finestra MenuClients
+        MenuClients obj = null;
+        try {
+            obj = new MenuClients(); //creem la nova finestra MenuClients
+        } catch (IOException ex) {
+            Logger.getLogger(ModificarClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -387,7 +400,11 @@ public class ModificarClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarClients().setVisible(true);
+                try {
+                    new ModificarClients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ModificarClients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

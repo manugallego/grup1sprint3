@@ -3,9 +3,13 @@ package JFrame.Incidencia;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import JFrame.Client.*;
 import javax.swing.table.DefaultTableModel;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -19,10 +23,14 @@ public class Llistar_clients extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarClients
      */
-    public Llistar_clients() {
+    public Llistar_clients() throws IOException {
         initComponents();
         setTitle("Elegir client");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -146,7 +154,12 @@ public class Llistar_clients extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*******************************************************************/
-        MenuClients obj = new MenuClients(); 	//creem la nova finestra MenuClients
+        MenuClients obj = null;
+        try {
+            obj = new MenuClients(); //creem la nova finestra MenuClients
+        } catch (IOException ex) {
+            Logger.getLogger(Llistar_clients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -233,7 +246,11 @@ public class Llistar_clients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Llistar_clients().setVisible(true);
+                try {
+                    new Llistar_clients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Llistar_clients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

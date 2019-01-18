@@ -2,6 +2,10 @@ package JFrame.Client;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -16,10 +20,14 @@ public class ConsultarClients extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarClients1
      */
-    public ConsultarClients() {
+    public ConsultarClients() throws IOException {
         initComponents();
         setTitle("Consultar clients");
-        this.setLocationRelativeTo(null);        
+        this.setLocationRelativeTo(null);   
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -132,7 +140,12 @@ public class ConsultarClients extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*******************************************************************/
-        MenuClients obj = new MenuClients(); 	//creem la nova finestra MenuClients
+        MenuClients obj = null;
+        try {
+            obj = new MenuClients(); //creem la nova finestra MenuClients
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultarClients.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -194,7 +207,11 @@ public class ConsultarClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultarClients().setVisible(true);
+                try {
+                    new ConsultarClients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ConsultarClients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

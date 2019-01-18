@@ -2,7 +2,11 @@ package JFrame.Incidencia;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
+import Biblioteques.ReadColor;
 import Public.Public;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,10 +17,14 @@ import javax.swing.table.DefaultTableModel;
 public class Llistar_zona extends javax.swing.JFrame {
     int elements[];                                                             //variable que guarda l'element seleccionat
     int posicio;                                                                //variable per a saber la posicio de l'element en l'array
-    public Llistar_zona() {
+    public Llistar_zona() throws IOException {
         initComponents();
         setTitle("Elegir zona");
         this.setLocationRelativeTo(null);
+        
+        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        }
     }
 
     /**
@@ -152,7 +160,11 @@ public class Llistar_zona extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Alta_incidencies alta = new Alta_incidencies();
+        try {
+            Alta_incidencies alta = new Alta_incidencies();
+        } catch (IOException ex) {
+            Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
@@ -240,7 +252,11 @@ public class Llistar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Llistar_zona().setVisible(true);
+                try {
+                    new Llistar_zona().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
