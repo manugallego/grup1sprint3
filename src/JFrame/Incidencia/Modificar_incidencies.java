@@ -35,7 +35,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         Public.seleccio_zona = false;
         Public.seleccio_user = true;
         
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 

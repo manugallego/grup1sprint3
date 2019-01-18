@@ -1,4 +1,3 @@
-
 package JFrame;
 
 import Biblioteques.Auxiliar;
@@ -16,24 +15,26 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * Pantalla principal del programa
+ *
  * @author Marcos Zaballos, Ivan Morte, Ferran Climent.
  */
 public class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
+     *
      * @throws java.io.IOException
      */
     public Main() throws IOException {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
-        
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
-        
+
     }
 
     /**
@@ -172,14 +173,16 @@ public class Main extends javax.swing.JFrame {
 
     /**
      * Event del boto 'sortir' que tanca el programa
-     * @param evt 
+     *
+     * @param evt
      */
     private void sortirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_sortirActionPerformed
     /**
      * Boto que ens porta a la pantalla de gestio de clients
-     * @param evt 
+     *
+     * @param evt
      */
     private void clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsActionPerformed
         MenuClients menu_client = null;
@@ -193,7 +196,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_clientsActionPerformed
     /**
      * Boto que ens porta a la pantalla de gestio de zones
-     * @param evt 
+     *
+     * @param evt
      */
     private void zonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonesActionPerformed
         Gestio_zones menu_zona = null;
@@ -207,7 +211,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_zonesActionPerformed
     /**
      * Boto que ens porta a la pantalla de gestio d'incidencies
-     * @param evt 
+     *
+     * @param evt
      */
     private void incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidenciesActionPerformed
         Incidencies_menu menu_incidencies = null;
@@ -221,7 +226,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_incidenciesActionPerformed
     /**
      * Boto per a carregar zones i usuaris per a fer tests
-     * @param evt 
+     *
+     * @param evt
      */
     private void incidencies1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidencies1ActionPerformed
         Registrar.carregar_test();
@@ -264,14 +270,14 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {       
+            public void run() {
                 try {
                     try {
                         new Main().setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

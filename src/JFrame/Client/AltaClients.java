@@ -22,7 +22,7 @@ public class AltaClients extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Alta client");
         
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }

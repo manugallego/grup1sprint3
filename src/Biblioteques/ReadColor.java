@@ -22,46 +22,47 @@ import javax.swing.JOptionPane;
  * @author Admin
  */
 public class ReadColor {
-    public static File colorFons = new File("fitxer/colorFons.txt"); 
-    public static File lletraPrograma = new File("fitxer/lletraPrograma.txt");
-    
-    public static Color llegirColorFons() throws FileNotFoundException, IOException{
+
+    public static File arxiuConfig = new File("config/gui.conf");
+
+    public static Color llegirColorFons() throws FileNotFoundException, IOException {
         String colorCadena = "";
         Color color = null;
-        
-        if(colorFons.exists()){
+
+        if (arxiuConfig.exists()) {
             String linea = "";
-            
+
             try {
-                
-                FileReader llegirArxiu = new FileReader(colorFons);
+
+                FileReader llegirArxiu = new FileReader(arxiuConfig);
                 BufferedReader buffer = new BufferedReader(llegirArxiu);
-            
-                while((linea = buffer.readLine()) != null){
-                colorCadena += linea; 
+
+                while ((linea = buffer.readLine()) != null) {
+                    colorCadena += linea;
                 }
-            
+
                 color = parseColor(colorCadena);
                 return color;
-            } catch (FileNotFoundException ex){
+            } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex);
-            } catch (IOException ex){
+            } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex);
             }
         }
         return null;
     }
-    
-    public static Color parseColor(String color){
+
+    public static Color parseColor(String color) {
         Pattern c = Pattern.compile("rgb *\\(*([0-9]+), *([0-9]+), *([0-9]+) *\\)");
         Matcher m = c.matcher(color);
-        
-        if(m.matches()){
+
+        if (m.matches()) {
             return new Color(
-                Integer.valueOf(m.group(1)),//R
-                Integer.valueOf(m.group(2)),//G
-                Integer.valueOf(m.group(3))//B
+                    Integer.valueOf(m.group(1)),//R
+                    Integer.valueOf(m.group(2)),//G
+                    Integer.valueOf(m.group(3))//B
             );
-        } return null;
-    } 
+        }
+        return null;
+    }
 }

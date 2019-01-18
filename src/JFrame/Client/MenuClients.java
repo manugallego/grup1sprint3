@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * Pantalla que mostra les diferents opcions de la gestio de clients
+ *
  * @author FerranCliment - DAW2 - 2018
  */
 public class MenuClients extends javax.swing.JFrame {
@@ -19,8 +20,8 @@ public class MenuClients extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio de clients");
-        
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }
@@ -130,10 +131,13 @@ public class MenuClients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * Boto per anar a la pantalla de donat d'alta clients
-     * @param evt 
+     *
+     * @param evt
      */
     private void alta_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_clientActionPerformed
-         /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
         AltaClients obj = null;
         try {
             obj = new AltaClients(); //creem la nova finestra AltaClients
@@ -142,14 +146,19 @@ public class MenuClients extends javax.swing.JFrame {
         }
         obj.setVisible(true);                   //la fem visible
         dispose();                              //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
     }//GEN-LAST:event_alta_clientActionPerformed
     /**
      * Boto per anar a la pantalla de baixa de clients
-     * @param evt 
+     *
+     * @param evt
      */
     private void baixa_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_clientActionPerformed
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
         BaixaClients obj = null;
         try {
             obj = new BaixaClients(); //creem la nova finestra BaixaClients
@@ -158,14 +167,19 @@ public class MenuClients extends javax.swing.JFrame {
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
     }//GEN-LAST:event_baixa_clientActionPerformed
     /**
      * Boto per anar a la pantalla de consultar clients
-     * @param evt 
+     *
+     * @param evt
      */
     private void consultar_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_clientActionPerformed
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
         ConsultarClients obj = null;
         try {
             obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
@@ -174,16 +188,21 @@ public class MenuClients extends javax.swing.JFrame {
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
 
     }//GEN-LAST:event_consultar_clientActionPerformed
     /**
      * Boto per anar a la pantalla de modificar clients
-     * @param evt 
+     *
+     * @param evt
      */
     private void modificar_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_clientActionPerformed
 
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
         ModificarClients obj = null;
         try {
             obj = new ModificarClients(); //creem la nova finestra ModificarClients
@@ -192,11 +211,14 @@ public class MenuClients extends javax.swing.JFrame {
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
     }//GEN-LAST:event_modificar_clientActionPerformed
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
         Main principal = null;

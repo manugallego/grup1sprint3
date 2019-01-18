@@ -20,7 +20,7 @@ public class Gestio_zones extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Gestio de zones");
         
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 

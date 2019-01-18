@@ -12,18 +12,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Classe del jFrame d'eliminar zones
+ *
  * @author Marcos
  */
 public class Eliminar_zona extends javax.swing.JFrame {
-    
-    int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
+
+    int elements[];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     int posicio;                                                                //variable per a guardar la posicio d'una zona
+
     public Eliminar_zona() throws IOException {
         initComponents();
         setTitle("Baixa zona");
         this.setLocationRelativeTo(null);
-        
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 
@@ -180,75 +182,83 @@ public class Eliminar_zona extends javax.swing.JFrame {
 
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = new Gestio_zones();
-        gestio.setVisible(true);
-        dispose();
+        try {
+            Gestio_zones gestio = new Gestio_zones();
+            gestio.setVisible(true);
+            dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
-        
+
     }//GEN-LAST:event_jTable1FocusGained
     /**
      * Quan la finestra s'obri omplim la taula
-     * @param evt 
+     *
+     * @param evt
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /*Carreguem els valors de l'array en la taula*/
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         Auxiliar.actualitzar_taula_zona(tabla);
-        
+
         /*la confirmació de l'eliminació comença invisible*/
         jLabel1.setVisible(false);
         jButton1.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
     /**
      * Boto per eliminar (necessita confirmacio)
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         elements = jTable1.getSelectedRows();
-        
+
         /*Comprovem si l'usuari ha seleccionat una fila de la taula*/
-        if(elements.length == 0){
-            JOptionPane.showMessageDialog(null,"Has de seleccionar una fila");
-        }
-        else if(elements.length > 1){
-            JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
-        }else{
+        if (elements.length == 0) {
+            JOptionPane.showMessageDialog(null, "Has de seleccionar una fila");
+        } else if (elements.length > 1) {
+            JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
+        } else {
             /*fem visible la confirmacio*/
             jLabel1.setVisible(true);
             jButton1.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * Boto per a confirmar l'eliminacio
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         elements = jTable1.getSelectedRows();                                   //carreguem en elements la fila de la taula seleccionada
         String nom_zona;                                                        //guardem el nom de la zona que eliminem per a escriure'l en els logs
-        
+
         /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
-        if(elements.length > 1){
-            JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
-        }else{
+        if (elements.length > 1) {
+            JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
+        } else {
             Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             posicio = -1;                                                       //variable amb la posicio de l'array
-            
+
             posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
-            
-            if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'ha pogut borrar la zona");
-            else{
-                
+
+            if (posicio == -1) {
+                JOptionPane.showMessageDialog(null, "No s'ha pogut borrar la zona");
+            } else {
+
                 nom_zona = Public.arrayZones.get(posicio).getNom();
-                        
+
                 Public.arrayZones.remove(posicio);                             //eliminem la zona
-        
+
                 /*fem invisible la confirmacio*/
                 jLabel1.setVisible(false);
                 jButton1.setVisible(false);
@@ -257,29 +267,30 @@ public class Eliminar_zona extends javax.swing.JFrame {
                 DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
                 Auxiliar.actualitzar_taula_zona(tabla);
                 //Obrir la finestra de confirmacio 
-                JOptionPane.showMessageDialog(null,"Zona eliminada");
-                
+                JOptionPane.showMessageDialog(null, "Zona eliminada");
+
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha eliminat la zona " + nom_zona;
                 Auxiliar.escriure_fitxer(text_logs);
             }
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * Boto per a fer una cerca
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         /*Codi per a fer la cerca_Zona*/
         String busqueda = jTextField1.getText();                                //variable per guardar la busqueda
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        
+
         Cercadors.cerca_Zona(tabla, busqueda);
-        
-        if (Cercadors.cerca_Zona(tabla, busqueda) == false){
+
+        if (Cercadors.cerca_Zona(tabla, busqueda) == false) {
             /*Missatge d'avís*/
-            JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
+            JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

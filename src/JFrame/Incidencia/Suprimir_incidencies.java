@@ -27,7 +27,7 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
         setTitle("Baixa incidencia");
         this.setLocationRelativeTo(null);
         
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 

@@ -22,7 +22,7 @@ public class Llistar_zona extends javax.swing.JFrame {
         setTitle("Elegir zona");
         this.setLocationRelativeTo(null);
         
-        if (ReadColor.colorFons.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
             jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }
