@@ -20,13 +20,24 @@ public class Cercadors {
      */
     public static int cerca_ID_usuari(int posicio, Object zona_aux) {
         boolean trobat = false; //boolean per a deixar de buscar quan es troba l'ID
+        int i = 0;
         /*Recorrem l'array buscant l'ID*/
-        for (int i = 0; i < Public.arrayPersona.size() && trobat == false; ++i) {
+        Iterator<ClasseClient> it = Public.arrayPersona.iterator();
+        
+        while (it.hasNext() && !trobat){
+            ClasseClient client_aux = it.next();        //Crear un objecte del iterador classeclient igualat al itnext per cambiar les columnes de la taula.
+            if (client_aux.getIdClient().equals(zona_aux)) {
+                posicio = i;
+                trobat = true;
+            }
+            ++i;
+        }
+        /*for (int i = 0; i < Public.arrayPersona.size() && trobat == false; ++i) {
             if (Public.arrayPersona.get(i).getIdClient().equals(zona_aux)) {
                 posicio = i;
                 trobat = true;
             }
-        }
+        }*/
         return posicio;
     }
 
@@ -38,13 +49,25 @@ public class Cercadors {
      */
     public static int cercar_ID_client(int posicio, Object client_aux) {
         boolean buscador = false;
-        for (int i = 0; i < Public.arrayPersona.size() && buscador == false; i++) {
+        int i = 0;
+        
+        Iterator<ClasseClient> it = Public.arrayPersona.iterator();
+        
+        while (it.hasNext() && !buscador){
+            ClasseClient client_it = it.next();        //Crear un objecte del iterador classeclient igualat al itnext per cambiar les columnes de la taula.
+            if (client_it.getIdClient().equals(client_aux)) {
+                posicio = i;
+                buscador = true;
+            }
+            ++i;
+        }
+        /*for (int i = 0; i < Public.arrayPersona.size() && buscador == false; i++) {
             System.out.println(Public.arrayPersona.get(i).getIdClient());
             if (Public.arrayPersona.get(i).getIdClient().equals(client_aux)) {
                 posicio = i;
                 buscador = true;
             }
-        }
+        }*/
         return posicio;
     }
 
@@ -109,12 +132,23 @@ public class Cercadors {
      */
     public static int cerca_ID_incidencia(int posicio, Object incidencia_aux) {
         boolean cercador = false;
-        for (int i = 0; i < Public.arrayIncidencies.size() && cercador == false; i++) {
+        int i = 0;
+        
+        Iterator<Incidencies> it = Public.arrayIncidencies.iterator();
+        while (it.hasNext() && !cercador) {
+            Incidencies incidencia_it = it.next();
+            if (incidencia_it.getid().equals(incidencia_aux)) {
+                posicio = i;
+                cercador = true;
+            }
+            ++i;
+        }
+        /*for (int i = 0; i < Public.arrayIncidencies.size() && cercador == false; i++) {
             if (Public.arrayIncidencies.get(i).getid().equals(incidencia_aux)) {
                 posicio = i;
                 cercador = true;
             }
-        }
+        }*/
         return posicio;
     }
 
@@ -125,13 +159,25 @@ public class Cercadors {
      */
     public static int cerca_ID_zona(int posicio, Object zona_aux) {
         boolean trobat = false; //boolean per a deixar de buscar quan es troba l'ID
+        int i = 0;
+        
+        Iterator<Zona> it = Public.arrayZones.iterator();
         /*Recorrem l'array buscant l'ID*/
-        for (int i = 0; i < Public.arrayZones.size() && trobat == false; ++i) {
+        while (it.hasNext() && !trobat) {
+            Zona zona_it = it.next();
+            if (zona_it.getID().equals(zona_aux)) {
+                posicio = i;
+                trobat = true;
+            }
+            ++i;
+        }
+        
+        /*for (int i = 0; i < Public.arrayZones.size() && trobat == false; ++i) {
             if (Public.arrayZones.get(i).getID().equals(zona_aux)) {
                 posicio = i;
                 trobat = true;
             }
-        }
+        }*/
         return posicio;
     }
 

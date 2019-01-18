@@ -229,13 +229,13 @@ public class Alta_incidencies extends javax.swing.JFrame {
 
                 Registrar.registrar_incidencia(nomIncidencia, descIncidencia, zonaIncidencia, usuIncidencia, dataIncidencia);
 
-                for(int i=0; i<Public.arrayIncidencies.size();i++){
+                /*for(int i=0; i<Public.arrayIncidencies.size();i++){
                     System.out.println(Public.arrayIncidencies.get(i).gettitolIncidencia());//mostra les dades introduides a l'array per mes informacio
                     System.out.println(Public.arrayIncidencies.get(i).getdescripcioIncidencia());
                     System.out.println(Public.arrayIncidencies.get(i).getlloc());
                     System.out.println(Public.arrayIncidencies.get(i).getuser());
                     System.out.println(Public.arrayIncidencies.get(i).getdate());
-                }
+                }*/
 
                 jTextField1.setText("");//tornar a ficar el text field buit
                 jTextField2.setText("");//tornar a ficar el text field buit
