@@ -1,9 +1,9 @@
 
 package Biblioteques;
 
-import Constructors.ClasseClient;
-import Constructors.Incidencies;
-import Constructors.Zona;
+import ClassesPrincipals.ClasseClient;
+import ClassesPrincipals.Incidencies;
+import ClassesPrincipals.Zona;
 import Public.Public;
 
 /**

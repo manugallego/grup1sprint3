@@ -1,4 +1,4 @@
-package Constructors;
+package ClassesPrincipals;
 
 import Public.Public;
 
@@ -114,7 +114,8 @@ public class Incidencies {
      */
     @Override
     public String toString() {
-        return titolIncidencia + " " + descripcioIncidencia + " " + lloc + " " + date + " " + user;
+        String incidencia = titolIncidencia + ", " + descripcioIncidencia + ", " + lloc + ", " + date + ", " + user;
+        return incidencia;
     }
 
 }

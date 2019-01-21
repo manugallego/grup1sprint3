@@ -1,4 +1,4 @@
-package Constructors;
+package ClassesPrincipals;
 /**
  * Classe amb els constructors, setters i getters dels objectes tipus ClassePersona (persona)
  * @author Ferran Climent

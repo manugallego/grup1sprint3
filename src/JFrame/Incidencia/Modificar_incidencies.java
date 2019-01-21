@@ -3,7 +3,7 @@ package JFrame.Incidencia;
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
-import Constructors.Incidencies;
+import ClassesPrincipals.Incidencies;
 import Public.Public;
 import java.io.IOException;
 import java.util.Iterator;

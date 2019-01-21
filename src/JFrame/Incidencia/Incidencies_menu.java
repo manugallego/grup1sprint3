@@ -5,7 +5,7 @@
  */
 package JFrame.Incidencia;
 
-import Biblioteques.Config;
+import Biblioteques.*;
 import JFrame.Main;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -40,6 +40,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
         consultar_incidencies = new javax.swing.JButton();
         modificar_incidencies = new javax.swing.JButton();
         baixa_incidencia = new javax.swing.JButton();
+        informeIncidencies = new javax.swing.JButton();
         enrere = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,10 +73,10 @@ public class Incidencies_menu extends javax.swing.JFrame {
             }
         });
 
-        enrere.setText("Enrere");
-        enrere.addActionListener(new java.awt.event.ActionListener() {
+        informeIncidencies.setText("Generar CSV");
+        informeIncidencies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enrereActionPerformed(evt);
+                informeIncidenciesActionPerformed(evt);
             }
         });
 
@@ -85,17 +86,15 @@ public class Incidencies_menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(baixa_incidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(modificar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(alta_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(consultar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(informeIncidencies)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(baixa_incidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(modificar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alta_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(consultar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(118, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(enrere)
-                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,20 +107,35 @@ public class Incidencies_menu extends javax.swing.JFrame {
                 .addComponent(modificar_incidencies)
                 .addGap(18, 18, 18)
                 .addComponent(baixa_incidencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(enrere)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(informeIncidencies)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        enrere.setText("Enrere");
+        enrere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enrereActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(enrere)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enrere)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,6 +219,16 @@ public class Incidencies_menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
 
+    private void informeIncidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informeIncidenciesActionPerformed
+        // TODO add your handling code here:
+        try {
+            Auxiliar.guardarInformeIncidencies();
+        }
+        catch (Exception ex) {
+            Auxiliar.escriure_error("Error: " + ex);
+        }
+    }//GEN-LAST:event_informeIncidenciesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +278,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
     private javax.swing.JButton baixa_incidencia;
     private javax.swing.JButton consultar_incidencies;
     private javax.swing.JButton enrere;
+    private javax.swing.JButton informeIncidencies;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificar_incidencies;
     // End of variables declaration//GEN-END:variables

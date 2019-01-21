@@ -5,7 +5,9 @@
 
 package Public;
 
-import Constructors.*;
+import ClassesPrincipals.Zona;
+import ClassesPrincipals.ClasseClient;
+import ClassesPrincipals.Incidencies;
 import java.util.ArrayList;
 
 

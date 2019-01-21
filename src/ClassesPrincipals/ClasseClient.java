@@ -1,4 +1,4 @@
-package Constructors;
+package ClassesPrincipals;
 /**
  * Classe Client amb els constructors, setters i getters dels objectes tipus ClasseClient
  * @author Ferran Climent
