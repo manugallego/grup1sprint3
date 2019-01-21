@@ -1,6 +1,8 @@
 package JFrame;
 
-import Biblioteques.*;
+import Biblioteques.Auxiliar;
+import Biblioteques.Config;
+import Biblioteques.Registrar;
 import JFrame.Incidencia.Incidencies_menu;
 import JFrame.Zona.Gestio_zones;
 import JFrame.Client.MenuClients;

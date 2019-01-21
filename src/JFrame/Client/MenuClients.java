@@ -1,6 +1,7 @@
 package JFrame.Client;
 
-import Biblioteques.*;
+import Biblioteques.Auxiliar;
+import Biblioteques.Config;
 import JFrame.Main;
 import java.io.IOException;
 import java.util.logging.Level;
