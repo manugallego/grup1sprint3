@@ -1,5 +1,6 @@
 package JFrame.Client;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.ReadColor;
 import JFrame.Main;
 import java.io.IOException;
@@ -143,6 +144,7 @@ public class MenuClients extends javax.swing.JFrame {
             obj = new AltaClients(); //creem la nova finestra AltaClients
         } catch (IOException ex) {
             Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                   //la fem visible
         dispose();                              //eliminem la finestra actual
@@ -164,6 +166,7 @@ public class MenuClients extends javax.swing.JFrame {
             obj = new BaixaClients(); //creem la nova finestra BaixaClients
         } catch (IOException ex) {
             Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
@@ -185,6 +188,7 @@ public class MenuClients extends javax.swing.JFrame {
             obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
         } catch (IOException ex) {
             Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
@@ -208,6 +212,7 @@ public class MenuClients extends javax.swing.JFrame {
             obj = new ModificarClients(); //creem la nova finestra ModificarClients
         } catch (IOException ex) {
             Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
@@ -226,6 +231,8 @@ public class MenuClients extends javax.swing.JFrame {
             principal = new Main();
         } catch (IOException ex) {
             Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
+            
         }
         principal.setVisible(true);
         dispose();
@@ -249,12 +256,16 @@ public class MenuClients extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MenuClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(MenuClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MenuClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -266,6 +277,7 @@ public class MenuClients extends javax.swing.JFrame {
                     new MenuClients().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

@@ -206,6 +206,7 @@ public class Modificar_zona extends javax.swing.JFrame {
             gestio = new Gestio_zones();
         } catch (IOException ex) {
             Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         gestio.setVisible(true);
         dispose();
@@ -240,6 +241,7 @@ public class Modificar_zona extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error, no s'han pogut carregar les dades: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }
     /**
@@ -274,6 +276,7 @@ public class Modificar_zona extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -316,12 +319,16 @@ public class Modificar_zona extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Modificar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Modificar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Modificar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Modificar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -335,6 +342,7 @@ public class Modificar_zona extends javax.swing.JFrame {
                     new Modificar_zona().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

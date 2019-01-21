@@ -45,8 +45,11 @@ public class ReadColor {
                 return color;
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex);
+                Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
+                
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex);
+                Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
             }
         }
         return null;

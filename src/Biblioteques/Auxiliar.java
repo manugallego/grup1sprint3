@@ -52,7 +52,11 @@ public class Auxiliar {
             model1.addRow(new Object[]{client_aux.getIdClient(), client_aux.getNom(), client_aux.getCognom1(), client_aux.getCognom2(), client_aux.getTargeta()}); //Plenar la taula
         }
     }
-
+    
+    /**
+     * Metode per a escriure els canvis en el fitxer de logs
+     * @param text 
+     */
     public static void escriure_fitxer(String text) {
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -70,6 +74,7 @@ public class Auxiliar {
 
         } catch (Exception e) {
             e.printStackTrace();
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         } finally {
             try {
                 if (null != fichero) {
@@ -77,6 +82,41 @@ public class Auxiliar {
                 }
             } catch (Exception e2) {
                 e2.printStackTrace();
+                Auxiliar.escriure_error("Error: " + e2);             //Escribim l'error en el fitxer d'errors
+            }
+        }
+    }
+    
+    /**
+     * Metode per escriure els errors en el fitxer d'errors
+     * @param text 
+     */
+    public static void escriure_error(String text) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date datahora = new Date();
+
+        text = "[" + datahora + "]" + " - " + text;
+
+        try {
+            fichero = new FileWriter("./logs/error.log", true);
+            pw = new PrintWriter(fichero);
+
+            pw.println(text);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
+        } finally {
+            try {
+                if (null != fichero) {
+                    fichero.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+                Auxiliar.escriure_error("Error: " + e2);        //Escribim l'error en el fitxer d'errors
             }
         }
     }

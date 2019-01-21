@@ -192,6 +192,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
             dispose();
         } catch (IOException ex) {
             Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -312,12 +313,16 @@ public class Eliminar_zona extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Eliminar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Eliminar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Eliminar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Eliminar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -331,6 +336,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
                     new Eliminar_zona().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

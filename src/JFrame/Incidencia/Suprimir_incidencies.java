@@ -1,5 +1,6 @@
 package JFrame.Incidencia;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.ReadColor;
 import Constructors.Incidencies;
@@ -205,6 +206,7 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
             menu = new Incidencies_menu();
         } catch (IOException ex) {
             Logger.getLogger(Suprimir_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         menu.setVisible(true);
 
@@ -307,12 +309,16 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Suprimir_incidencies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Suprimir_incidencies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Suprimir_incidencies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Suprimir_incidencies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
 
@@ -323,6 +329,7 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
                     new Suprimir_incidencies().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Suprimir_incidencies.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });
