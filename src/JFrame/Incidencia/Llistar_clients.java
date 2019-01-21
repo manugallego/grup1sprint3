@@ -3,7 +3,7 @@ package JFrame.Incidencia;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
-import Biblioteques.ReadColor;
+import Biblioteques.Config;
 import JFrame.Client.*;
 import javax.swing.table.DefaultTableModel;
 import Public.Public;
@@ -28,8 +28,8 @@ public class Llistar_clients extends javax.swing.JFrame {
         setTitle("Elegir client");
         this.setLocationRelativeTo(null);
         
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }
 

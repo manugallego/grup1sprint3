@@ -2,7 +2,7 @@ package JFrame.Zona;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
-import Biblioteques.ReadColor;
+import Biblioteques.Config;
 import Public.Public;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -26,8 +26,8 @@ public class Modificar_zona extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jButton4.setEnabled(false);
         
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 
     }

@@ -3,16 +3,20 @@ package Biblioteques;
 import Constructors.ClasseClient;
 import Constructors.Zona;
 import Public.Public;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
-import javax.swing.JColorChooser;
 import javax.swing.table.DefaultTableModel;
-import sun.util.logging.PlatformLogger;
+import Public.*;
 
 /**
  * Classe amb metodes que s'utilitzen en el programa
@@ -20,6 +24,8 @@ import sun.util.logging.PlatformLogger;
  * @author Marcos Zaballos, Ferran Climent, Ivan Morte
  */
 public class Auxiliar {
+    
+    final public static String DATE_FORMAT = "dd/MM/yyyy"; //Constant on guardem el format de la data
 
     /*Metodes per a omplir les taules*/
     /**
@@ -119,5 +125,52 @@ public class Auxiliar {
                 Auxiliar.escriure_error("Error: " + e2);        //Escribim l'error en el fitxer d'errors
             }
         }
+    }
+
+    /**
+     * Funció isDateValid: Comprova si una data té un format igual a dd/MM/yyyy
+     *
+     * @param date
+     * @return true si és vàlida, false en cas contrari
+     */
+    public static boolean isDateValid(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+            sdf.setLenient(false);
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+    
+    /**
+     * Funció guardarInforme
+     * Imprimeix tot el array de Habitacions en un arxiu de text
+     * 
+     */
+    public static void guardarInforme() {
+        Calendar calendari = Calendar.getInstance();
+        String dia = Integer.toString(calendari.get(Calendar.DATE));
+        String mes = Integer.toString(calendari.get(Calendar.MONTH)+1);
+        String any = Integer.toString(calendari.get(Calendar.YEAR));
+        String fitxerOut = "./informes/InformeIncidencies-"+dia+'-'+mes+'-'+any+".csv";
+        File fitxer_sortida = new File (fitxerOut);
+        
+        try {
+            PrintStream escriptor = new PrintStream(fitxer_sortida);
+            escriptor.println("Número Habitació"+","+"Tipus Habitació"+","+"Número Llits"+","+"Tipus Llits"+","+"Estat Habitació");
+            Iterator<Incidencies> habIterator = Public.arrayIncidencies.iterator();
+            while (habIterator.hasNext()) {
+                Habitacio hab = habIterator.next();
+                escriptor.println(hab.getNumHabitacio()+","+hab.getTipusHabitacio()+","+hab.getNumLlits()+","+hab.getTipusLlits()+","+hab.getEstatHabitacio());
+            }
+            escriptor.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+            GestioHotelLog.LOGGER.log(Level.INFO, "Excepcio: {0}", e);
+        }
+        
     }
 }

@@ -1,9 +1,8 @@
 package JFrame;
 
 import Biblioteques.Auxiliar;
-import Biblioteques.ReadColor;
+import Biblioteques.Config;
 import Biblioteques.Registrar;
-import Biblioteques.SaveColor;
 import JFrame.Incidencia.Incidencies_menu;
 import JFrame.Zona.Gestio_zones;
 import JFrame.Client.MenuClients;
@@ -27,14 +26,12 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() throws IOException {
         initComponents();
-
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
 
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
-
     }
 
     /**
@@ -185,15 +182,14 @@ public class Main extends javax.swing.JFrame {
      * @param evt
      */
     private void clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsActionPerformed
-        MenuClients menu_client = null;
         try {
-            menu_client = new MenuClients();
+            MenuClients menu_client = new MenuClients();
+            menu_client.setVisible(true);
+            dispose();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-        menu_client.setVisible(true);
-        dispose();
     }//GEN-LAST:event_clientsActionPerformed
     /**
      * Boto que ens porta a la pantalla de gestio de zones
@@ -241,7 +237,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_lletraActionPerformed
 
     private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
-        SaveColor.colorFons(jPanel1);
+        Config.colorFons(jPanel1);
     }//GEN-LAST:event_fonsActionPerformed
 
     /**

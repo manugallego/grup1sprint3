@@ -1,32 +1,29 @@
-
 package JFrame.Incidencia;
 
-import Biblioteques.Auxiliar;
-import Biblioteques.ReadColor;
-import Biblioteques.Registrar;
+import Biblioteques.*;
 import Public.Public;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import JFrame.*;
 
 /**
  * Pantalla per a donar d'alta incidencies
- * @author ivan
+ *
+ * @author Grup 1: Evaldas Casas
  */
 public class Alta_incidencies extends javax.swing.JFrame {
 
-    public Alta_incidencies() throws IOException {
+    public Alta_incidencies() {
         initComponents();
         setTitle("Alta incidencia");
         this.setLocationRelativeTo(null);
-        
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
-        }
-       
-        Public.usuari_incidencia = null;                                       //ens asegurem de que la variable no guarda un usuari d'una assignacio anterior
-        Public.zona_indicencia = null;                                         //ens asegurem de que la variable no guarda una zona d'una assignacio anterior
+        jDateChooser1.setDateFormatString(Auxiliar.DATE_FORMAT);
+
+        Public.usuari_incidencia = null;    //ens asegurem de que la variable no guarda un usuari d'una assignacio anterior
+        Public.zona_indicencia = null;      //ens asegurem de que la variable no guarda una zona d'una assignacio anterior
         System.out.println(Public.usuari_incidencia + " - " + Public.zona_indicencia);
     }
 
@@ -39,19 +36,18 @@ public class Alta_incidencies extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -71,9 +67,19 @@ public class Alta_incidencies extends javax.swing.JFrame {
 
         jLabel2.setText("Descripcio");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setText("Data");
+
+        jButton1.setText("Enrere");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Continuar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -95,212 +101,183 @@ public class Alta_incidencies extends javax.swing.JFrame {
 
         jLabel6.setText("No has seleccionat cap usuari");
 
-        jLabel5.setText("Data");
-
-        jButton2.setText("Continuar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Enrere");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(98, 98, 98)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel2))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 477, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(48, 48, 48)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel3)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel3))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          setVisible(false);
-         Incidencies_menu menu = null;
         try {
-            menu = new Incidencies_menu();
+            setVisible(false);
+            Incidencies_menu menu = new Incidencies_menu();
+            menu.setVisible(true);
+            // TODO add your handling code here:
         } catch (IOException ex) {
             Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-         menu.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
-     * crida a la funcio alta per a introduir les incidencies al array i comprova si estan buits el jtext field
-     * @param evt 
+     * crida a la funcio alta per a introduir les incidencies al array i
+     * comprova si estan buits el jtext field
+     *
+     * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            if(jTextField1.getText().equals("") || jTextField2.getText().equals("")){
+        try {
+            if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Falten dades per omplir les dades ");
-            }else{
-                JOptionPane.showMessageDialog(null, "Incidencia introduida correctament");
-                String nomIncidencia;
-                nomIncidencia = this.jTextField1.getText();//guarda les dades del text field a una variable pera despres guardarla al array
-                String descIncidencia;
-                descIncidencia = this.jTextField2.getText();
-                String zonaIncidencia;
-                zonaIncidencia = Public.zona_indicencia.getNom();
-                String usuIncidencia;
-                usuIncidencia = Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1() 
+            } else {
+
+                String nomIncidencia = this.jTextField1.getText();  //guarda les dades del text field a una variable pera despres guardarla al array
+
+                String descIncidencia = this.jTextField2.getText();
+
+                String zonaIncidencia = Public.zona_indicencia.getNom();
+
+                String usuIncidencia = Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
                         + " " + Public.usuari_incidencia.getCognom2();
-                String dataIncidencia;
-                dataIncidencia = this.jTextField4.getText();
 
+                String dataIncidencia = ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText();
 
-                Registrar.registrar_incidencia(nomIncidencia, descIncidencia, zonaIncidencia, usuIncidencia, dataIncidencia);
+                if (Auxiliar.isDateValid(dataIncidencia)) {
+                    Registrar.registrar_incidencia(nomIncidencia, descIncidencia, zonaIncidencia, usuIncidencia, dataIncidencia);
+                    JOptionPane.showMessageDialog(null, "Incidencia introduida correctament");
+                    jTextField1.setText("");    //buidar el camp de títol
+                    jTextField2.setText("");    //buidar el camp de descripció
+                    jDateChooser1.setCalendar(null);   //buidar el camp de data
+                    jLabel3.setText("No has seleccionat cap zona");
+                    jLabel6.setText("No has seleccionat cap usuari");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error: Introdueix una data valida");
+                }
 
-                /*for(int i=0; i<Public.arrayIncidencies.size();i++){
-                    System.out.println(Public.arrayIncidencies.get(i).gettitolIncidencia());//mostra les dades introduides a l'array per mes informacio
+                /* DEBUG */
+                for (int i = 0; i < Public.arrayIncidencies.size(); i++) {
+                    System.out.println(Public.arrayIncidencies.get(i).gettitolIncidencia());
                     System.out.println(Public.arrayIncidencies.get(i).getdescripcioIncidencia());
                     System.out.println(Public.arrayIncidencies.get(i).getlloc());
                     System.out.println(Public.arrayIncidencies.get(i).getuser());
                     System.out.println(Public.arrayIncidencies.get(i).getdate());
-                }*/
-
-                jTextField1.setText("");//tornar a ficar el text field buit
-                jTextField2.setText("");//tornar a ficar el text field buit
-                jTextField4.setText("");//tornar a ficar el text field buit
-                jLabel3.setText("No has seleccionat cap zona");
-                jLabel6.setText("No has seleccionat cap usuari"); 
-
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error: " + e);
-            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
-        }
-     
+
     }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Boto que porta a una finestra on podem seleccionar una zona
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Llistar_zona llistar = null;
         try {
-            llistar = new Llistar_zona();
+            Llistar_zona llistar = new Llistar_zona();
+            llistar.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-        llistar.setVisible(true);        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        
+
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         System.out.println(Public.seleccio_zona);
-        if (Public.seleccio_zona){
-            jLabel3.setText("Has seleccionat "+Public.zona_indicencia.getNom());
+        if (Public.seleccio_zona) {
+            jLabel3.setText("Has seleccionat " + Public.zona_indicencia.getNom());
         }
         System.out.println(Public.seleccio_user);
-        if (Public.seleccio_user){
-            jLabel6.setText("Has seleccionat "+Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
-                         + " " + Public.usuari_incidencia.getCognom2());
+        if (Public.seleccio_user) {
+            jLabel6.setText("Has seleccionat " + Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
+                    + " " + Public.usuari_incidencia.getCognom2());
         }
     }//GEN-LAST:event_formWindowGainedFocus
     /**
      * Boto que porta a una finestra on podem seleccionar un usuari
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Llistar_clients llistar = null;
         try {
-            llistar = new Llistar_clients();
+            Llistar_clients llistar = new Llistar_clients();
+            llistar.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-        llistar.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,12 +313,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Alta_incidencies().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Alta_incidencies().setVisible(true);
             }
         });
     }
@@ -351,14 +323,13 @@ public class Alta_incidencies extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,12 +5,7 @@
  */
 package JFrame.Incidencia;
 
-import Biblioteques.Auxiliar;
-import Biblioteques.ReadColor;
-import JFrame.Incidencia.Suprimir_incidencies;
-import JFrame.Incidencia.Llistar_incidencies;
-import JFrame.Incidencia.Modificar_incidencies;
-import JFrame.Incidencia.Alta_incidencies;
+import Biblioteques.Config;
 import JFrame.Main;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -26,8 +21,8 @@ public class Incidencies_menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Gestio d'incidencies");
         
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }
 
@@ -137,14 +132,9 @@ public class Incidencies_menu extends javax.swing.JFrame {
  */
     private void alta_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_incidenciesActionPerformed
          setVisible(false);
-         Alta_incidencies alta = null;
-        try {
-            alta = new Alta_incidencies();
-        } catch (IOException ex) {
-            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
-         alta.setVisible(true);        // TODO add your handling code here:
+         Alta_incidencies alta = new Alta_incidencies();
+         alta.setVisible(true);
+         dispose();
     }//GEN-LAST:event_alta_incidenciesActionPerformed
 /**
  * Anar a llistar

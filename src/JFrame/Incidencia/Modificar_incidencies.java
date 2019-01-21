@@ -2,7 +2,7 @@ package JFrame.Incidencia;
 
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
-import Biblioteques.ReadColor;
+import Biblioteques.Config;
 import Constructors.Incidencies;
 import Public.Public;
 import java.io.IOException;
@@ -36,8 +36,8 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         Public.seleccio_zona = false;
         Public.seleccio_user = true;
         
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
 
     }
