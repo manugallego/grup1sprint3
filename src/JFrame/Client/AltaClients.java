@@ -197,6 +197,7 @@ public class AltaClients extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
@@ -210,6 +211,7 @@ public class AltaClients extends javax.swing.JFrame {
             obj = new MenuClients(); //creem la nova finestra MenuClient1
         } catch (IOException ex) {
             Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
@@ -247,12 +249,16 @@ public class AltaClients extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(AltaClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(AltaClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(AltaClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AltaClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -264,6 +270,8 @@ public class AltaClients extends javax.swing.JFrame {
                     new AltaClients().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
+                Auxiliar.escriure_fitxer("Error: " + ex);
+                    
                 }
             }
         });

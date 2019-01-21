@@ -1,5 +1,6 @@
 package JFrame.Zona;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.ReadColor;
 import JFrame.Main;
 import java.io.IOException;
@@ -137,6 +138,7 @@ public class Gestio_zones extends javax.swing.JFrame {
             registrar = new Registrar_zona();
         } catch (IOException ex) {
             Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         registrar.setVisible(true);
         dispose();
@@ -151,6 +153,7 @@ public class Gestio_zones extends javax.swing.JFrame {
             modificar = new Modificar_zona();
         } catch (IOException ex) {
             Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         modificar.setVisible(true);
         dispose();
@@ -165,6 +168,7 @@ public class Gestio_zones extends javax.swing.JFrame {
             llistar = new Llistar_zona();
         } catch (IOException ex) {
             Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         llistar.setVisible(true);
         dispose();
@@ -179,6 +183,7 @@ public class Gestio_zones extends javax.swing.JFrame {
             principal = new Main();
         } catch (IOException ex) {
             Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         principal.setVisible(true);
         dispose();
@@ -193,6 +198,7 @@ public class Gestio_zones extends javax.swing.JFrame {
             eliminar = new Eliminar_zona();
         } catch (IOException ex) {
             Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         eliminar.setVisible(true);
         dispose();
@@ -216,12 +222,16 @@ public class Gestio_zones extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Gestio_zones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Gestio_zones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Gestio_zones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Gestio_zones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -234,6 +244,7 @@ public class Gestio_zones extends javax.swing.JFrame {
                     gestio = new Gestio_zones();
                 } catch (IOException ex) {
                     Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
                 gestio.setVisible(true);
             }

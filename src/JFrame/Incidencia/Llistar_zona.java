@@ -164,6 +164,7 @@ public class Llistar_zona extends javax.swing.JFrame {
             Alta_incidencies alta = new Alta_incidencies();
         } catch (IOException ex) {
             Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -240,12 +241,16 @@ public class Llistar_zona extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Llistar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Llistar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Llistar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Llistar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
 
@@ -256,6 +261,7 @@ public class Llistar_zona extends javax.swing.JFrame {
                     new Llistar_zona().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

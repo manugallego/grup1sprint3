@@ -5,6 +5,7 @@
  */
 package JFrame.Incidencia;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.ReadColor;
 import JFrame.Incidencia.Suprimir_incidencies;
 import JFrame.Incidencia.Llistar_incidencies;
@@ -141,6 +142,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             alta = new Alta_incidencies();
         } catch (IOException ex) {
             Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
          alta.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_alta_incidenciesActionPerformed
@@ -156,6 +158,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             llistar = new Llistar_incidencies();
         } catch (IOException ex) {
             Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
          llistar.setVisible(true);
 
@@ -173,6 +176,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             modificar = new Modificar_incidencies();
         } catch (IOException ex) {
             Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         modificar.setVisible(true);
 
@@ -191,6 +195,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             suprimir = new Suprimir_incidencies();
         } catch (IOException ex) {
             Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         suprimir.setVisible(true);
     }//GEN-LAST:event_baixa_incidenciaActionPerformed
@@ -204,6 +209,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             principal = new Main();
         } catch (IOException ex) {
             Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         principal.setVisible(true);
         dispose();
@@ -227,12 +233,16 @@ public class Incidencies_menu extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Incidencies_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Incidencies_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Incidencies_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Incidencies_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
 
@@ -243,6 +253,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
                     new Incidencies_menu().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

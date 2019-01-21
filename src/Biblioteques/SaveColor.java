@@ -55,6 +55,7 @@ public class SaveColor {
             buffer.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
+                Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
     }
 }

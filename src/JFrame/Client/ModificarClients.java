@@ -270,6 +270,7 @@ public class ModificarClients extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton1SeleccionarActionPerformed
     /**
@@ -283,6 +284,7 @@ public class ModificarClients extends javax.swing.JFrame {
             obj = new MenuClients(); //creem la nova finestra MenuClients
         } catch (IOException ex) {
             Logger.getLogger(ModificarClients.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
@@ -341,6 +343,7 @@ public class ModificarClients extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -387,12 +390,16 @@ public class ModificarClients extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ModificarClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(ModificarClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(ModificarClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ModificarClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
         //</editor-fold>
@@ -404,6 +411,7 @@ public class ModificarClients extends javax.swing.JFrame {
                     new ModificarClients().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(ModificarClients.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
                 }
             }
         });

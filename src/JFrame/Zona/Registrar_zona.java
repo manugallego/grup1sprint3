@@ -76,8 +76,9 @@ public class Registrar_zona extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
-                        .addComponent(jTextField1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 179, Short.MAX_VALUE)
                         .addComponent(jButton2)
@@ -126,6 +127,7 @@ public class Registrar_zona extends javax.swing.JFrame {
             gestio = new Gestio_zones();
         } catch (IOException ex) {
             Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         gestio.setVisible(true);
         dispose();
@@ -158,6 +160,7 @@ public class Registrar_zona extends javax.swing.JFrame {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -180,12 +183,16 @@ public class Registrar_zona extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Registrar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Registrar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Registrar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Registrar_zona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
 
@@ -196,6 +203,7 @@ public class Registrar_zona extends javax.swing.JFrame {
                     new Registrar_zona().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
+                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors                
                 }
             }
         });
