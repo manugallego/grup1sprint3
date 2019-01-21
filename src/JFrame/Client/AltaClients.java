@@ -1,7 +1,7 @@
 package JFrame.Client;
 
 import Biblioteques.Auxiliar;
-import Biblioteques.ReadColor;
+import Biblioteques.Config;
 import Biblioteques.Registrar;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,8 +22,8 @@ public class AltaClients extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Alta client");
         
-        if (ReadColor.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(ReadColor.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
+            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
         }
     }
 

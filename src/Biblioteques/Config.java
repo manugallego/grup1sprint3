@@ -5,23 +5,25 @@
  */
 package Biblioteques;
 
-import com.sun.istack.internal.logging.Logger;
 import java.awt.Color;
+import java.awt.Component;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class ReadColor {
+public class Config {
 
     public static File arxiuConfig = new File("config/gui.conf");
 
@@ -68,4 +70,33 @@ public class ReadColor {
         }
         return null;
     }
+    
+    public static void colorFons(Component componente) {
+        JColorChooser nouColor = new JColorChooser();
+        nouColor.setVisible(true);
+        Color nou = nouColor.showDialog(null, "Tria el color de fons", componente.getBackground());
+        if (nou != null) {
+            componente.setBackground(nou);
+            String color = "rgb(" + nou.getRed() + "," + nou.getGreen() + "," + nou.getBlue() + ")";
+            guardarColorFons(color);
+        }
+    }
+    
+    private static void guardarColorFons(String color) {
+        if (arxiuConfig.exists()) {
+            arxiuConfig.delete();
+        }
+
+        try {
+            BufferedWriter wr = new BufferedWriter(new FileWriter(arxiuConfig));
+            FileWriter escriureArxiu = new FileWriter(arxiuConfig, true);
+            BufferedWriter buffer = new BufferedWriter(escriureArxiu);
+            buffer.write(color);
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
+        }
+    }
+    
 }
