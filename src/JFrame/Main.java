@@ -1,5 +1,6 @@
 package JFrame;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import Biblioteques.Registrar;
 import JFrame.Incidencia.Incidencies_menu;

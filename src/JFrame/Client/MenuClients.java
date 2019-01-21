@@ -1,5 +1,6 @@
 package JFrame.Client;
 
+import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import JFrame.Main;
 import java.io.IOException;
