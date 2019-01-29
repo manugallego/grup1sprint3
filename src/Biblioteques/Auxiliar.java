@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Marcos Zaballos, Ferran Climent, Ivan Morte
  */
 public class Auxiliar {
-    
+
     final public static String DATE_FORMAT = "dd/MM/yyyy"; //Constant on guardem el format de la data
 
     /*Metodes per a omplir les taules*/
@@ -56,72 +56,79 @@ public class Auxiliar {
             model1.addRow(new Object[]{client_aux.getIdClient(), client_aux.getNom(), client_aux.getCognom1(), client_aux.getCognom2(), client_aux.getTargeta()}); //Plenar la taula
         }
     }
-    
+
     /**
      * Metode per a escriure els canvis en el fitxer de logs
-     * @param text 
+     *
+     * @param text
      */
-    public static void escriure_fitxer(String text) {
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    public static void escriure_log(String text) {
         Date datahora = new Date();
 
         text = "[" + datahora + "]" + " - " + text;
+        String fitxerOut = "./logs/syslog.log";
+        File fitxer_sortida = new File(fitxerOut);
+        fitxer_sortida.getParentFile().mkdirs();
+        
 
         try {
-            fichero = new FileWriter("./logs/syslog.log", true);
-            pw = new PrintWriter(fichero);
+            PrintStream escriptor = new PrintStream(fitxer_sortida);
 
-            pw.println(text);
+            escriptor.println(text);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
-        } finally {
-            try {
-                if (null != fichero) {
-                    fichero.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-                Auxiliar.escriure_error("Error: " + e2);             //Escribim l'error en el fitxer d'errors
-            }
         }
     }
-    
+
     /**
      * Metode per escriure els errors en el fitxer d'errors
-     * @param text 
+     *
+     * @param text
      */
     public static void escriure_error(String text) {
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date datahora = new Date();
 
         text = "[" + datahora + "]" + " - " + text;
+        String fitxerOut = "./logs/error.log";
+        File fitxer_sortida = new File(fitxerOut);
+        fitxer_sortida.getParentFile().mkdirs();
 
         try {
-            fichero = new FileWriter("./logs/error.log", true);
-            pw = new PrintWriter(fichero);
+            PrintStream escriptor = new PrintStream(fitxer_sortida);
 
-            pw.println(text);
+            escriptor.println(text);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
-        } finally {
-            try {
-                if (null != fichero) {
-                    fichero.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-                Auxiliar.escriure_error("Error: " + e2);        //Escribim l'error en el fitxer d'errors
+        } catch (FileNotFoundException e) {
+            Auxiliar.escriure_error("Error: " + e);     //Escribim l'error en el fitxer d'errors
+        }
+    }
+
+    /**
+     * Funció guardarInforme Imprimeix tot el array de Habitacions en un arxiu
+     * de text
+     *
+     */
+    public static void guardarInformeIncidencies() {
+        Calendar calendari = Calendar.getInstance();
+        String dia = Integer.toString(calendari.get(Calendar.DATE));
+        String mes = Integer.toString(calendari.get(Calendar.MONTH) + 1);
+        String any = Integer.toString(calendari.get(Calendar.YEAR));
+        String fitxerOut = "./informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
+        File fitxer_sortida = new File(fitxerOut);
+        fitxer_sortida.getParentFile().mkdirs();
+
+        try {
+            PrintStream escriptor = new PrintStream(fitxer_sortida);
+
+            //escriptor.println("Número Habitació"+","+"Tipus Habitació"+","+"Número Llits"+","+"Tipus Llits"+","+"Estat Habitació");
+            Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
+            while (itIncidencia.hasNext()) {
+                escriptor.println(itIncidencia.next());
             }
+            escriptor.close();
+        } catch (FileNotFoundException e) {
+            Auxiliar.escriure_error("Error: " + e);
         }
     }
 
@@ -141,32 +148,5 @@ public class Auxiliar {
             return false;
         }
     }
-    
-    /**
-     * Funció guardarInforme
-     * Imprimeix tot el array de Habitacions en un arxiu de text
-     * 
-     */
-    public static void guardarInformeIncidencies() {
-        Calendar calendari = Calendar.getInstance();
-        String dia = Integer.toString(calendari.get(Calendar.DATE));
-        String mes = Integer.toString(calendari.get(Calendar.MONTH)+1);
-        String any = Integer.toString(calendari.get(Calendar.YEAR));
-        String fitxerOut = "./informes/InformeIncidencies-"+dia+'-'+mes+'-'+any+".csv";
-        File fitxer_sortida = new File (fitxerOut);
-        
-        try {
-            PrintStream escriptor = new PrintStream(fitxer_sortida);    
-            //escriptor.println("Número Habitació"+","+"Tipus Habitació"+","+"Número Llits"+","+"Tipus Llits"+","+"Estat Habitació");
-            Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
-            while (itIncidencia.hasNext()) {
-                escriptor.println(itIncidencia.next());
-            }
-            escriptor.close();
-        }
-        catch (FileNotFoundException e) {
-            Auxiliar.escriure_error("Error: " + e);
-        }
-        
-    }
+
 }

@@ -268,7 +268,7 @@ public class Modificar_zona extends javax.swing.JFrame {
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha modificat la zona " + nom_antic +
                         " per " + nom_nou;
-                Auxiliar.escriure_fitxer(text_logs);
+                Auxiliar.escriure_log(text_logs);
                 
                 jButton4.setEnabled(false);
             }

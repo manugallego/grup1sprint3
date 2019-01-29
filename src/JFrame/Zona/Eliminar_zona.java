@@ -220,7 +220,50 @@ public class Eliminar_zona extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-   /**
+    /**
+     * Boto per a confirmar l'eliminacio
+     *
+     * @param evt
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        elements = jTable1.getSelectedRows();                                   //carreguem en elements la fila de la taula seleccionada
+        String nom_zona;                                                        //guardem el nom de la zona que eliminem per a escriure'l en els logs
+
+        /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
+        if (elements.length > 1) {
+            JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
+        } else {
+            Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            posicio = -1;                                                       //variable amb la posicio de l'array
+
+            posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
+
+            if (posicio == -1) {
+                JOptionPane.showMessageDialog(null, "No s'ha pogut borrar la zona");
+            } else {
+
+                nom_zona = Public.arrayZones.get(posicio).getNom();
+
+                Public.arrayZones.remove(posicio);                             //eliminem la zona
+
+                /*fem invisible la confirmacio*/
+                jLabel1.setVisible(false);
+                jButton1.setVisible(false);
+
+                //Actualitzem els valor de la taula
+                DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+                Auxiliar.actualitzar_taula_zona(tabla);
+                //Obrir la finestra de confirmacio 
+                JOptionPane.showMessageDialog(null, "Zona eliminada");
+
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha eliminat la zona " + nom_zona;
+                Auxiliar.escriure_log(text_logs);
+            }
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+    /**
      * Boto per a fer una cerca
      *
      * @param evt

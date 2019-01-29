@@ -218,7 +218,7 @@ public class Main extends javax.swing.JFrame {
             menu_incidencies = new Incidencies_menu();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         }
         menu_incidencies.setVisible(true);
         dispose();
@@ -258,16 +258,16 @@ public class Main extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         }
         //</editor-fold>
 
@@ -279,13 +279,13 @@ public class Main extends javax.swing.JFrame {
                         new Main().setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                        Auxiliar.escriure_fitxer("Error: " + ex);
+                        Auxiliar.escriure_log("Error: " + ex);
                     }
 
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_fitxer("Error: " + ex);
+                    Auxiliar.escriure_log("Error: " + ex);
                 }
             }
         });

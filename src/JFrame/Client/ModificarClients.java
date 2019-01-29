@@ -335,7 +335,7 @@ public class ModificarClients extends javax.swing.JFrame {
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha modificat el client " + dades_antigues +
                         " per " + dades_noves;
-                Auxiliar.escriure_fitxer(text_logs);
+                Auxiliar.escriure_log(text_logs);
                 
                 jButton2.setEnabled(false);
             }
