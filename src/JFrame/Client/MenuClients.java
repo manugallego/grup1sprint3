@@ -4,8 +4,6 @@ import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import JFrame.Main;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Pantalla que mostra les diferents opcions de la gestio de clients
@@ -17,13 +15,17 @@ public class MenuClients extends javax.swing.JFrame {
     /**
      * Creates new form MenuClients1
      */
-    public MenuClients() throws IOException {
+    public MenuClients() {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio de clients");
 
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -139,13 +141,7 @@ public class MenuClients extends javax.swing.JFrame {
         /**
          * ****************************************************************
          */
-        AltaClients obj = null;
-        try {
-            obj = new AltaClients(); //creem la nova finestra AltaClients
-        } catch (IOException ex) {
-            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        AltaClients obj = new AltaClients(); //creem la nova finestra AltaClients
         obj.setVisible(true);                   //la fem visible
         dispose();                              //eliminem la finestra actual
         /**
@@ -161,13 +157,7 @@ public class MenuClients extends javax.swing.JFrame {
         /**
          * ****************************************************************
          */
-        BaixaClients obj = null;
-        try {
-            obj = new BaixaClients(); //creem la nova finestra BaixaClients
-        } catch (IOException ex) {
-            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        BaixaClients obj = new BaixaClients(); //creem la nova finestra BaixaClients
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /**
@@ -183,13 +173,7 @@ public class MenuClients extends javax.swing.JFrame {
         /**
          * ****************************************************************
          */
-        ConsultarClients obj = null;
-        try {
-            obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
-        } catch (IOException ex) {
-            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        ConsultarClients obj = new ConsultarClients(); //creem la nova finestra ConsultarClients
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /**
@@ -207,13 +191,7 @@ public class MenuClients extends javax.swing.JFrame {
         /**
          * ****************************************************************
          */
-        ModificarClients obj = null;
-        try {
-            obj = new ModificarClients(); //creem la nova finestra ModificarClients
-        } catch (IOException ex) {
-            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        ModificarClients obj = new ModificarClients(); //creem la nova finestra ModificarClients
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /**
@@ -226,14 +204,7 @@ public class MenuClients extends javax.swing.JFrame {
      * @param evt
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = null;
-        try {
-            principal = new Main();
-        } catch (IOException ex) {
-            Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-            
-        }
+        Main principal = new Main();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
@@ -273,12 +244,7 @@ public class MenuClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new MenuClients().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(MenuClients.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new MenuClients().setVisible(true);
             }
         });
     }
