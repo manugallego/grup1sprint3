@@ -4,12 +4,11 @@ import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import Biblioteques.Registrar;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  * Pantalla per a donar d'alta clients
+ *
  * @author Ferran Climent - DAW2 - 2018
  */
 public class AltaClients extends javax.swing.JFrame {
@@ -17,13 +16,17 @@ public class AltaClients extends javax.swing.JFrame {
     /**
      * Creates new form AltaClients1
      */
-    public AltaClients() throws IOException {
+    public AltaClients() {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Alta client");
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -287,44 +290,43 @@ public class AltaClients extends javax.swing.JFrame {
     }//GEN-LAST:event_EmailActionPerformed
     /**
      * Boto per introduir el client
-     * @param evt 
+     *
+     * @param evt
      */
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        try{
-            if(Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") ||  Email.getText().equals ("") || Password.getText().equals("") || DataNaix.getText().equals("") || Adreca.getText().equals("")
-                    || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("") || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("")) { 
+        try {
+            if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") || Password.getText().equals("") || DataNaix.getText().equals("") || Adreca.getText().equals("")
+                    || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("") || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Client no introduit correctament"); //Aquest if busca que tots els camps no estiguen buids i mostrar una alerta
-            }else{
-                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), Password.getText(), DataNaix.getText(), Adreca.getText(),Ciutat.getText(),Provincia.getText(), CodiPostal.getText(),TipusDoc.getSelectedItem().toString(), NumDoc.getText(),Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
+            } else {
+                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), Password.getText(), DataNaix.getText(), Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
                 JOptionPane.showMessageDialog(null, "Client introduit correctament");  // Recull el la informacio dels JFIELDSTEXT i els envia al metode registrar_client, a continuacio mostra un text
-            
+
                 /*Imprimim en el fitxer de logs.txt*/
                 String nom = Nom.getText() + " " + Cognom1.getText() + " " + Cognom2.getText();
                 String text_logs = "S'ha creat el client " + nom;
                 Auxiliar.escriure_log(text_logs);
             }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error: " + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_ContinuarActionPerformed
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
-        /*******************************************************************/
-        MenuClients obj = null;
-        try {
-            obj = new MenuClients(); //creem la nova finestra MenuClient1
-        } catch (IOException ex) {
-            Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        /**
+         * ****************************************************************
+         */
+        MenuClients obj = new MenuClients(); //creem la nova finestra MenuClient1
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
 
     }//GEN-LAST:event_EnrereActionPerformed
 
@@ -379,13 +381,7 @@ public class AltaClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new AltaClients().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
-                Auxiliar.escriure_log("Error: " + ex);
-                    
-                }
+                new AltaClients().setVisible(true);
             }
         });
     }

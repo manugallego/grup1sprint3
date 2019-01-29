@@ -4,29 +4,33 @@ import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
-
 /**
  * Pantalla per llistar i consultar clients
+ *
  * @author Ferran Climent - DAW2 - 2018
  */
 public class ConsultarClients extends javax.swing.JFrame {
+
     int posicio;
     int elements[];
+
     /**
      * Creates new form ConsultarClients1
      */
-    public ConsultarClients() throws IOException {
+    public ConsultarClients() {
         initComponents();
         setTitle("Consultar clients");
-        this.setLocationRelativeTo(null);   
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        this.setLocationRelativeTo(null);
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -136,45 +140,45 @@ public class ConsultarClients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*******************************************************************/
-        MenuClients obj = null;
-        try {
-            obj = new MenuClients(); //creem la nova finestra MenuClients
-        } catch (IOException ex) {
-            Logger.getLogger(ConsultarClients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        /**
+         * ****************************************************************
+         */
+        MenuClients obj = new MenuClients(); //creem la nova finestra MenuClients
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
+        /**
+         * ****************************************************************
+         */
     }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Boto per a filtrar amb una cerca
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton3BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3BuscarConsultaActionPerformed
         DefaultTableModel model1 = (DefaultTableModel) jTableConsultar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
-	String paraulaCercada;
+        String paraulaCercada;
         paraulaCercada = jTextField1BuscarConsulta.getText();
-        
+
         Cercadors.cerca_Client(model1, paraulaCercada);
-        
-        if (Cercadors.cerca_Client(model1, paraulaCercada) == false){
+
+        if (Cercadors.cerca_Client(model1, paraulaCercada) == false) {
             /*Missatge d'avís*/
-            JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
+            JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
         }
     }//GEN-LAST:event_jButton3BuscarConsultaActionPerformed
-    
+
     private void jTextField1BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1BuscarConsultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1BuscarConsultaActionPerformed
 
     private void jTableConsultar1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableConsultar1FocusGained
         DefaultTableModel model1 = (DefaultTableModel) jTableConsultar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
-	Auxiliar.actualitzar_taula_client(model1); 
+        Auxiliar.actualitzar_taula_client(model1);
     }//GEN-LAST:event_jTableConsultar1FocusGained
 
     /**
@@ -212,11 +216,7 @@ public class ConsultarClients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ConsultarClients().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(ConsultarClients.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ConsultarClients().setVisible(true);
             }
         });
     }
