@@ -263,7 +263,7 @@ public class Main extends javax.swing.JFrame {
                     new Main().setVisible(true);
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    Auxiliar.escriure_fitxer("Error: " + ex);
+                    Auxiliar.escriure_log("Error: " + ex);
                 }
             }
         });

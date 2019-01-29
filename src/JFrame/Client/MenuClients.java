@@ -239,7 +239,6 @@ public class MenuClients extends javax.swing.JFrame {
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -7,8 +7,6 @@ import ClassesPrincipals.Incidencies;
 import Public.Public;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,8 +22,9 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     
     int elements[];//guarda la posicio que a fet click el usuari
     int posicio;
-    boolean carregar = false;                                                   //boolean per a actualitzar el text de la zona i usuari
-    public Modificar_incidencies() throws IOException {
+    boolean carregar = false;//boolean per a actualitzar el text de la zona i usuari
+    
+    public Modificar_incidencies() {
         initComponents();
         setTitle("Modificar incidencies");
         this.setLocationRelativeTo(null);
@@ -36,8 +35,12 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         Public.seleccio_zona = false;
         Public.seleccio_user = true;
         
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: "+ex);
+            }
         }
 
     }
@@ -375,13 +378,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Llistar_zona llistar = null;
-        try {
-            llistar = new Llistar_zona();
-        } catch (IOException ex) {
-            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Llistar_zona llistar = new Llistar_zona();
         llistar.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
     /**
@@ -389,13 +386,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      * @param evt 
      */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        Llistar_clients llistar = null;
-        try {
-            llistar = new Llistar_clients();
-        } catch (IOException ex) {
-            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Llistar_clients llistar = new Llistar_clients();
         llistar.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
     /**
@@ -423,13 +414,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        Incidencies_menu menu = null;
-        try {
-            menu = new Incidencies_menu();
-        } catch (IOException ex) {
-            Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Incidencies_menu menu = new Incidencies_menu();
         menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -467,12 +452,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Modificar_incidencies().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Modificar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Modificar_incidencies().setVisible(true);
             }
         });
     }

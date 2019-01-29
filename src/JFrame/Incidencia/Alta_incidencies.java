@@ -231,12 +231,8 @@ public class Alta_incidencies extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            Llistar_zona llistar = new Llistar_zona();
-            llistar.setVisible(true);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Llistar_zona llistar = new Llistar_zona();
+        llistar.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -260,12 +256,8 @@ public class Alta_incidencies extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Llistar_clients llistar = new Llistar_clients();
-            llistar.setVisible(true);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Llistar_clients llistar = new Llistar_clients();
+        llistar.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -23,13 +23,17 @@ public class Llistar_clients extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarClients
      */
-    public Llistar_clients() throws IOException {
+    public Llistar_clients() {
         initComponents();
         setTitle("Elegir client");
         this.setLocationRelativeTo(null);
         
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: "+ex);
+            }
         }
     }
 
@@ -154,13 +158,7 @@ public class Llistar_clients extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*******************************************************************/
-        MenuClients obj = null;
-        try {
-            obj = new MenuClients(); //creem la nova finestra MenuClients
-        } catch (IOException ex) {
-            Logger.getLogger(Llistar_clients.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        MenuClients obj = new MenuClients(); //creem la nova finestra MenuClients
         obj.setVisible(true);                           //la fem visible
         dispose();                                      //eliminem la finestra actual
         /*******************************************************************/
@@ -251,12 +249,7 @@ public class Llistar_clients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Llistar_clients().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Llistar_clients.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Llistar_clients().setVisible(true);
             }
         });
     }

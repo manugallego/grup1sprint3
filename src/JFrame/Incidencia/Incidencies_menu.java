@@ -172,15 +172,9 @@ public class Incidencies_menu extends javax.swing.JFrame {
      */
 
     private void modificar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_incidenciesActionPerformed
-        try {
-            setVisible(false);
-            Modificar_incidencies modificar = new Modificar_incidencies();
-            modificar.setVisible(true);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
-
-        // TODO add your handling code here:
+        setVisible(false);
+        Modificar_incidencies modificar = new Modificar_incidencies();
+        modificar.setVisible(true);
     }//GEN-LAST:event_modificar_incidenciesActionPerformed
 
     /**
@@ -190,13 +184,9 @@ public class Incidencies_menu extends javax.swing.JFrame {
      */
 
     private void baixa_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_incidenciaActionPerformed
-        try {
-            setVisible(false);
-            Suprimir_incidencies suprimir = new Suprimir_incidencies();
-            suprimir.setVisible(true);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        setVisible(false);
+        Suprimir_incidencies suprimir = new Suprimir_incidencies();
+        suprimir.setVisible(true);
     }//GEN-LAST:event_baixa_incidenciaActionPerformed
     /**
      * Boto per anar enrere

@@ -17,13 +17,17 @@ import javax.swing.table.DefaultTableModel;
 public class Llistar_zona extends javax.swing.JFrame {
     int elements[];                                                             //variable que guarda l'element seleccionat
     int posicio;                                                                //variable per a saber la posicio de l'element en l'array
-    public Llistar_zona() throws IOException {
+    public Llistar_zona() {
         initComponents();
         setTitle("Elegir zona");
         this.setLocationRelativeTo(null);
         
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: "+ex);
+            }
         }
     }
 
@@ -254,12 +258,7 @@ public class Llistar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Llistar_zona().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Llistar_zona.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Llistar_zona().setVisible(true);
             }
         });
     }
