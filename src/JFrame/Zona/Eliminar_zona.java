@@ -182,7 +182,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   /**
+    /**
      * Quan la finestra s'obri omplim la taula
      *
      * @param evt
@@ -202,7 +202,6 @@ public class Eliminar_zona extends javax.swing.JFrame {
         
     } 
 //GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * Boto per eliminar (necessita confirmacio)
      *
@@ -229,7 +228,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         elements = jTable1.getSelectedRows();                                   //carreguem en elements la fila de la taula seleccionada
         String nom_zona;                                                        //guardem el nom de la zona que eliminem per a escriure'l en els logs
 
@@ -266,7 +265,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
     /**
      * Boto per a fer una cerca
      *

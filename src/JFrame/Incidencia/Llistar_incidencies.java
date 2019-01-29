@@ -1,4 +1,5 @@
 package JFrame.Incidencia;
+
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Pantalla per a mostrar les incidencies
+ *
  * @author ivan
  */
 public class Llistar_incidencies extends javax.swing.JFrame {
@@ -19,13 +21,17 @@ public class Llistar_incidencies extends javax.swing.JFrame {
     /**
      * Creates new form Llistar_incidencies
      */
-    public Llistar_incidencies() throws IOException {
+    public Llistar_incidencies() {
         initComponents();
         setTitle("Consultar incidencia");
         this.setLocationRelativeTo(null);
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -143,47 +149,42 @@ public class Llistar_incidencies extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusGained
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         setVisible(false);
-         Incidencies_menu menu = null;
-        try {
-            menu = new Incidencies_menu();
-        } catch (IOException ex) {
-            Logger.getLogger(Llistar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
-         menu.setVisible(true);
-
-        // TODO add your handling code here:
+        setVisible(false);
+        Incidencies_menu menu = new Incidencies_menu();
+        dispose();
+        menu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-/*carregar les dades del array a la taula*/
+    /*carregar les dades del array a la taula*/
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         tabla.setRowCount(0);
-       
-       Iterator<Incidencies> iterando = Public.arrayIncidencies.iterator();
-      
-       while(iterando.hasNext()){
-           Incidencies incidencia_aux = iterando.next();
-           tabla.addRow(new Object[]{
-               incidencia_aux.gettitolIncidencia(),
-               incidencia_aux.getdescripcioIncidencia(),
-               incidencia_aux.getlloc(),
-               incidencia_aux.getuser(),
-               incidencia_aux.getdate()
-           });
-           
+
+        Iterator<Incidencies> iterando = Public.arrayIncidencies.iterator();
+
+        while (iterando.hasNext()) {
+            Incidencies incidencia_aux = iterando.next();
+            tabla.addRow(new Object[]{
+                incidencia_aux.gettitolIncidencia(),
+                incidencia_aux.getdescripcioIncidencia(),
+                incidencia_aux.getlloc(),
+                incidencia_aux.getuser(),
+                incidencia_aux.getdate()
+            });
+
         }
-        System.out.println(Public.arrayIncidencies.isEmpty());  
+        System.out.println(Public.arrayIncidencies.isEmpty());
     }//GEN-LAST:event_jTable1FocusGained
     /**
      * Boto per a cercar
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
+
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         String paraulaCercada;
         paraulaCercada = this.jTextField1.getText();//guarda les dades del text field a una variable pera despres guardarla al array
@@ -230,12 +231,7 @@ public class Llistar_incidencies extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Llistar_incidencies().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Llistar_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Llistar_incidencies().setVisible(true);
             }
         });
     }

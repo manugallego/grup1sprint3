@@ -72,7 +72,6 @@ public class Auxiliar {
         String fitxerOut = "./logs/syslog.log";
         File fitxer_sortida = new File(fitxerOut);
         fitxer_sortida.getParentFile().mkdirs();
-        
 
         try {
             PrintStream escriptor = new PrintStream(fitxer_sortida);
@@ -117,6 +116,7 @@ public class Auxiliar {
         String dia = Integer.toString(calendari.get(Calendar.DATE));
         String mes = Integer.toString(calendari.get(Calendar.MONTH) + 1);
         String any = Integer.toString(calendari.get(Calendar.YEAR));
+        
         String fitxerOut = "./informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
         File fitxer_sortida = new File(fitxerOut);
         fitxer_sortida.getParentFile().mkdirs();

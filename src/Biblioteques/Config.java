@@ -5,7 +5,6 @@
  */
 package Biblioteques;
 
-import com.sun.istack.internal.logging.Logger; //Import per al Logger
 import java.awt.Color;                         //Import per als colors
 import java.awt.Component;
 import java.io.BufferedReader;                  //Import per llegir els buffers
@@ -15,7 +14,6 @@ import java.io.FileNotFoundException;           //Import per si no troba el fitx
 import java.io.FileReader;                      //Import per a llegir sobre files
 import java.io.FileWriter;
 import java.io.IOException;                     //Import per les excepcions
-import java.util.logging.Level;                 //Import per al level
 import java.util.regex.Matcher;                 //Import del matcher
 import java.util.regex.Pattern;                 //Import del pattern
 import javax.swing.JColorChooser;

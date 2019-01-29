@@ -3,11 +3,8 @@ package JFrame.Incidencia;
 import Biblioteques.*;
 import Public.Public;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import JFrame.*;
 
 /**
  * Pantalla per a donar d'alta incidencies
@@ -174,15 +171,9 @@ public class Alta_incidencies extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            setVisible(false);
-            Incidencies_menu menu = new Incidencies_menu();
-            menu.setVisible(true);
-            // TODO add your handling code here:
-        } catch (IOException ex) {
-            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        setVisible(false);
+        Incidencies_menu menu = new Incidencies_menu();
+        menu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -230,7 +221,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e);
+            Auxiliar.escriure_error("Error: " + e);
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -244,7 +235,6 @@ public class Alta_incidencies extends javax.swing.JFrame {
             Llistar_zona llistar = new Llistar_zona();
             llistar.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -274,7 +264,6 @@ public class Alta_incidencies extends javax.swing.JFrame {
             Llistar_clients llistar = new Llistar_clients();
             llistar.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(Alta_incidencies.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton4ActionPerformed

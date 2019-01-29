@@ -8,21 +8,24 @@ package JFrame.Incidencia;
 import Biblioteques.*;
 import JFrame.Main;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Incidencies_menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Incidencies_menu
      */
-    public Incidencies_menu() throws IOException {
+    public Incidencies_menu() {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio d'incidencies");
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        /* If per si existeix el color de fons al arxiu s'execute */
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -141,80 +144,67 @@ public class Incidencies_menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * Anar a alta
- * @param evt 
- */
+     * Anar a alta
+     *
+     * @param evt
+     */
     private void alta_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_incidenciesActionPerformed
-         setVisible(false);
-         Alta_incidencies alta = new Alta_incidencies();
-         alta.setVisible(true);
-         dispose();
+        setVisible(false);
+        Alta_incidencies alta = new Alta_incidencies();
+        alta.setVisible(true);
+        dispose();
     }//GEN-LAST:event_alta_incidenciesActionPerformed
-/**
- * Anar a llistar
- * @param evt 
- */
+    /**
+     * Anar a llistar
+     *
+     * @param evt
+     */
 
     private void consultar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_incidenciesActionPerformed
-         setVisible(false);
-         Llistar_incidencies llistar = null;
-        try {
-            llistar = new Llistar_incidencies();
-        } catch (IOException ex) {
-            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
-         llistar.setVisible(true);
-
-        // TODO add your handling code here:
+        setVisible(false);
+        Llistar_incidencies llistar = new Llistar_incidencies();
+        llistar.setVisible(true);
     }//GEN-LAST:event_consultar_incidenciesActionPerformed
-/**
- * Anar a modificar
- * @param evt 
- */
+    /**
+     * Anar a modificar
+     *
+     * @param evt
+     */
 
     private void modificar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_incidenciesActionPerformed
-        setVisible(false);
-        Modificar_incidencies modificar = null;
         try {
-            modificar = new Modificar_incidencies();
+            setVisible(false);
+            Modificar_incidencies modificar = new Modificar_incidencies();
+            modificar.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-        modificar.setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_modificar_incidenciesActionPerformed
 
-/**
- * Anar a suprimir
- * @param evt 
- */
+    /**
+     * Anar a suprimir
+     *
+     * @param evt
+     */
 
     private void baixa_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_incidenciaActionPerformed
-        setVisible(false);
-        Suprimir_incidencies suprimir = null;
         try {
-            suprimir = new Suprimir_incidencies();
+            setVisible(false);
+            Suprimir_incidencies suprimir = new Suprimir_incidencies();
+            suprimir.setVisible(true);
         } catch (IOException ex) {
-            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
             Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
         }
-        suprimir.setVisible(true);
     }//GEN-LAST:event_baixa_incidenciaActionPerformed
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = null;
-        try {
-            principal = new Main();
-        } catch (IOException ex) {
-            Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Main principal = new Main();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
@@ -223,8 +213,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Auxiliar.guardarInformeIncidencies();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             Auxiliar.escriure_error("Error: " + ex);
         }
     }//GEN-LAST:event_informeIncidenciesActionPerformed
@@ -263,12 +252,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Incidencies_menu().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Incidencies_menu.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Incidencies_menu().setVisible(true);
             }
         });
     }
