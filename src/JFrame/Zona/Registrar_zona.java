@@ -156,7 +156,7 @@ public class Registrar_zona extends javax.swing.JFrame {
 
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha creat la zona " + nom;
-                Auxiliar.escriure_fitxer(text_logs);
+                Auxiliar.escriure_log(text_logs);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);

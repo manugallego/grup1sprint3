@@ -254,7 +254,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha eliminat el client " + nom_client;
-                Auxiliar.escriure_fitxer(text_logs);
+                Auxiliar.escriure_log(text_logs);
             }
         
         }
@@ -310,7 +310,7 @@ public class BaixaClients extends javax.swing.JFrame {
                     new BaixaClients().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(BaixaClients.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_fitxer("Error: " + ex);
+                    Auxiliar.escriure_log("Error: " + ex);
                 }
             }
         });

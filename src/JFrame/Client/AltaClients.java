@@ -301,7 +301,7 @@ public class AltaClients extends javax.swing.JFrame {
                 /*Imprimim en el fitxer de logs.txt*/
                 String nom = Nom.getText() + " " + Cognom1.getText() + " " + Cognom2.getText();
                 String text_logs = "S'ha creat el client " + nom;
-                Auxiliar.escriure_fitxer(text_logs);
+                Auxiliar.escriure_log(text_logs);
             }
         }
         catch(Exception e){
@@ -383,7 +383,7 @@ public class AltaClients extends javax.swing.JFrame {
                     new AltaClients().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(AltaClients.class.getName()).log(Level.SEVERE, null, ex);
-                Auxiliar.escriure_fitxer("Error: " + ex);
+                Auxiliar.escriure_log("Error: " + ex);
                     
                 }
             }

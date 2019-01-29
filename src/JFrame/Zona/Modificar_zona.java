@@ -270,10 +270,10 @@ public class Modificar_zona extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Canvis aplicats");
 
                 /*Imprimim en el fitxer de logs.txt*/
-                String text_logs = "S'ha modificat la zona " + nom_antic
-                        + " per " + nom_nou;
-                Auxiliar.escriure_fitxer(text_logs);
-
+                String text_logs = "S'ha modificat la zona " + nom_antic +
+                        " per " + nom_nou;
+                Auxiliar.escriure_log(text_logs);
+                
                 jButton4.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Has d'omplir tots els camps");

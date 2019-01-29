@@ -243,16 +243,16 @@ public class Main extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
+            Auxiliar.escriure_log("Error: " + ex);
         }
         //</editor-fold>
 
