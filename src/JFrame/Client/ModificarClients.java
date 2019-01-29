@@ -5,8 +5,6 @@ import Biblioteques.Cercadors;
 import Biblioteques.Config;
 import Public.Public;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -98,11 +96,11 @@ public class ModificarClients extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nom", "Cognom1", "Cognom2", "Contrasenya", "Targeta"
+                "ID", "Nom", "Cognom1", "Cognom2", "Targeta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -377,14 +375,29 @@ public class ModificarClients extends javax.swing.JFrame {
                     Modificar.setEnabled(true);
                     ModificarNom.setText(Public.arrayPersona.get(posicio).getNom()); // Introduir al texfield el NOM de la array 
                     ModificarCognom1.setText(Public.arrayPersona.get(posicio).getCognom1()); // Introduir al texfield el COGNOM1 de la array 
-                    ModificarCognom2.setText(Public.arrayPersona.get(posicio).getCognom2()); // Introduir al texfield el COGNOM2 de la array 
-                    ModificarEmail.setText(Public.arrayPersona.get(posicio).getPassword()); // Introduir al texfield el PASSWD de la array 
+                    ModificarCognom2.setText(Public.arrayPersona.get(posicio).getCognom2()); // Introduir al texfield el COGNOM2 de la array
+                    ModificarEmail.setText(Public.arrayPersona.get(posicio).getEmail());
+                    ModificarDataNaix.setText(Public.arrayPersona.get(posicio).getData_naixement()); // Introduir al texfield el PASSWD de la array
+                    ModificarAdreca.setText(Public.arrayPersona.get(posicio).getAdreca());
+                    ModificarCiutat.setText(Public.arrayPersona.get(posicio).getCiutat());
+                    ModificarProvincia.setText(Public.arrayPersona.get(posicio).getProvincia());
+                    ModificarCP.setText(Public.arrayPersona.get(posicio).getCodi_postal());
+                    ModificarNumDoc.setText(Public.arrayPersona.get(posicio).getNumero_document());
+                    ModificarTelefon.setText(Public.arrayPersona.get(posicio).getTelefon());
                     ModificarTargeta.setText(Public.arrayPersona.get(posicio).getTargeta()); // Introduir al texfield el TARGETA de la array 
 
                     /*Guardem les dades antigues per escriure-les en els logs*/
                     dades_antigues = Public.arrayPersona.get(posicio).getNom() + " "
                             + Public.arrayPersona.get(posicio).getCognom1() + " "
                             + Public.arrayPersona.get(posicio).getCognom2() + " "
+                            + Public.arrayPersona.get(posicio).getEmail() + " "
+                            + Public.arrayPersona.get(posicio).getData_naixement() + " "
+                            + Public.arrayPersona.get(posicio).getAdreca() + " "
+                            + Public.arrayPersona.get(posicio).getCiutat() + " "
+                            + Public.arrayPersona.get(posicio).getProvincia() + " "
+                            + Public.arrayPersona.get(posicio).getCodi_postal() + " "
+                            + Public.arrayPersona.get(posicio).getNumero_document() + " "
+                            + Public.arrayPersona.get(posicio).getTelefon() + " "
                             + Public.arrayPersona.get(posicio).getTargeta();
                 }
 
@@ -432,14 +445,14 @@ public class ModificarClients extends javax.swing.JFrame {
                 Public.arrayPersona.get(posicio).setNom(ModificarNom.getText()); //Guardar a l'array el nom introduit
                 Public.arrayPersona.get(posicio).setCognom1(ModificarCognom1.getText()); //Guardar a l'array el cognnom1 introduit
                 Public.arrayPersona.get(posicio).setCognom2(ModificarCognom2.getText()); //Guardar a l'array el cognom2 introduit
-                Public.arrayPersona.get(posicio).setPassword(ModificarEmail.getText()); //Guardar a l'array el passwd introduit
-                Public.arrayPersona.get(posicio).setPassword(ModificarDataNaix.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarAdreca.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarCiutat.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarProvincia.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarCP.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarNumDoc.getText());
-                Public.arrayPersona.get(posicio).setPassword(ModificarTelefon.getText());
+                Public.arrayPersona.get(posicio).setEmail(ModificarEmail.getText()); //Guardar a l'array el passwd introduit
+                Public.arrayPersona.get(posicio).setData_naixement(ModificarDataNaix.getText());
+                Public.arrayPersona.get(posicio).setAdreca(ModificarAdreca.getText());
+                Public.arrayPersona.get(posicio).setCiutat(ModificarCiutat.getText());
+                Public.arrayPersona.get(posicio).setProvincia(ModificarProvincia.getText());
+                Public.arrayPersona.get(posicio).setCodi_postal(ModificarCP.getText());
+                Public.arrayPersona.get(posicio).setNumero_document(ModificarNumDoc.getText());
+                Public.arrayPersona.get(posicio).setTelefon(ModificarTelefon.getText());
                 Public.arrayPersona.get(posicio).setTargeta(ModificarTargeta.getText()); //Guardar a l'array el targeta introduit */
 
                 /*Guardem les noves dades per escriure-les en el fitxer de logs*/
