@@ -7,8 +7,6 @@ import JFrame.Incidencia.Incidencies_menu;
 import JFrame.Zona.Gestio_zones;
 import JFrame.Client.MenuClients;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -24,13 +22,17 @@ public class Main extends javax.swing.JFrame {
      *
      * @throws java.io.IOException
      */
-    public Main() throws IOException {
+    public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
 
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
     }
 
@@ -182,14 +184,9 @@ public class Main extends javax.swing.JFrame {
      * @param evt
      */
     private void clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsActionPerformed
-        try {
-            MenuClients menu_client = new MenuClients();
-            menu_client.setVisible(true);
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        MenuClients menu_client = new MenuClients();
+        menu_client.setVisible(true);
+        dispose();
     }//GEN-LAST:event_clientsActionPerformed
     /**
      * Boto que ens porta a la pantalla de gestio de zones
@@ -197,13 +194,7 @@ public class Main extends javax.swing.JFrame {
      * @param evt
      */
     private void zonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonesActionPerformed
-        Gestio_zones menu_zona = null;
-        try {
-            menu_zona = new Gestio_zones();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Gestio_zones menu_zona = new Gestio_zones();
         menu_zona.setVisible(true);
         dispose();
     }//GEN-LAST:event_zonesActionPerformed
@@ -213,13 +204,7 @@ public class Main extends javax.swing.JFrame {
      * @param evt
      */
     private void incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidenciesActionPerformed
-        Incidencies_menu menu_incidencies = null;
-        try {
-            menu_incidencies = new Incidencies_menu();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_fitxer("Error: " + ex);
-        }
+        Incidencies_menu menu_incidencies = new Incidencies_menu();
         menu_incidencies.setVisible(true);
         dispose();
     }//GEN-LAST:event_incidenciesActionPerformed
@@ -275,16 +260,9 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    try {
-                        new Main().setVisible(true);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                        Auxiliar.escriure_fitxer("Error: " + ex);
-                    }
-
+                    new Main().setVisible(true);
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     Auxiliar.escriure_fitxer("Error: " + ex);
                 }
             }

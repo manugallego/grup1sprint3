@@ -3,11 +3,11 @@ package JFrame.Zona;
 import Biblioteques.*;
 import JFrame.Main;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * Pantalla principal de la gestio de zones amb el menu per elegir que fer (eliminar, llistar, modificar o registrar zona)
+ * Pantalla principal de la gestio de zones amb el menu per elegir que fer
+ * (eliminar, llistar, modificar o registrar zona)
+ *
  * @author Marcos
  */
 public class Gestio_zones extends javax.swing.JFrame {
@@ -15,13 +15,17 @@ public class Gestio_zones extends javax.swing.JFrame {
     /**
      * Creates new form Gestio_Zones
      */
-    public Gestio_zones() throws IOException {
+    public Gestio_zones() {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio de zones");
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
 
     }
@@ -91,7 +95,7 @@ public class Gestio_zones extends javax.swing.JFrame {
                     .addComponent(modificar_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(consultar_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alta_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(enrere))
@@ -116,9 +120,7 @@ public class Gestio_zones extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,76 +131,51 @@ public class Gestio_zones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * Botó per registrar zona
-     * @param evt 
+     *
+     * @param evt
      */
     private void alta_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_zonaActionPerformed
-        Registrar_zona registrar = null;
-        try {
-            registrar = new Registrar_zona();
-        } catch (IOException ex) {
-            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Registrar_zona registrar = new Registrar_zona();
         registrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_alta_zonaActionPerformed
     /**
      * Modificar zona
-     * @param evt 
+     *
+     * @param evt
      */
     private void modificar_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_zonaActionPerformed
-        Modificar_zona modificar = null;
-        try {
-            modificar = new Modificar_zona();
-        } catch (IOException ex) {
-            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Modificar_zona modificar = new Modificar_zona();
         modificar.setVisible(true);
         dispose();
     }//GEN-LAST:event_modificar_zonaActionPerformed
     /**
      * Botó per llistar zones
-     * @param evt 
+     *
+     * @param evt
      */
     private void consultar_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_zonaActionPerformed
-        Llistar_zona llistar = null;
-        try {
-            llistar = new Llistar_zona();
-        } catch (IOException ex) {
-            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Llistar_zona llistar = new Llistar_zona();
         llistar.setVisible(true);
         dispose();
     }//GEN-LAST:event_consultar_zonaActionPerformed
     /**
      * Boto per anar a la finestra principal del programa
-     * @param evt 
+     *
+     * @param evt
      */
     private void enrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereActionPerformed
-        Main principal = null;
-        try {
-            principal = new Main();
-        } catch (IOException ex) {
-            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Main principal = new Main();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_enrereActionPerformed
     /**
      * Botó per eliminar zona
-     * @param evt 
+     *
+     * @param evt
      */
     private void baixa_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_zonaActionPerformed
-        Eliminar_zona eliminar = null;
-        try {
-            eliminar = new Eliminar_zona();
-        } catch (IOException ex) {
-            Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Eliminar_zona eliminar = new Eliminar_zona();
         eliminar.setVisible(true);
         dispose();
     }//GEN-LAST:event_baixa_zonaActionPerformed
@@ -238,14 +215,7 @@ public class Gestio_zones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Gestio_zones gestio = null;
-                try {
-                    gestio = new Gestio_zones();
-                } catch (IOException ex) {
-                    Logger.getLogger(Gestio_zones.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
-                gestio.setVisible(true);
+                new Gestio_zones().setVisible(true);
             }
         });
     }

@@ -12,22 +12,27 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Classe del jFrame de modificar zones
+ *
  * @author Marcos
  */
 public class Modificar_zona extends javax.swing.JFrame {
-    
-    int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
+
+    int elements[];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     int posicio;                                                                //variable per a guardar la posicio d'una zona
     String nom_antic;                                                           //Nom de la zona abans de modificar
-    
-    public Modificar_zona() throws IOException {
+
+    public Modificar_zona() {
         initComponents();
         setTitle("Modificar zona");
         this.setLocationRelativeTo(null);
         jButton4.setEnabled(false);
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
 
     }
@@ -187,9 +192,10 @@ public class Modificar_zona extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   /**
+    /**
      * Omplimla taula quan s'obri la finestra
-     * @param evt 
+     *
+     * @param evt
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
@@ -198,59 +204,57 @@ public class Modificar_zona extends javax.swing.JFrame {
 
     /**
      * Botó per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = null;
-        try {
-            gestio = new Gestio_zones();
-        } catch (IOException ex) {
-            Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Gestio_zones gestio = new Gestio_zones();
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-                                  
+
     /**
      * Botó de carregar dades
-     * @param evt 
+     *
+     * @param evt
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        try{
-           elements = jTable1.getSelectedRows();
-        
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            elements = jTable1.getSelectedRows();
+
             /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
-            if(elements.length > 1){
-                JOptionPane.showMessageDialog(null,"Nomes pots seleccionar una fila");
-            }else{
+            if (elements.length > 1) {
+                JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
+            } else {
                 Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
                 posicio = -1;                                                       //variable amb la posicio de l'array
 
                 posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
 
-                if(posicio == -1) JOptionPane.showMessageDialog(null,"No s'han pogut carregar les dades");
-                else{
+                if (posicio == -1) {
+                    JOptionPane.showMessageDialog(null, "No s'han pogut carregar les dades");
+                } else {
                     jTextField1.setText(Public.arrayZones.get(posicio).getNom());
-                    
+
                     nom_antic = Public.arrayZones.get(posicio).getNom();
-                    
+
                     jButton4.setEnabled(true);
                 }
             }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error, no s'han pogut carregar les dades: " + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error, no s'han pogut carregar les dades: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }
+
     /**
      * Botó per a modificar les dades
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try{
-            if(!jTextField1.getText().isEmpty()){
+        try {
+            if (!jTextField1.getText().isEmpty()) {
                 /*Guardem les dades en l'array*/
                 Public.arrayZones.get(posicio).setNom(jTextField1.getText());
 
@@ -263,26 +267,27 @@ public class Modificar_zona extends javax.swing.JFrame {
                 jTextField1.setText("");
 
                 /*Missatge de confirmacio*/
-                JOptionPane.showMessageDialog(null,"Canvis aplicats");
+                JOptionPane.showMessageDialog(null, "Canvis aplicats");
 
                 /*Imprimim en el fitxer de logs.txt*/
-                String text_logs = "S'ha modificat la zona " + nom_antic +
-                        " per " + nom_nou;
+                String text_logs = "S'ha modificat la zona " + nom_antic
+                        + " per " + nom_nou;
                 Auxiliar.escriure_fitxer(text_logs);
-                
+
                 jButton4.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Has d'omplir tots els camps");
             }
-            else{JOptionPane.showMessageDialog(null, "Has d'omplir tots els camps");}
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error: " + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * Boto per cercar
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         /*Codi per a fer la cerca_Zona*/
@@ -291,9 +296,9 @@ public class Modificar_zona extends javax.swing.JFrame {
 
         Cercadors.cerca_Zona(tabla, busqueda);
 
-        if (Cercadors.cerca_Zona(tabla, busqueda) == false){
+        if (Cercadors.cerca_Zona(tabla, busqueda) == false) {
             /*Missatge d'avís*/
-            JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
+            JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -338,12 +343,7 @@ public class Modificar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Modificar_zona().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Modificar_zona.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Modificar_zona().setVisible(true);
             }
         });
     }

@@ -2,6 +2,9 @@ package Biblioteques;
 
 import ClassesPrincipals.*;
 import Public.Public;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -157,7 +160,6 @@ public class Auxiliar {
         
         try {
             PrintStream escriptor = new PrintStream(fitxer_sortida);    
-            //escriptor.println("Número Habitació"+","+"Tipus Habitació"+","+"Número Llits"+","+"Tipus Llits"+","+"Estat Habitació");
             Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
             while (itIncidencia.hasNext()) {
                 escriptor.println(itIncidencia.next());
@@ -169,4 +171,6 @@ public class Auxiliar {
         }
         
     }
+    
+   
 }

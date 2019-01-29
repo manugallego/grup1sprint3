@@ -1,4 +1,5 @@
 package JFrame.Zona;
+
 import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import Biblioteques.Registrar;
@@ -7,8 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/** 
+/**
  * Classe del jFrame de registrar_zona zones
+ *
  * @author Marcos
  */
 public class Registrar_zona extends javax.swing.JFrame {
@@ -16,13 +18,17 @@ public class Registrar_zona extends javax.swing.JFrame {
     /**
      * Creates new form Registrar_zona
      */
-    public Registrar_zona() throws IOException {
+    public Registrar_zona() {
         initComponents();
         setTitle("Alta zona");
         this.setLocationRelativeTo(null);
-        
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
 
     }
@@ -115,34 +121,29 @@ public class Registrar_zona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
     /**
      * Boto per anar enrere
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Gestio_zones gestio = null;
-        try {
-            gestio = new Gestio_zones();
-        } catch (IOException ex) {
-            Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
+        Gestio_zones gestio = new Gestio_zones();
         gestio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
      * Botó per a confirmar el registre
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
+        try {
             /*Comprovem si algun camp esta buit*/
-            if (jTextField1.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"No pots deixar camps en blanc.");
-            }
-            else{
+            if (jTextField1.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "No pots deixar camps en blanc.");
+            } else {
                 /*Guardem les dades en variables*/
                 String nom = jTextField1.getText();
                 Registrar.registrar_zona(nom);
@@ -151,18 +152,17 @@ public class Registrar_zona extends javax.swing.JFrame {
                 jTextField1.setText("");
 
                 /*Mostrem text de confirmacio*/
-                JOptionPane.showMessageDialog(null,"Zona registrada");
-                
+                JOptionPane.showMessageDialog(null, "Zona registrada");
+
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha creat la zona " + nom;
                 Auxiliar.escriure_fitxer(text_logs);
             }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error: " + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -199,12 +199,7 @@ public class Registrar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Registrar_zona().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Registrar_zona.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors                
-                }
+                new Registrar_zona().setVisible(true);
             }
         });
     }

@@ -5,8 +5,6 @@ import Biblioteques.Cercadors;
 import Biblioteques.Config;
 import Public.Public;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,13 +18,17 @@ public class Eliminar_zona extends javax.swing.JFrame {
     int elements[];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     int posicio;                                                                //variable per a guardar la posicio d'una zona
 
-    public Eliminar_zona() throws IOException {
+    public Eliminar_zona() {
         initComponents();
         setTitle("Baixa zona");
         this.setLocationRelativeTo(null);
 
-        if (Config.arxiuConfig.exists()) {                                 // If per si existeix el color de fons al arxiu s'execute
-            jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+        if (Config.arxiuConfig.exists()) {
+            try {
+                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
+            } catch (IOException ex) {
+                Auxiliar.escriure_error("Error: " + ex);
+            }
         }
 
     }
@@ -181,25 +183,6 @@ public class Eliminar_zona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Boto per anar enrere
-     *
-     * @param evt
-     */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            Gestio_zones gestio = new Gestio_zones();
-            gestio.setVisible(true);
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
-            Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
-
-    }//GEN-LAST:event_jTable1FocusGained
-    /**
      * Quan la finestra s'obri omplim la taula
      *
      * @param evt
@@ -213,6 +196,13 @@ public class Eliminar_zona extends javax.swing.JFrame {
         jLabel1.setVisible(false);
         jButton1.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
+
+//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    } 
+//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * Boto per eliminar (necessita confirmacio)
      *
@@ -235,49 +225,6 @@ public class Eliminar_zona extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * Boto per a confirmar l'eliminacio
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        elements = jTable1.getSelectedRows();                                   //carreguem en elements la fila de la taula seleccionada
-        String nom_zona;                                                        //guardem el nom de la zona que eliminem per a escriure'l en els logs
-
-        /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
-        if (elements.length > 1) {
-            JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
-        } else {
-            Object zona_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-            posicio = -1;                                                       //variable amb la posicio de l'array
-
-            posicio = Cercadors.cerca_ID_zona(posicio, zona_aux);
-
-            if (posicio == -1) {
-                JOptionPane.showMessageDialog(null, "No s'ha pogut borrar la zona");
-            } else {
-
-                nom_zona = Public.arrayZones.get(posicio).getNom();
-
-                Public.arrayZones.remove(posicio);                             //eliminem la zona
-
-                /*fem invisible la confirmacio*/
-                jLabel1.setVisible(false);
-                jButton1.setVisible(false);
-
-                //Actualitzem els valor de la taula
-                DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-                Auxiliar.actualitzar_taula_zona(tabla);
-                //Obrir la finestra de confirmacio 
-                JOptionPane.showMessageDialog(null, "Zona eliminada");
-
-                /*Imprimim en el fitxer de logs.txt*/
-                String text_logs = "S'ha eliminat la zona " + nom_zona;
-                Auxiliar.escriure_fitxer(text_logs);
-            }
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-    /**
      * Boto per a fer una cerca
      *
      * @param evt
@@ -294,6 +241,13 @@ public class Eliminar_zona extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+//GEN-FIRST:event_jButton1ActionPerformed
+//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+
+    }//GEN-LAST:event_jTable1FocusGained
 
     /**
      * @param args the command line arguments
@@ -332,12 +286,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Eliminar_zona().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Eliminar_zona.class.getName()).log(Level.SEVERE, null, ex);
-                    Auxiliar.escriure_error("Error: " + ex);             //Escribim l'error en el fitxer d'errors
-                }
+                new Eliminar_zona().setVisible(true);
             }
         });
     }
