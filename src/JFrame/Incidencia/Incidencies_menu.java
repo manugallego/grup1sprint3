@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Incidencies_menu extends javax.swing.JFrame {
 
-    /**
+    /** 
      * Creates new form Incidencies_menu
      */
     public Incidencies_menu() {

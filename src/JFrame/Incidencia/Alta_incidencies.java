@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 /**
  * Pantalla per a donar d'alta incidencies
- *
+ * 
  * @author Grup 1: Evaldas Casas
  */
 public class Alta_incidencies extends javax.swing.JFrame {

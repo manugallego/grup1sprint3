@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
+/** 
  * Pantalla per a donar de baixa incicendies
  * @author ivan
  */

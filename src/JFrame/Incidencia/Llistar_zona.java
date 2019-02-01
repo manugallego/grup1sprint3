@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/** 
+/**  
  * Pantalla per assignar una zona en una incidencia
  * @author Marcos Zaballos
  */

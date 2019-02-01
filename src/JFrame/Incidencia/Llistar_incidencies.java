@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Pantalla per a mostrar les incidencies
- *
+ * 
  * @author ivan
  */
 public class Llistar_incidencies extends javax.swing.JFrame {

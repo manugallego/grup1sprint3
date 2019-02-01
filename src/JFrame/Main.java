@@ -18,7 +18,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * Creates new form Main
+     * Creates new form Main 
      *
      * @throws java.io.IOException
      */

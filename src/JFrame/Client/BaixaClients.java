@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Pantalla per eliminar clients
- *
+ * 
  * @author Ferran Climent - DAW2 - 2018
  */
 public class BaixaClients extends javax.swing.JFrame {
