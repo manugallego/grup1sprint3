@@ -31,7 +31,44 @@ public class FontConfig extends javax.swing.JFrame {
     int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     public FontConfig() {
+        
         initComponents();
+        this.setLocationRelativeTo(null);
+        setTitle("Tipografia");
+        
+        /*Carreguem els noms de les fonts en el ComboBox*/
+        DefaultComboBoxModel fontsComboBox = new DefaultComboBoxModel(fonts);
+        jComboBox1.setModel(fontsComboBox);
+        
+        /*Carreguem la mida de les fonts en el ComboBox*/
+        for(int i=10; i<21; i=i+2){
+            jComboBox2.addItem(Integer.toString(i));
+        }
+        
+        /*Carreguem com a opcio predeterminada la tipografia que hi ha guardada en el fitxer de text*/
+        try {    
+            BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
+            
+            String font = lectura.readLine();
+            int tipus = Integer.parseInt(lectura.readLine());
+            String mida = lectura.readLine();
+            
+            for (int i = 1; i < fonts.length; i++){
+                String valor = jComboBox1.getItemAt(i);
+                
+                if (valor.equals(font)){
+                    jComboBox1.setSelectedIndex(i);
+                    break;
+                }
+            }
+            
+            jComboBox4.setSelectedIndex(tipus);
+            jComboBox2.setSelectedItem(mida);
+        } catch (FileNotFoundException ex) {
+            Auxiliar.escriure_error("Error: " + ex);
+        } catch (IOException ex) {
+            Auxiliar.escriure_error("Error: " + ex);
+        }
     }
 
     /**
@@ -170,12 +207,7 @@ public class FontConfig extends javax.swing.JFrame {
         }
     }
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        DefaultComboBoxModel font = new DefaultComboBoxModel(fonts);
-        jComboBox1.setModel(font);
-         
-        for(int i=10; i<21; i=i+2){
-            jComboBox2.addItem(Integer.toString(i));
-        }
+        
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
