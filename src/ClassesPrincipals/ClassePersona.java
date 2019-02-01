@@ -10,7 +10,6 @@ public class ClassePersona {
 	private String cognom1;
 	private String cognom2;
 	private String email;
-	private String password;
         private String data_naixement;
         private String adreca;
         private String ciutat;
@@ -40,14 +39,13 @@ public class ClassePersona {
      * @param cognom2
      * @param passwd 
      */
-    public ClassePersona(String nom, String cognom1, String cognom2, String email, String passwd, String dataNaix ,String adreca,String ciutat,String provincia,
+    public ClassePersona(String nom, String cognom1, String cognom2, String email, String dataNaix ,String adreca,String ciutat,String provincia,
             String cp,String tipusDoc ,String numDoc,String sexe,String telefon) { //Costructor de classePersona amb un increment de num de persones
     	numPersones++;
     	this.nom = nom;
     	this.cognom1 = cognom1;
     	this.cognom2 = cognom2;
         this.email = email;
-    	this.password = passwd;
         this.data_naixement = dataNaix;
         this.adreca = adreca;
         this.ciutat =ciutat;
@@ -101,14 +99,6 @@ public class ClassePersona {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getData_naixement() {

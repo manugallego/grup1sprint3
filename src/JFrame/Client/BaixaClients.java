@@ -50,11 +50,11 @@ public class BaixaClients extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1Baixa = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Confirmar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Cercar = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
+        Enrere = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S2G1BaixaClients");
@@ -92,31 +92,31 @@ public class BaixaClients extends javax.swing.JFrame {
 
         jLabel1.setText("Segur que vols eliminar?");
 
-        jButton1.setText("Sí");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Confirmar.setText("Sí");
+        Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ConfirmarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cercar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Cercar.setText("Cercar");
+        Cercar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CercarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                EliminarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Enrere");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Enrere.setText("Enrere");
+        Enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                EnrereActionPerformed(evt);
             }
         });
 
@@ -135,12 +135,12 @@ public class BaixaClients extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Cercar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(Eliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(Enrere)
                 .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
@@ -151,13 +151,13 @@ public class BaixaClients extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(Confirmar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(Cercar)
+                    .addComponent(Eliminar)
+                    .addComponent(Enrere))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -179,7 +179,7 @@ public class BaixaClients extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
         /**
          * ****************************************************************
          */
@@ -189,13 +189,13 @@ public class BaixaClients extends javax.swing.JFrame {
         /**
          * ****************************************************************
          */
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_EnrereActionPerformed
     /**
      * Boto per eliminar client (requereix confirmacio)
      *
      * @param evt
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         posicioTaulaBaixa = jTable1Baixa.getSelectedRows();
         /*Comprovem si l'usuari ha seleccionat una fila de la taula*/
         if (posicioTaulaBaixa.length == 0) {
@@ -203,16 +203,16 @@ public class BaixaClients extends javax.swing.JFrame {
         } else if (posicioTaulaBaixa.length > 1) {
             JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
         } else {
-            jButton1.setVisible(true);
+            Confirmar.setVisible(true);
             jLabel1.setVisible(true);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_EliminarActionPerformed
     /**
      * Boto per a fer una cerca
      *
      * @param evt
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CercarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CercarActionPerformed
         DefaultTableModel model3 = (DefaultTableModel) jTable1Baixa.getModel(); //Creem un nova taula i la igualem a la creada amb swing
         String paraulaCercada1;
         paraulaCercada1 = jTextField1.getText();
@@ -223,7 +223,7 @@ public class BaixaClients extends javax.swing.JFrame {
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CercarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         DefaultTableModel model2 = (DefaultTableModel) jTable1Baixa.getModel(); //Creem un nova taula i la igualem a la creada amb swing
@@ -234,8 +234,8 @@ public class BaixaClients extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        getContentPane().add(jButton3);
+    private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
+        getContentPane().add(Eliminar);
         posicioTaulaBaixa = jTable1Baixa.getSelectedRows();
 
         String nom_client;
@@ -268,13 +268,13 @@ public class BaixaClients extends javax.swing.JFrame {
         DefaultTableModel model2 = (DefaultTableModel) jTable1Baixa.getModel(); //Creem un nova taula i la igualem a la creada amb swing
         Auxiliar.actualitzar_taula_client(model2);
         /*tornem a fer invisible la confirmacio*/
-        jButton1.setVisible(false);
+        Confirmar.setVisible(false);
         jLabel1.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /*Inicialitzem la confirmacio de la baixa en invisible*/
-        jButton1.setVisible(false);
+        Confirmar.setVisible(false);
         jLabel1.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
@@ -319,10 +319,10 @@ public class BaixaClients extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton Cercar;
+    private javax.swing.JButton Confirmar;
+    private javax.swing.JButton Eliminar;
+    private javax.swing.JButton Enrere;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

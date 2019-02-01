@@ -35,15 +35,14 @@ public class Registrar {
      * @param passwd
      * @param targeta
      */
-    public static void registrar_client(String nom, String cognom1, String cognom2, String email, String passwd,
-            String dataNaix, String adreca, String ciutat, String provincia, String cp, String tipusDoc, String numDoc, String sexe, String telefon, String targeta) {
+    public static void registrar_client(String nom, String cognom1, String cognom2, String email,String dataNaix, String adreca,
+            String ciutat, String provincia, String cp, String tipusDoc, String numDoc, String sexe, String telefon, String targeta) {
            
         ClasseClient c = new ClasseClient();
         c.setNom(nom);
         c.setCognom1(cognom1);
         c.setCognom2(cognom2);
         c.setEmail(email);
-        c.setPassword(passwd);
         c.setData_naixement(dataNaix);
         c.setAdreca(adreca);
         c.setCiutat(ciutat);

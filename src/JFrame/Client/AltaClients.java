@@ -50,8 +50,6 @@ public class AltaClients extends javax.swing.JFrame {
         Cognom2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        Password = new javax.swing.JTextField();
         Continuar = new javax.swing.JButton();
         Enrere = new javax.swing.JButton();
         DataNaix = new javax.swing.JTextField();
@@ -111,8 +109,6 @@ public class AltaClients extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Password");
-
         Continuar.setText("Continuar");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +163,6 @@ public class AltaClients extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
@@ -185,7 +180,6 @@ public class AltaClients extends javax.swing.JFrame {
                     .addComponent(Ciutat)
                     .addComponent(Adreca)
                     .addComponent(DataNaix, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(Email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(Cognom2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(Cognom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
@@ -195,7 +189,7 @@ public class AltaClients extends javax.swing.JFrame {
                     .addComponent(TipusDoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Sexe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Telefon, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGap(51, 275, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Continuar)
@@ -222,11 +216,7 @@ public class AltaClients extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataNaix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -266,7 +256,7 @@ public class AltaClients extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Targeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Continuar)
                     .addComponent(Enrere))
@@ -297,18 +287,33 @@ public class AltaClients extends javax.swing.JFrame {
      */
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         try {
-            if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") || Password.getText().equals("") || DataNaix.getText().equals("") || Adreca.getText().equals("")
+            if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") ||  DataNaix.getText().equals("") || Adreca.getText().equals("")
                     || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("") || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Client no introduit correctament"); //Aquest if busca que tots els camps no estiguen buids i mostrar una alerta
             } else {
-                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), Password.getText(), DataNaix.getText(), Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
+                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), DataNaix.getText(), Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
                 JOptionPane.showMessageDialog(null, "Client introduit correctament");  // Recull el la informacio dels JFIELDSTEXT i els envia al metode registrar_client, a continuacio mostra un text
-
+                
                 /*Imprimim en el fitxer de logs.txt*/
                 String nom = Nom.getText() + " " + Cognom1.getText() + " " + Cognom2.getText();
                 String text_logs = "S'ha creat el client " + nom;
                 Auxiliar.escriure_log(text_logs);
+                
+                
+                Nom.setText("");
+                Cognom1.setText("");
+                Cognom2.setText("");
+                Email.setText("");
+                DataNaix.setText("");
+                Adreca.setText("");
+                Ciutat.setText("");
+                Provincia.setText("");
+                CodiPostal.setText("");
+                NumDoc.setText("");
+                Telefon.setText("");
+                Targeta.setText("");
             }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
@@ -400,7 +405,6 @@ public class AltaClients extends javax.swing.JFrame {
     private javax.swing.JButton Enrere;
     static javax.swing.JTextField Nom;
     private javax.swing.JTextField NumDoc;
-    static javax.swing.JTextField Password;
     private javax.swing.JTextField Provincia;
     private javax.swing.JComboBox<String> Sexe;
     private javax.swing.JTextField Targeta;
@@ -416,7 +420,6 @@ public class AltaClients extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
