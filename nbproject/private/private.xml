@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/Biblioteques/ReadColor.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>68</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Incidencia/Incidencies_menu.java</file>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Main.java</file>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Client/MenuClients.java</file>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Incidencia/Llistar_clients.java</file>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Incidencia/Suprimir_incidencies.java</file>
-            <file>file:/home/alumne/NetBeansProjects/grup1sprint3/src/JFrame/Incidencia/Modificar_incidencies.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Main.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Incidencia/Alta_incidencies.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/ClassesPrincipals/ClassePersona.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Client/BaixaClients.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Client/ModificarClients.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/ClassesPrincipals/ClasseClient.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/Biblioteques/Registrar.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Client/AltaClients.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Client/MenuClients.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Incidencia/Llistar_zona.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/Public/Public.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/Biblioteques/Auxiliar.java</file>
+            <file>file:/C:/Users/Manu/Documents/GitHub/grup1sprint3/src/JFrame/Client/ConsultarClients.java</file>
         </group>
     </open-files>
 </project-private>

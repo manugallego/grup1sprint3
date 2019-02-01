@@ -26,6 +26,9 @@ public class ModificarClients extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Modificar.setEnabled(false);
+        if (Public.arrayPersona.isEmpty()) {
+            Carregar.setEnabled(false);
+        }
 
         if (Config.arxiuConfig.exists()) {
             try {
@@ -382,7 +385,9 @@ public class ModificarClients extends javax.swing.JFrame {
                     ModificarCiutat.setText(Public.arrayPersona.get(posicio).getCiutat());
                     ModificarProvincia.setText(Public.arrayPersona.get(posicio).getProvincia());
                     ModificarCP.setText(Public.arrayPersona.get(posicio).getCodi_postal());
+                    ModificarTipusDoc.setSelectedItem(Public.arrayPersona.get(posicio).getTipus_document());
                     ModificarNumDoc.setText(Public.arrayPersona.get(posicio).getNumero_document());
+                    ModificarSexe.setSelectedItem(Public.arrayPersona.get(posicio).getSexe());
                     ModificarTelefon.setText(Public.arrayPersona.get(posicio).getTelefon());
                     ModificarTargeta.setText(Public.arrayPersona.get(posicio).getTargeta()); // Introduir al texfield el TARGETA de la array 
 
@@ -396,14 +401,15 @@ public class ModificarClients extends javax.swing.JFrame {
                             + Public.arrayPersona.get(posicio).getCiutat() + " "
                             + Public.arrayPersona.get(posicio).getProvincia() + " "
                             + Public.arrayPersona.get(posicio).getCodi_postal() + " "
+                            + Public.arrayPersona.get(posicio).getTipus_document() + " "
                             + Public.arrayPersona.get(posicio).getNumero_document() + " "
+                            + Public.arrayPersona.get(posicio).getSexe() + " "
                             + Public.arrayPersona.get(posicio).getTelefon() + " "
                             + Public.arrayPersona.get(posicio).getTargeta();
                 }
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }//GEN-LAST:event_CarregarActionPerformed
@@ -451,7 +457,9 @@ public class ModificarClients extends javax.swing.JFrame {
                 Public.arrayPersona.get(posicio).setCiutat(ModificarCiutat.getText());
                 Public.arrayPersona.get(posicio).setProvincia(ModificarProvincia.getText());
                 Public.arrayPersona.get(posicio).setCodi_postal(ModificarCP.getText());
+                Public.arrayPersona.get(posicio).setTipus_document(ModificarTipusDoc.getSelectedItem().toString());
                 Public.arrayPersona.get(posicio).setNumero_document(ModificarNumDoc.getText());
+                Public.arrayPersona.get(posicio).setSexe(ModificarSexe.getSelectedItem().toString());
                 Public.arrayPersona.get(posicio).setTelefon(ModificarTelefon.getText());
                 Public.arrayPersona.get(posicio).setTargeta(ModificarTargeta.getText()); //Guardar a l'array el targeta introduit */
 
