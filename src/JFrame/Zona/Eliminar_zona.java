@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Classe del jFrame d'eliminar zones
- * 
+ *
  * @author Marcos
  */
 public class Eliminar_zona extends javax.swing.JFrame {

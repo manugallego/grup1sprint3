@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Pantalla per a modificar les dades d'un client
- * 
+ *
  * @author Ferran Climent - DAW2 -2018
  */
 public class ModificarClients extends javax.swing.JFrame {

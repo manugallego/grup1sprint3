@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Registrar_zona extends javax.swing.JFrame {
 
-    /** 
+    /**
      * Creates new form Registrar_zona
      */
     public Registrar_zona() {

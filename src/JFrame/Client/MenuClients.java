@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * Pantalla que mostra les diferents opcions de la gestio de clients
- * 
+ *
  * @author FerranCliment - DAW2 - 2018
  */
 public class MenuClients extends javax.swing.JFrame {

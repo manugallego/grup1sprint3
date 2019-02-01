@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Pantalla per llistar i consultar clients
- * 
+ *
  * @author Ferran Climent - DAW2 - 2018
  */
 public class ConsultarClients extends javax.swing.JFrame {

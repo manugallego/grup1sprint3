@@ -10,7 +10,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/** 
+/**
  * Pantalla per a modificar les dades d'una incidencia
  * @author ivan morte
  */

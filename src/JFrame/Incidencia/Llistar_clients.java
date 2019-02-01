@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 /**
  * Pantalla per a assignar un client a una incidencia
  * @author Marcos Zaballos
- */ 
+ */
 public class Llistar_clients extends javax.swing.JFrame {
     int posicio;
     int elements[];

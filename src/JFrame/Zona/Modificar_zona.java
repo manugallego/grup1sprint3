@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Classe del jFrame de modificar zones
- * 
+ *
  * @author Marcos
  */
 public class Modificar_zona extends javax.swing.JFrame {

@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-/** 
+/**
  * Pantalla principal de la gestio de zones amb el menu per elegir que fer
  * (eliminar, llistar, modificar o registrar zona)
  *

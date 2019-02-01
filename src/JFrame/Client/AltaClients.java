@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Pantalla per a donar d'alta clients
- * 
+ *
  * @author Ferran Climent - DAW2 - 2018
  */
 public class AltaClients extends javax.swing.JFrame {

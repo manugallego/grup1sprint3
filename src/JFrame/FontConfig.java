@@ -6,7 +6,6 @@
 package JFrame;
 
 import Biblioteques.Auxiliar;
-import static Biblioteques.Config.canviarFont;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -33,23 +32,6 @@ public class FontConfig extends javax.swing.JFrame {
     String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     public FontConfig() {
         initComponents();
-        
-        try {    
-            BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
-            
-            String font = lectura.readLine();
-            int tipus = Integer.parseInt(lectura.readLine());
-            String mida = lectura.readLine();
-            Object config[] = {font, tipus, mida};
-            
-            jComboBox1.setSelectedItem(config[0]);
-            jComboBox4.setSelectedItem(config[1]);
-            jComboBox2.setSelectedItem(config[2]);
-        } catch (FileNotFoundException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
-        }
     }
 
     /**
