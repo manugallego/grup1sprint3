@@ -5,8 +5,11 @@
  */
 package Biblioteques;
 
+import static JFrame.FontConfig.canviarFont;
 import java.awt.Color;                         //Import per als colors
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.Font;
 import java.io.BufferedReader;                  //Import per llegir els buffers
 import java.io.BufferedWriter;
 import java.io.File;                            //Import per a les files
@@ -14,6 +17,7 @@ import java.io.FileNotFoundException;           //Import per si no troba el fitx
 import java.io.FileReader;                      //Import per a llegir sobre files
 import java.io.FileWriter;
 import java.io.IOException;                     //Import per les excepcions
+import java.io.PrintStream;
 import java.util.regex.Matcher;                 //Import del matcher
 import java.util.regex.Pattern;                 //Import del pattern
 import javax.swing.JColorChooser;
@@ -95,6 +99,61 @@ public class Config {
             buffer.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
+        }
+    }
+    
+    /**
+     * Llegim el fitxer de configuracio per agafar el tipus de lletra que es va establir l'ultima vegada
+     */
+    public static void aplicarFont(Component component){
+        
+        try {    
+            BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
+            
+            String font = lectura.readLine();
+            int tipus = Integer.parseInt(lectura.readLine());
+            int mida = Integer.parseInt(lectura.readLine());
+            
+            Font fuente = new Font (font, tipus, mida);                         //Variable per a emmagatzemar les dades de la font
+            canviarFont(component, fuente);
+        } catch (FileNotFoundException ex) {
+            Auxiliar.escriure_error("Error: " + ex);
+        } catch (IOException ex) {
+            Auxiliar.escriure_error("Error: " + ex);
+        }
+    }
+    
+    /**
+     * Metode per canviar la font: Si el component te 'fills' es torna a cridar a la funcio, per a que es canvie la font de tots
+     * @param component
+     * @param font 
+     */
+    public static void canviarFont(Component component, Font font){
+        component.setFont(font);
+        if (component instanceof Container){
+            for (Component child:((Container)component).getComponents()){
+                canviarFont(child,font);
+            }
+        }
+    }
+    
+    /**
+     * Metode per a escriure en un fitxer les dades de la font
+     * @param font
+     * @param tipus
+     * @param mida 
+     */
+    public static void guardarFont(String font, int tipus, String mida){
+        File fitxer_sortida = new File("font.txt");
+        try {
+            PrintStream escriptor = new PrintStream(fitxer_sortida);
+
+            escriptor.println(font);
+            escriptor.println(tipus);
+            escriptor.println(mida);
+
+        } catch (FileNotFoundException e) {
+          
         }
     }
     

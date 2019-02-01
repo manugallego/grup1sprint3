@@ -34,6 +34,9 @@ public class Main extends javax.swing.JFrame {
                 Auxiliar.escriure_error("Error: " + ex);
             }
         }
+        
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.aplicarFont(rootPane);
     }
 
     /**
@@ -218,7 +221,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_incidencies1ActionPerformed
 
     private void lletraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lletraActionPerformed
-        // TODO add your handling code here:
+        FontConfig fontConfig = new FontConfig();
+        fontConfig.setVisible(true);
+        dispose();
     }//GEN-LAST:event_lletraActionPerformed
 
     private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
