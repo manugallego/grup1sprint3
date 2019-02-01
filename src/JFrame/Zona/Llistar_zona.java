@@ -29,6 +29,8 @@ public class Llistar_zona extends javax.swing.JFrame {
             }
         }
 
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.aplicarFont(rootPane);
     }
 
     /**

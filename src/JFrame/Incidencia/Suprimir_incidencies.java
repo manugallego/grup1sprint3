@@ -35,7 +35,9 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
                 Auxiliar.escriure_error("Error: "+ex);
             }
         }
-
+        
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.aplicarFont(rootPane);
     }
 
     /**

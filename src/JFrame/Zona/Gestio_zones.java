@@ -2,6 +2,10 @@ package JFrame.Zona;
 
 import Biblioteques.*;
 import JFrame.Main;
+import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -27,6 +31,9 @@ public class Gestio_zones extends javax.swing.JFrame {
                 Auxiliar.escriure_error("Error: " + ex);
             }
         }
+        
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.aplicarFont(rootPane);
 
     }
 
@@ -95,7 +102,7 @@ public class Gestio_zones extends javax.swing.JFrame {
                     .addComponent(modificar_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(consultar_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alta_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(enrere))
@@ -103,7 +110,7 @@ public class Gestio_zones extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(alta_zona)
                 .addGap(18, 18, 18)
                 .addComponent(consultar_zona)
@@ -211,11 +218,26 @@ public class Gestio_zones extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gestio_zones().setVisible(true);
+                
+                /*Llegim el fitxer de configuracio per agafar el tipus de lletra que es va establir l'ultima vegada*/
+                try {    
+                    BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
+
+                    String font = lectura.readLine();
+                    int tipus = Integer.parseInt(lectura.readLine());
+                    int mida = Integer.parseInt(lectura.readLine());
+
+                } catch (FileNotFoundException ex) {
+                    Auxiliar.escriure_error("Error: " + ex);
+                } catch (IOException ex) {
+                    Auxiliar.escriure_error("Error: " + ex);
+                }
             }
         });
     }
