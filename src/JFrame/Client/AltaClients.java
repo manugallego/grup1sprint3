@@ -5,6 +5,7 @@ import Biblioteques.Config;
 import Biblioteques.Registrar;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * Pantalla per a donar d'alta clients
@@ -52,7 +53,6 @@ public class AltaClients extends javax.swing.JFrame {
         Email = new javax.swing.JTextField();
         Continuar = new javax.swing.JButton();
         Enrere = new javax.swing.JButton();
-        DataNaix = new javax.swing.JTextField();
         Adreca = new javax.swing.JTextField();
         Ciutat = new javax.swing.JTextField();
         Provincia = new javax.swing.JTextField();
@@ -72,6 +72,7 @@ public class AltaClients extends javax.swing.JFrame {
         Sexe = new javax.swing.JComboBox<>();
         Telefon = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        DataNaixement = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S2G1AltaClients");
@@ -179,7 +180,6 @@ public class AltaClients extends javax.swing.JFrame {
                     .addComponent(Provincia, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Ciutat)
                     .addComponent(Adreca)
-                    .addComponent(DataNaix, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(Cognom2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(Cognom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
@@ -188,7 +188,8 @@ public class AltaClients extends javax.swing.JFrame {
                     .addComponent(Targeta, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addComponent(TipusDoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Sexe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Telefon, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                    .addComponent(Telefon, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(DataNaixement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(51, 235, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,10 +217,10 @@ public class AltaClients extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DataNaix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(DataNaixement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Adreca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,7 +257,7 @@ public class AltaClients extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Targeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Continuar)
                     .addComponent(Enrere))
@@ -287,11 +288,12 @@ public class AltaClients extends javax.swing.JFrame {
      */
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         try {
-            if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") ||  DataNaix.getText().equals("") || Adreca.getText().equals("")
+            if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") || Adreca.getText().equals("")
                     || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("") || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Client no introduit correctament"); //Aquest if busca que tots els camps no estiguen buids i mostrar una alerta
             } else {
-                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), DataNaix.getText(), Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
+                String dataNaix = ((JTextField) DataNaixement.getDateEditor().getUiComponent()).getText();
+                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), dataNaix, Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
                 JOptionPane.showMessageDialog(null, "Client introduit correctament");  // Recull el la informacio dels JFIELDSTEXT i els envia al metode registrar_client, a continuacio mostra un text
                 
                 /*Imprimim en el fitxer de logs.txt*/
@@ -304,7 +306,7 @@ public class AltaClients extends javax.swing.JFrame {
                 Cognom1.setText("");
                 Cognom2.setText("");
                 Email.setText("");
-                DataNaix.setText("");
+                DataNaixement.setCalendar(null);
                 Adreca.setText("");
                 Ciutat.setText("");
                 Provincia.setText("");
@@ -400,7 +402,7 @@ public class AltaClients extends javax.swing.JFrame {
     static javax.swing.JTextField Cognom1;
     static javax.swing.JTextField Cognom2;
     private javax.swing.JButton Continuar;
-    private javax.swing.JTextField DataNaix;
+    private com.toedter.calendar.JDateChooser DataNaixement;
     static javax.swing.JTextField Email;
     private javax.swing.JButton Enrere;
     static javax.swing.JTextField Nom;
