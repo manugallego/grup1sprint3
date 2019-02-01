@@ -139,10 +139,7 @@ public class FontConfig extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    //E S T A    L I N E A    E S     C O P Y    P A S T E     D E    N U E S T R O    P R O G R A M A ,   
-    //SEGURAMENTE YA ESTE Y NO HABRA QUE COPIARLA ALLI
     public static File arxiuConfig = new File("config/gui.conf"); //Declarem el fitxer per llegir la configuracio
-
     /*Metode per canviar la font: Si el component te 'fills' es torna a cridar a la funcio, per a que es canvie la font de tots*/
     public static void canviarFont(Component component, Font font){
         component.setFont(font);
