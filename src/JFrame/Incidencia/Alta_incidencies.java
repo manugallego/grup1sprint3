@@ -24,7 +24,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
         System.out.println(Public.usuari_incidencia + " - " + Public.zona_indicencia);
         
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**

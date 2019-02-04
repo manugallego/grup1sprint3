@@ -23,20 +23,22 @@ public class Main extends javax.swing.JFrame {
      * @throws java.io.IOException
      */
     public Main() {
+        try{
+            Config.lecturaConfig();
+        }
+        catch(Exception e){
+            Auxiliar.escriure_error("Error: " + e);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
 
         if (Config.arxiuConfig.exists()) {
-            try {
-                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
-            } catch (IOException ex) {
-                Auxiliar.escriure_error("Error: " + ex);
-            }
+            jPanel1.setBackground(Config.parseColor());             //Implementar el color de fons al jPanel
         }
         
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**

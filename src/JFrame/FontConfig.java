@@ -6,6 +6,8 @@
 package JFrame;
 
 import Biblioteques.Auxiliar;
+import Biblioteques.Config;
+import Public.Public;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -28,47 +30,42 @@ import javax.swing.JOptionPane;
  * @author alumne
  */
 public class FontConfig extends javax.swing.JFrame {
-    int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
+
+    int elements[];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+
     public FontConfig() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Tipografia");
-        
+        Config.canviarFont(rootPane);
+
         /*Carreguem els noms de les fonts en el ComboBox*/
         DefaultComboBoxModel fontsComboBox = new DefaultComboBoxModel(fonts);
         jComboBox1.setModel(fontsComboBox);
-        
+
         /*Carreguem la mida de les fonts en el ComboBox*/
-        for(int i=10; i<21; i=i+2){
+        for (int i = 10; i < 21; i = i + 2) {
             jComboBox2.addItem(Integer.toString(i));
         }
-        
+
         /*Carreguem com a opcio predeterminada la tipografia que hi ha guardada en el fitxer de text*/
-        try {    
-            BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
-            
-            String font = lectura.readLine();
-            int tipus = Integer.parseInt(lectura.readLine());
-            String mida = lectura.readLine();
-            
-            for (int i = 1; i < fonts.length; i++){
-                String valor = jComboBox1.getItemAt(i);
-                
-                if (valor.equals(font)){
-                    jComboBox1.setSelectedIndex(i);
-                    break;
-                }
+        for (int i = 1; i < fonts.length; i++) {
+            String valor = jComboBox1.getItemAt(i);
+
+            if (valor.equals(Public.dadesConfig[1])) {
+                jComboBox1.setSelectedIndex(i);
+                break;
             }
-            
-            jComboBox4.setSelectedIndex(tipus);
-            jComboBox2.setSelectedItem(mida);
-        } catch (FileNotFoundException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
         }
+        try {
+            jComboBox4.setSelectedIndex(Integer.parseInt(Public.dadesConfig[2]));
+            jComboBox2.setSelectedItem(Public.dadesConfig[3]);
+        } catch (Exception e) {
+            Auxiliar.escriure_error("Error: " + e);
+        }
+
     }
 
     /**
@@ -164,50 +161,25 @@ public class FontConfig extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Guardem en una variable les dades de la font que s'han seleccionat en els ComboBox
-        Font fuente = new Font (jComboBox1.getSelectedItem().toString(), jComboBox4.getSelectedIndex(), Integer.parseInt(jComboBox2.getSelectedItem().toString()));
-        
+        Font fuente = new Font(jComboBox1.getSelectedItem().toString(), jComboBox4.getSelectedIndex(), Integer.parseInt(jComboBox2.getSelectedItem().toString()));
+
         /*Apliquem els canvis i els guardem en el fitxer*/
-        canviarFont(rootPane, fuente);
-        guardarFont(jComboBox1.getSelectedItem().toString(), jComboBox4.getSelectedIndex(),jComboBox2.getSelectedItem().toString());
-        
+        Config.canviarFont(rootPane);
+        Public.dadesConfig[1] = jComboBox1.getSelectedItem().toString();
+        Public.dadesConfig[2] = jComboBox4.getSelectedIndex() + "";
+        Public.dadesConfig[3] = jComboBox2.getSelectedItem().toString();
+        Config.guardarConfig();
+
         /*Obrim la finestra principal i tanquem aquesta*/
         Main main = new Main();
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    public static File arxiuConfig = new File("config/gui.conf"); //Declarem el fitxer per llegir la configuracio
-    /*Metode per canviar la font: Si el component te 'fills' es torna a cridar a la funcio, per a que es canvie la font de tots*/
-    public static void canviarFont(Component component, Font font){
-        component.setFont(font);
-        if (component instanceof Container){
-            for (Component child:((Container)component).getComponents()){
-                canviarFont(child,font);
-            }
-        }
-    }
-    
-    /**
-     * Metode per a escriure en un fitxer les dades de la font
-     * @param font
-     * @param tipus
-     * @param mida 
-     */
-    public static void guardarFont(String font, int tipus, String mida){
-        File fitxer_sortida = new File("font.txt");
-        try {
-            PrintStream escriptor = new PrintStream(fitxer_sortida);
 
-            escriptor.println(font);
-            escriptor.println(tipus);
-            escriptor.println(mida);
+    public static File arxiuConfig = new File("config/gui.conf"); //Declarem el fitxer per llegir la configuracio  
 
-        } catch (FileNotFoundException e) {
-          
-        }
-    }
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
+
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -223,21 +195,7 @@ public class FontConfig extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        /*Llegim el fitxer de configuracio per agafar el tipus de lletra que es va establir l'ultima vegada*/
-        try {    
-            BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
-            
-            String font = lectura.readLine();
-            int tipus = Integer.parseInt(lectura.readLine());
-            int mida = Integer.parseInt(lectura.readLine());
-            
-            Font fuente = new Font (font, tipus, mida);                         //Variable per a emmagatzemar les dades de la font
-            canviarFont(rootPane, fuente);
-        } catch (FileNotFoundException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
-        } catch (IOException ex) {
-            Auxiliar.escriure_error("Error: " + ex);
-        }
+
     }//GEN-LAST:event_formWindowOpened
 
     /**

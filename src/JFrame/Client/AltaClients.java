@@ -23,14 +23,10 @@ public class AltaClients extends javax.swing.JFrame {
         setTitle("Alta client");
 
         if (Config.arxiuConfig.exists()) {
-            try {
-                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
-            } catch (IOException ex) {
-                Auxiliar.escriure_error("Error: " + ex);
-            }
+            jPanel1.setBackground(Config.parseColor());             //Implementar el color de fons al jPanel
         }
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**

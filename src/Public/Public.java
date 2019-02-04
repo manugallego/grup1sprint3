@@ -28,4 +28,8 @@ public class Public {
     /*booleans per saber si s'ha seleccionat l'usuari (per a actualitzar el text)*/
     public static boolean seleccio_user = false;
     public static boolean seleccio_zona = false;
+    
+    /*Array amb les dades del color de fons i la font*/
+    public static String[] dadesConfig = new String[4];
+
 }
