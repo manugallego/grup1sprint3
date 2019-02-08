@@ -7,6 +7,7 @@ import JFrame.Incidencia.Incidencies_menu;
 import JFrame.Zona.Gestio_zones;
 import JFrame.Client.MenuClients;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -53,9 +54,8 @@ public class Main extends javax.swing.JFrame {
         zones = new javax.swing.JButton();
         incidencies = new javax.swing.JButton();
         incidencies1 = new javax.swing.JButton();
-        lletra = new javax.swing.JButton();
-        fons = new javax.swing.JButton();
         sortir = new javax.swing.JButton();
+        Configuracio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -66,45 +66,31 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        clients.setText("Clients");
+        clients.setText("Gestió Clients");
         clients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientsActionPerformed(evt);
             }
         });
 
-        zones.setText("Zones");
+        zones.setText("Gestió Zones");
         zones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zonesActionPerformed(evt);
             }
         });
 
-        incidencies.setText("Incidencies");
+        incidencies.setText("Gestió Incidències");
         incidencies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incidenciesActionPerformed(evt);
             }
         });
 
-        incidencies1.setText("Dades Test");
+        incidencies1.setText("Carregar Dades Test");
         incidencies1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incidencies1ActionPerformed(evt);
-            }
-        });
-
-        lletra.setText("Lletra");
-        lletra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfiguracioActionPerformed(evt);
-            }
-        });
-
-        fons.setText("Color de Fons");
-        fons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fonsActionPerformed(evt);
             }
         });
 
@@ -115,15 +101,20 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        Configuracio.setText("Configuració");
+        Configuracio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfiguracioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fons)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lletra)
+                .addComponent(Configuracio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sortir)
                 .addContainerGap())
@@ -212,10 +203,6 @@ public class Main extends javax.swing.JFrame {
         conf.setVisible(true);
     }//GEN-LAST:event_ConfiguracioActionPerformed
 
-    private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
-        Config.colorFons(this);
-    }//GEN-LAST:event_fonsActionPerformed
-
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         Color bg_color = Config.parseColor();           //variable per guardar el color
         getContentPane().setBackground(bg_color);       //aplicar el color al background
@@ -270,7 +257,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton clients;
     private javax.swing.JButton incidencies;
     private javax.swing.JButton incidencies1;
-    private javax.swing.JButton lletra;
     private javax.swing.JButton sortir;
     private javax.swing.JButton zones;
     // End of variables declaration//GEN-END:variables

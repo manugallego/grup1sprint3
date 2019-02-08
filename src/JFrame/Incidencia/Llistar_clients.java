@@ -4,13 +4,9 @@ package JFrame.Incidencia;
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
-import JFrame.Client.*;
 import javax.swing.table.DefaultTableModel;
 import Public.Public;
 import java.awt.Color;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -133,9 +129,9 @@ public class Llistar_clients extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3BuscarConsulta)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BuscarConsulta)
+                    .addComponent(Seleccionar)
+                    .addComponent(Enrere))
                 .addContainerGap())
         );
 
@@ -145,9 +141,9 @@ public class Llistar_clients extends javax.swing.JFrame {
      * Boto per anar enrere
      * @param evt 
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
         dispose();                                      //eliminem la finestra actual
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_EnrereActionPerformed
     /**
      * Boto per a fer una cerca
      * @param evt 
@@ -240,9 +236,9 @@ public class Llistar_clients extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3BuscarConsulta;
+    private javax.swing.JButton BuscarConsulta;
+    private javax.swing.JButton Enrere;
+    private javax.swing.JButton Seleccionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConsultar1;
     private javax.swing.JTextField jTextField1BuscarConsulta;

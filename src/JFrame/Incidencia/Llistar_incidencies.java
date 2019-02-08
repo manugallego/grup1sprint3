@@ -39,8 +39,8 @@ public class Llistar_incidencies extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Enrere = new javax.swing.JButton();
+        BuscarIncidencia = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,17 +73,17 @@ public class Llistar_incidencies extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Enrere");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Enrere.setText("Enrere");
+        Enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EnrereActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cerca");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BuscarIncidencia.setText("Cerca");
+        BuscarIncidencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BuscarIncidenciaActionPerformed(evt);
             }
         });
 
@@ -103,9 +103,9 @@ public class Llistar_incidencies extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(BuscarIncidencia)
                         .addGap(248, 248, 248)
-                        .addComponent(jButton1))
+                        .addComponent(Enrere))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -117,8 +117,8 @@ public class Llistar_incidencies extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(BuscarIncidencia)
+                    .addComponent(Enrere))
                 .addContainerGap())
         );
 
@@ -134,19 +134,19 @@ public class Llistar_incidencies extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
         setVisible(false);
         Incidencies_menu menu = new Incidencies_menu();
         dispose();
         menu.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_EnrereActionPerformed
 
    /**
      * Boto per a cercar
      *
      * @param evt
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BuscarIncidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIncidenciaActionPerformed
 
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         String paraulaCercada;
@@ -154,14 +154,16 @@ public class Llistar_incidencies extends javax.swing.JFrame {
         Cercadors.cercar_incidencia(tabla, paraulaCercada);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BuscarIncidenciaActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
 //GEN-FIRST:event_jTable1FocusGained
- 
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {                                            
+        // TODO add your handling code here:
+    }   
 //GEN-LAST:event_jTable1FocusGained
 
     /**
@@ -204,8 +206,8 @@ public class Llistar_incidencies extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton BuscarIncidencia;
+    private javax.swing.JButton Enrere;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
