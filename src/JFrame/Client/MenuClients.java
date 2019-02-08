@@ -3,7 +3,7 @@ package JFrame.Client;
 import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import JFrame.Main;
-import java.io.IOException;
+import java.awt.Color;
 
 /**
  * Pantalla que mostra les diferents opcions de la gestio de clients
@@ -20,9 +20,9 @@ public class MenuClients extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Gestio de clients");
 
-        if (Config.arxiuConfig.exists()) {
-            jPanel1.setBackground(Config.parseColor());             //Implementar el color de fons al jPanel
-        }
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+        
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.canviarFont(rootPane);
     }
@@ -36,36 +36,21 @@ public class MenuClients extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        alta_client = new javax.swing.JButton();
-        consultar_client = new javax.swing.JButton();
-        modificar_client = new javax.swing.JButton();
-        baixa_client = new javax.swing.JButton();
         enrere = new javax.swing.JButton();
+        baixa_client = new javax.swing.JButton();
+        modificar_client = new javax.swing.JButton();
+        consultar_client = new javax.swing.JButton();
+        alta_client = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S2G1GestioClients");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 255, 204));
 
-        alta_client.setText("Alta Client");
-        alta_client.addActionListener(new java.awt.event.ActionListener() {
+        enrere.setText("Enrere");
+        enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alta_clientActionPerformed(evt);
-            }
-        });
-
-        consultar_client.setText("Consultar Clients");
-        consultar_client.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultar_clientActionPerformed(evt);
-            }
-        });
-
-        modificar_client.setText("Modificar Clients");
-        modificar_client.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificar_clientActionPerformed(evt);
+                enrereActionPerformed(evt);
             }
         });
 
@@ -76,35 +61,49 @@ public class MenuClients extends javax.swing.JFrame {
             }
         });
 
-        enrere.setText("Enrere");
-        enrere.addActionListener(new java.awt.event.ActionListener() {
+        modificar_client.setText("Modificar Clients");
+        modificar_client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enrereActionPerformed(evt);
+                modificar_clientActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        consultar_client.setText("Consultar Clients");
+        consultar_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultar_clientActionPerformed(evt);
+            }
+        });
+
+        alta_client.setText("Alta Client");
+        alta_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alta_clientActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(103, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(baixa_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modificar_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consultar_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(enrere)
-                            .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(alta_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(100, 100, 100)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(enrere)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(baixa_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modificar_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consultar_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alta_client, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(alta_client)
                 .addGap(18, 18, 18)
                 .addComponent(consultar_client)
@@ -112,20 +111,9 @@ public class MenuClients extends javax.swing.JFrame {
                 .addComponent(modificar_client)
                 .addGap(18, 18, 18)
                 .addComponent(baixa_client)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(enrere)
                 .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -251,7 +239,6 @@ public class MenuClients extends javax.swing.JFrame {
     private javax.swing.JButton baixa_client;
     private javax.swing.JButton consultar_client;
     private javax.swing.JButton enrere;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificar_client;
     // End of variables declaration//GEN-END:variables
 }
