@@ -73,7 +73,7 @@ public class Registrar {
      */
     public static void carregar_test() {
         /*ZONES*/
- /* Lavabos B1 */
+        /* Lavabos B1 */
         Public.arrayZones.add(new Zona("Lavabos B1"));
         /* Asia */
         Public.arrayZones.add(new Zona("Asia"));

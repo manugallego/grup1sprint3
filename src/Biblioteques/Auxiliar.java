@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -116,18 +117,22 @@ public class Auxiliar {
         String dia = Integer.toString(calendari.get(Calendar.DATE));
         String mes = Integer.toString(calendari.get(Calendar.MONTH) + 1);
         String any = Integer.toString(calendari.get(Calendar.YEAR));
-        
-        String fitxerOut = "./informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
-        File fitxer_sortida = new File(fitxerOut);
-        fitxer_sortida.getParentFile().mkdirs();
 
         try {
-            PrintStream escriptor = new PrintStream(fitxer_sortida);    
-            Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
-            while (itIncidencia.hasNext()) {
-                escriptor.println(itIncidencia.next());
+            if (Public.arrayIncidencies.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No hi ha incidències!");
+            } else {
+                String fitxerOut = "./informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
+                File fitxer_sortida = new File(fitxerOut);
+                fitxer_sortida.getParentFile().mkdirs();
+                PrintStream escriptor = new PrintStream(fitxer_sortida);
+                Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
+                while (itIncidencia.hasNext()) {
+                    escriptor.println(itIncidencia.next());
+                }
+                escriptor.close();
+                JOptionPane.showMessageDialog(null, "S'ha generat un arxiu CSV!");
             }
-            escriptor.close();
         } catch (FileNotFoundException e) {
             Auxiliar.escriure_error("Error: " + e);
         }

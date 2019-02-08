@@ -3,7 +3,6 @@ package JFrame.Incidencia;
 import Biblioteques.*;
 import Public.Public;
 import java.awt.Color;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 

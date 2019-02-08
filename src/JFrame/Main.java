@@ -97,7 +97,7 @@ public class Main extends javax.swing.JFrame {
         lletra.setText("Lletra");
         lletra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lletraActionPerformed(evt);
+                ConfiguracioActionPerformed(evt);
             }
         });
 
@@ -150,8 +150,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sortir)
-                    .addComponent(lletra)
-                    .addComponent(fons))
+                    .addComponent(Configuracio))
                 .addContainerGap())
         );
 
@@ -203,13 +202,15 @@ public class Main extends javax.swing.JFrame {
      */
     private void incidencies1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidencies1ActionPerformed
         Registrar.carregar_test();
+        JOptionPane.showMessageDialog(null, "S'han carregat dades de prova!");
     }//GEN-LAST:event_incidencies1ActionPerformed
 
-    private void lletraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lletraActionPerformed
-        FontConfig fontConfig = new FontConfig();
-        fontConfig.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lletraActionPerformed
+    private void ConfiguracioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracioActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Configuracio conf = new Configuracio();
+        conf.setVisible(true);
+    }//GEN-LAST:event_ConfiguracioActionPerformed
 
     private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
         Config.colorFons(this);
@@ -265,8 +266,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Configuracio;
     private javax.swing.JButton clients;
-    private javax.swing.JButton fons;
     private javax.swing.JButton incidencies;
     private javax.swing.JButton incidencies1;
     private javax.swing.JButton lletra;

@@ -48,9 +48,9 @@ public class Llistar_clients extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultar1 = new javax.swing.JTable();
         jTextField1BuscarConsulta = new javax.swing.JTextField();
-        jButton3BuscarConsulta = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BuscarConsulta = new javax.swing.JButton();
+        Seleccionar = new javax.swing.JButton();
+        Enrere = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S2G1Consultar");
@@ -84,24 +84,24 @@ public class Llistar_clients extends javax.swing.JFrame {
             }
         });
 
-        jButton3BuscarConsulta.setText("Cerca");
-        jButton3BuscarConsulta.addActionListener(new java.awt.event.ActionListener() {
+        BuscarConsulta.setText("Cerca");
+        BuscarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3BuscarConsultaActionPerformed(evt);
+                BuscarConsultaActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Seleccionar.setText("Seleccionar");
+        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SeleccionarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Enrere");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Enrere.setText("Enrere");
+        Enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                EnrereActionPerformed(evt);
             }
         });
 
@@ -118,11 +118,11 @@ public class Llistar_clients extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3BuscarConsulta)
+                        .addComponent(BuscarConsulta)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(Seleccionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(Enrere)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,7 +152,7 @@ public class Llistar_clients extends javax.swing.JFrame {
      * Boto per a fer una cerca
      * @param evt 
      */
-    private void jButton3BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3BuscarConsultaActionPerformed
+    private void BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarConsultaActionPerformed
         DefaultTableModel model1 = (DefaultTableModel) jTableConsultar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
 	String paraulaCercada;
         paraulaCercada = jTextField1BuscarConsulta.getText();
@@ -163,7 +163,7 @@ public class Llistar_clients extends javax.swing.JFrame {
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
         }
-    }//GEN-LAST:event_jButton3BuscarConsultaActionPerformed
+    }//GEN-LAST:event_BuscarConsultaActionPerformed
     
     private void jTextField1BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1BuscarConsultaActionPerformed
         // TODO add your handling code here:
@@ -177,7 +177,7 @@ public class Llistar_clients extends javax.swing.JFrame {
      * Boto per a guardar l'usuari seleccionat
      * @param evt 
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         elements = jTableConsultar1.getSelectedRows();
         
         /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
@@ -197,7 +197,7 @@ public class Llistar_clients extends javax.swing.JFrame {
                 dispose();
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
