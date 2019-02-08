@@ -33,6 +33,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 Auxiliar.escriure_error("Error: " + ex);
             }
         }
+        
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.aplicarFont(rootPane);
     }
@@ -49,7 +50,7 @@ public class BaixaClients extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1Baixa = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        textoConfirmacion = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         Cercar = new javax.swing.JButton();
@@ -88,9 +89,14 @@ public class BaixaClients extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1Baixa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTable1BaixaFocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1Baixa);
 
-        jLabel1.setText("Segur que vols eliminar?");
+        textoConfirmacion.setText("Segur que vols eliminar?");
 
         Confirmar.setText("Sí");
         Confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +138,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(textoConfirmacion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Cercar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +156,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(textoConfirmacion)
                     .addComponent(Confirmar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -203,8 +209,15 @@ public class BaixaClients extends javax.swing.JFrame {
         } else if (posicioTaulaBaixa.length > 1) {
             JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
         } else {
+            Object client_aux = jTable1Baixa.getValueAt(jTable1Baixa.getSelectedRow(), 0); //Agafar el valor del id de la taula
+            System.out.println(client_aux);
+            posicio = -1; //Posicio igualada a -1 per si no trobo cap objecte
+            posicio = Cercadors.cercar_ID_client(posicio, client_aux);
             Confirmar.setVisible(true);
-            jLabel1.setVisible(true);
+            textoConfirmacion.setText("Segur que vols eliminar: " + Public.arrayPersona.get(posicio).getNom()+"?");
+            textoConfirmacion.setVisible(true);
+                               
+            
         }
     }//GEN-LAST:event_EliminarActionPerformed
     /**
@@ -218,7 +231,8 @@ public class BaixaClients extends javax.swing.JFrame {
         paraulaCercada1 = jTextField1.getText();
 
         Cercadors.cerca_Client(model3, paraulaCercada1);
-
+         Confirmar.setVisible(false);
+         textoConfirmacion.setVisible(false);
         if (Cercadors.cerca_Client(model3, paraulaCercada1) == false) {
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
@@ -269,14 +283,19 @@ public class BaixaClients extends javax.swing.JFrame {
         Auxiliar.actualitzar_taula_client(model2);
         /*tornem a fer invisible la confirmacio*/
         Confirmar.setVisible(false);
-        jLabel1.setVisible(false);
+        textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /*Inicialitzem la confirmacio de la baixa en invisible*/
         Confirmar.setVisible(false);
-        jLabel1.setVisible(false);
+        textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTable1BaixaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1BaixaFocusLost
+        Confirmar.setVisible(false);
+        textoConfirmacion.setVisible(false);
+    }//GEN-LAST:event_jTable1BaixaFocusLost
 
     /**
      * @param args the command line arguments
@@ -323,10 +342,10 @@ public class BaixaClients extends javax.swing.JFrame {
     private javax.swing.JButton Confirmar;
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Enrere;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1Baixa;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel textoConfirmacion;
     // End of variables declaration//GEN-END:variables
 }
