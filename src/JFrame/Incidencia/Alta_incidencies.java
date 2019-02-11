@@ -37,17 +37,17 @@ public class Alta_incidencies extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Enrere = new javax.swing.JButton();
+        Continuar = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        SeleccionarZona = new javax.swing.JButton();
+        SeleccionarUsuari = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,6 +63,25 @@ public class Alta_incidencies extends javax.swing.JFrame {
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        Enrere.setText("Enrere");
+        Enrere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnrereActionPerformed(evt);
+            }
+        });
+
+        Continuar.setText("Continuar");
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Titol");
 
@@ -70,37 +89,23 @@ public class Alta_incidencies extends javax.swing.JFrame {
 
         jLabel5.setText("Data");
 
-        jButton1.setText("Enrere");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SeleccionarZona.setText("Seleccionar zona");
+        SeleccionarZona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SeleccionarZonaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Continuar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SeleccionarUsuari.setText("Seleccionar usuari");
+        SeleccionarUsuari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Seleccionar zona");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("No has seleccionat cap zona");
-
-        jButton4.setText("Seleccionar usuari");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SeleccionarUsuariActionPerformed(evt);
             }
         });
 
         jLabel6.setText("No has seleccionat cap usuari");
+
+        jLabel3.setText("No has seleccionat cap zona");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,62 +114,62 @@ public class Alta_incidencies extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 477, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(SeleccionarUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SeleccionarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(98, 98, 98)
+                                .addComponent(Continuar)
+                                .addGap(18, 18, 18)
+                                .addComponent(Enrere))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(36, 36, 36)
                             .addComponent(jLabel1)
-                            .addGap(48, 48, 48)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField1))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel2))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel3)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel3))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                    .addComponent(SeleccionarZona)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SeleccionarUsuari)
+                    .addComponent(jLabel6)
+                    .addComponent(Continuar)
+                    .addComponent(Enrere))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,11 +179,11 @@ public class Alta_incidencies extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
         setVisible(false);
         Incidencies_menu menu = new Incidencies_menu();
         menu.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_EnrereActionPerformed
 
     /**
      * crida a la funcio alta per a introduir les incidencies al array i
@@ -186,7 +191,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         try {
             if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Falten dades per omplir les dades ");
@@ -206,63 +211,76 @@ public class Alta_incidencies extends javax.swing.JFrame {
                 if (Auxiliar.isDateValid(dataIncidencia)) {
                     Registrar.registrar_incidencia(nomIncidencia, descIncidencia, zonaIncidencia, usuIncidencia, dataIncidencia);
                     JOptionPane.showMessageDialog(null, "Incidencia introduida correctament");
+                    //jLabel3.setText("No has seleccionat cap zona");
+                    //jLabel6.setText("No has seleccionat cap usuari");
                     jTextField1.setText("");    //buidar el camp de títol
                     jTextField2.setText("");    //buidar el camp de descripció
                     jDateChooser1.setCalendar(null);   //buidar el camp de data
-                    jLabel3.setText("No has seleccionat cap zona");
-                    jLabel6.setText("No has seleccionat cap usuari");
+                    Incidencies_menu menu = new Incidencies_menu();
+                    this.setVisible(false);
+                    menu.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error: Introdueix una data valida");
                 }
 
-                /* DEBUG */
+                /* DEBUG 
                 for (int i = 0; i < Public.arrayIncidencies.size(); i++) {
                     System.out.println(Public.arrayIncidencies.get(i).gettitolIncidencia());
                     System.out.println(Public.arrayIncidencies.get(i).getdescripcioIncidencia());
                     System.out.println(Public.arrayIncidencies.get(i).getlloc());
                     System.out.println(Public.arrayIncidencies.get(i).getuser());
                     System.out.println(Public.arrayIncidencies.get(i).getdate());
-                }
+                }*/
             }
         } catch (Exception e) {
             Auxiliar.escriure_error("Error: " + e);
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ContinuarActionPerformed
+
     /**
      * Boto que porta a una finestra on podem seleccionar una zona
      *
      * @param evt
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void SeleccionarZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarZonaActionPerformed
         Llistar_zona llistar = new Llistar_zona();
         llistar.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_SeleccionarZonaActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
 
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        /*System.out.println(Public.seleccio_zona);
-        if (Public.seleccio_zona) {
-            jLabel3.setText("Has seleccionat " + Public.zona_indicencia.getNom());
+        try {
+            if (Public.seleccio_zona) {
+                jLabel3.setText("Has seleccionat " + Public.zona_indicencia.getNom());
+            }
+
+            if (Public.seleccio_user) {
+                jLabel6.setText("Has seleccionat " + Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
+                        + " " + Public.usuari_incidencia.getCognom2());
+            }
+        } catch (Exception e) {
+            Auxiliar.escriure_error("Error: " + e);
         }
-        System.out.println(Public.seleccio_user);
-        if (Public.seleccio_user) {
-            jLabel6.setText("Has seleccionat " + Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
-                    + " " + Public.usuari_incidencia.getCognom2());
-        }*/
     }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * Boto que porta a una finestra on podem seleccionar un usuari
      *
      * @param evt
      */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void SeleccionarUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarUsuariActionPerformed
         Llistar_clients llistar = new Llistar_clients();
         llistar.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_SeleccionarUsuariActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jLabel3.setText("No has seleccionat cap zona");
+        jLabel6.setText("No has seleccionat cap usuari");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -304,10 +322,10 @@ public class Alta_incidencies extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton Continuar;
+    private javax.swing.JButton Enrere;
+    private javax.swing.JButton SeleccionarUsuari;
+    private javax.swing.JButton SeleccionarZona;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

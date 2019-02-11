@@ -254,8 +254,8 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
             Object inc_aux = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             posicio = -1;                                                       //variable amb la posicio de l'array
 
-            posicio = Cercadors.cerca_ID_zona(posicio, inc_aux);
-
+            posicio = Cercadors.cerca_ID_incidencia(posicio, inc_aux);
+            System.out.println(posicio);
             if (posicio == -1) {
                 JOptionPane.showMessageDialog(null, "No s'ha pogut borrar la zona");
             } else {
@@ -268,9 +268,9 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
 
                 //Actualitzem els valor de la taula
                 DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-                //Funcions.actualitzar_taula_zona(tabla);
+                Auxiliar.actualitzar_taula_incidencies(tabla);
                 //Obrir la finestra de confirmacio
-                JOptionPane.showMessageDialog(null, "Zona eliminada");
+                JOptionPane.showMessageDialog(null, "Incidencia eliminada");
             }
         }
 

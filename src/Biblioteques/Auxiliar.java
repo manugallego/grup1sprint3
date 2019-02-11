@@ -61,8 +61,8 @@ public class Auxiliar {
         }
     }
     
-        /**
-     * Metode per carregar les dades de l'array de client en una taula
+    /**
+     * Mètode per carregar les dades de l'array de incidencies en una taula
      *
      * @param model1
      */
