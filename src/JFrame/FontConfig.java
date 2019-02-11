@@ -6,23 +6,13 @@
 package JFrame;
 
 import Biblioteques.Auxiliar;
-import java.awt.Component;
-import java.awt.Container;
+import Biblioteques.Config;
+import Public.Public;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author alumne
@@ -31,37 +21,44 @@ public class FontConfig extends javax.swing.JFrame {
     int elements [];                                                            //array per guardar la posicio de l'element seleccionat en la taula
     String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     public FontConfig() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Tipografia");
-        
+        Config.canviarFont(rootPane);
+
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.canviarFont(rootPane);
+
         /*Carreguem els noms de les fonts en el ComboBox*/
         DefaultComboBoxModel fontsComboBox = new DefaultComboBoxModel(fonts);
         jComboBox1.setModel(fontsComboBox);
-        
+
         /*Carreguem la mida de les fonts en el ComboBox*/
         for(int i=10; i<21; i=i+2){
             jComboBox2.addItem(Integer.toString(i));
         }
-        
+
         /*Carreguem com a opcio predeterminada la tipografia que hi ha guardada en el fitxer de text*/
-        try {    
+        try {
             BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
-            
+
             String font = lectura.readLine();
             int tipus = Integer.parseInt(lectura.readLine());
             String mida = lectura.readLine();
-            
+
             for (int i = 1; i < fonts.length; i++){
                 String valor = jComboBox1.getItemAt(i);
-                
+
                 if (valor.equals(font)){
                     jComboBox1.setSelectedIndex(i);
                     break;
                 }
             }
-            
+
             jComboBox4.setSelectedIndex(tipus);
             jComboBox2.setSelectedItem(mida);
         } catch (FileNotFoundException ex) {
@@ -165,17 +162,17 @@ public class FontConfig extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Guardem en una variable les dades de la font que s'han seleccionat en els ComboBox
         Font fuente = new Font (jComboBox1.getSelectedItem().toString(), jComboBox4.getSelectedIndex(), Integer.parseInt(jComboBox2.getSelectedItem().toString()));
-        
+
         /*Apliquem els canvis i els guardem en el fitxer*/
         canviarFont(rootPane, fuente);
         guardarFont(jComboBox1.getSelectedItem().toString(), jComboBox4.getSelectedIndex(),jComboBox2.getSelectedItem().toString());
-        
+
         /*Obrim la finestra principal i tanquem aquesta*/
         Main main = new Main();
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     public static File arxiuConfig = new File("config/gui.conf"); //Declarem el fitxer per llegir la configuracio
     /*Metode per canviar la font: Si el component te 'fills' es torna a cridar a la funcio, per a que es canvie la font de tots*/
     public static void canviarFont(Component component, Font font){
@@ -186,12 +183,12 @@ public class FontConfig extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /**
      * Metode per a escriure en un fitxer les dades de la font
      * @param font
      * @param tipus
-     * @param mida 
+     * @param mida
      */
     public static void guardarFont(String font, int tipus, String mida){
         File fitxer_sortida = new File("font.txt");
@@ -203,11 +200,11 @@ public class FontConfig extends javax.swing.JFrame {
             escriptor.println(mida);
 
         } catch (FileNotFoundException e) {
-          
+
         }
     }
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
+
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -224,13 +221,13 @@ public class FontConfig extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /*Llegim el fitxer de configuracio per agafar el tipus de lletra que es va establir l'ultima vegada*/
-        try {    
+        try {
             BufferedReader lectura = new BufferedReader(new FileReader ("font.txt"));
-            
+
             String font = lectura.readLine();
             int tipus = Integer.parseInt(lectura.readLine());
             int mida = Integer.parseInt(lectura.readLine());
-            
+
             Font fuente = new Font (font, tipus, mida);                         //Variable per a emmagatzemar les dades de la font
             canviarFont(rootPane, fuente);
         } catch (FileNotFoundException ex) {
@@ -247,7 +244,7 @@ public class FontConfig extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
