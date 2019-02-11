@@ -154,7 +154,6 @@ public class Llistar_incidencies extends javax.swing.JFrame {
         paraulaCercada = this.jTextField1.getText();//guarda les dades del text field a una variable pera despres guardarla al array
         Cercadors.cercar_incidencia(tabla, paraulaCercada);
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_BuscarIncidenciaActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -163,7 +162,8 @@ public class Llistar_incidencies extends javax.swing.JFrame {
 
 //GEN-FIRST:event_jTable1FocusGained
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {                                            
-        // TODO add your handling code here:
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
+        Auxiliar.actualitzar_taula_incidencies(model1);
     }   
 //GEN-LAST:event_jTable1FocusGained
 

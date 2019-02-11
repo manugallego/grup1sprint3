@@ -60,6 +60,21 @@ public class Auxiliar {
             model1.addRow(new Object[]{client_aux.getIdClient(), client_aux.getNom(), client_aux.getCognom1(), client_aux.getCognom2(), client_aux.getTargeta()}); //Plenar la taula
         }
     }
+    
+        /**
+     * Metode per carregar les dades de l'array de client en una taula
+     *
+     * @param model1
+     */
+    public static void actualitzar_taula_incidencies(DefaultTableModel model1) {
+        model1.setRowCount(0); //Contador per a reiniciar la taula cada cop
+        Iterator<Incidencies> it = Public.arrayIncidencies.iterator();
+        while (it.hasNext()) {
+            //While per recorrer l'array
+            Incidencies incidencia_aux = it.next(); //Crear un objecte del iterador classeclient igualat al itnext per cambiar les columnes de la taula.
+            model1.addRow(new Object[]{incidencia_aux.gettitolIncidencia(), incidencia_aux.getdescripcioIncidencia(), incidencia_aux.getlloc(), incidencia_aux.getuser(), incidencia_aux.getdate()}); //Plenar la taula
+        }
+    }
 
     /**
      * Metode per a escriure els canvis en el fitxer de logs

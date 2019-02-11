@@ -52,7 +52,7 @@ public class Incidencies_menu extends javax.swing.JFrame {
             }
         });
 
-        consultar_incidencies.setText("Consultar Incidencies");
+        consultar_incidencies.setText("Llistar Incidencies");
         consultar_incidencies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultar_incidenciesActionPerformed(evt);
