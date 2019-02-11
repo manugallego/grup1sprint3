@@ -1,1 +1,5 @@
-[Mon Feb 11 16:21:22 CET 2019] - Error: java.lang.NumberFormatException: For input string: "Arial"
+<<<<<<< HEAD
+[Mon Feb 11 16:33:04 CET 2019] - Error: java.lang.NumberFormatException: For input string: "Arial"
+=======
+[Mon Feb 11 15:25:00 CET 2019] - Error: java.lang.NumberFormatException: For input string: "Arial"
+>>>>>>> parent of 176d10c... aaaaa

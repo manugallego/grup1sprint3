@@ -145,7 +145,7 @@ public class MenuClients extends javax.swing.JFrame {
          */
         BaixaClients obj = new BaixaClients(); //creem la nova finestra BaixaClients
         obj.setVisible(true);                           //la fem visible
-        //dispose();                                      //eliminem la finestra actual
+        dispose();                                      //eliminem la finestra actual
         /**
          * ****************************************************************
          */

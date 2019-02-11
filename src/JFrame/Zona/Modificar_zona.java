@@ -223,6 +223,7 @@ public class Modificar_zona extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error, no s'han pogut carregar les dades: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
         }
     }

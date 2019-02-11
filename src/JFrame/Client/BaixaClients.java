@@ -1,5 +1,4 @@
 package JFrame.Client;
-
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
@@ -198,6 +197,8 @@ public class BaixaClients extends javax.swing.JFrame {
             Confirmar.setVisible(true);
             textoConfirmacion.setText("Segur que vols eliminar: " + Public.arrayPersona.get(posicio).getNom()+"?");
             textoConfirmacion.setVisible(true);
+
+
         }
     }//GEN-LAST:event_EliminarActionPerformed
     /**

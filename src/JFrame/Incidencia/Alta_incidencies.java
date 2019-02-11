@@ -22,12 +22,12 @@ public class Alta_incidencies extends javax.swing.JFrame {
         Public.usuari_incidencia = null;    //ens asegurem de que la variable no guarda un usuari d'una assignacio anterior
         Public.zona_indicencia = null;      //ens asegurem de que la variable no guarda una zona d'una assignacio anterior
         System.out.println(Public.usuari_incidencia + " - " + Public.zona_indicencia);
-        
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.canviarFont(rootPane);
         
-        Color bg_color = Config.parseColor();           //variable per guardar el color
-        getContentPane().setBackground(bg_color);       //aplicar el color al background
+        
     }
 
     /**
