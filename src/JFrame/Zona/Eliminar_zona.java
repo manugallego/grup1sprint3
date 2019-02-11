@@ -244,7 +244,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
                 DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
                 Auxiliar.actualitzar_taula_zona(tabla);
                 //Obrir la finestra de confirmacio 
-                JOptionPane.showMessageDialog(null, "Zona" +nom_zona+ "eliminada");
+                JOptionPane.showMessageDialog(null, "Zona " +nom_zona+ " eliminada");
 
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha eliminat la zona " + nom_zona;

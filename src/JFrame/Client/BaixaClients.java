@@ -260,7 +260,7 @@ public class BaixaClients extends javax.swing.JFrame {
         Auxiliar.actualitzar_taula_client(model2);
         /*tornem a fer invisible la confirmacio*/
         Confirmar.setVisible(false);
-        jLabel1.setVisible(false);
+        textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
