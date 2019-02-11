@@ -27,10 +27,11 @@ public class BaixaClients extends javax.swing.JFrame {
 
         Color bg_color = Config.parseColor();           //variable per guardar el color
         getContentPane().setBackground(bg_color);       //aplicar el color al background
-
+        
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.canviarFont(rootPane);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -259,7 +260,7 @@ public class BaixaClients extends javax.swing.JFrame {
         Auxiliar.actualitzar_taula_client(model2);
         /*tornem a fer invisible la confirmacio*/
         Confirmar.setVisible(false);
-        textoConfirmacion.setVisible(false);
+        jLabel1.setVisible(false);
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
