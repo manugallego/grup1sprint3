@@ -8,23 +8,11 @@ package JFrame;
 import Biblioteques.Auxiliar;
 import Biblioteques.Config;
 import Public.Public;
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author alumne
@@ -39,6 +27,12 @@ public class FontConfig extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Tipografia");
+        Config.canviarFont(rootPane);
+        
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+        
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.canviarFont(rootPane);
 
         /*Carreguem els noms de les fonts en el ComboBox*/

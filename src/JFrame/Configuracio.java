@@ -6,6 +6,7 @@
 package JFrame;
 
 import Biblioteques.Config;
+import java.awt.Color;
 
 /**
  *
@@ -19,6 +20,12 @@ public class Configuracio extends javax.swing.JFrame {
     public Configuracio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+        
+        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        Config.canviarFont(rootPane);
     }
 
     /**
