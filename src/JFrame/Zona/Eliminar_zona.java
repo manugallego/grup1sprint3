@@ -195,7 +195,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         elements = jTable1.getSelectedRows();
-
+        String nom_zona = Public.arrayZones.get(posicio).getNom();
         /*Comprovem si l'usuari ha seleccionat una fila de la taula*/
         if (elements.length == 0) {
             JOptionPane.showMessageDialog(null, "Has de seleccionar una fila");
@@ -203,8 +203,9 @@ public class Eliminar_zona extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nomes pots seleccionar una fila");
         } else {
             /*fem visible la confirmacio*/
-            jLabel1.setVisible(true);
             jButton1.setVisible(true);
+            jLabel1.setText("Segur que vols eliminar: " + nom_zona+ "?");
+            jLabel1.setVisible(true);
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -243,7 +244,7 @@ public class Eliminar_zona extends javax.swing.JFrame {
                 DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
                 Auxiliar.actualitzar_taula_zona(tabla);
                 //Obrir la finestra de confirmacio 
-                JOptionPane.showMessageDialog(null, "Zona eliminada");
+                JOptionPane.showMessageDialog(null, "Zona" +nom_zona+ "eliminada");
 
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha eliminat la zona " + nom_zona;

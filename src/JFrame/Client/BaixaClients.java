@@ -247,7 +247,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 Public.arrayPersona.remove(posicio);
 
                 //Obrir la finestra de confirmacio
-                JOptionPane.showMessageDialog(null, "Client" + nom_client +"eliminat");
+                JOptionPane.showMessageDialog(null, "Client" + nom_client +" eliminat");
 
                 /*Imprimim en el fitxer de logs.txt*/
                 String text_logs = "S'ha eliminat el client " + nom_client;
