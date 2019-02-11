@@ -54,12 +54,12 @@
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="ModificarAdreca" alignment="0" pref="221" max="32767" attributes="0"/>
-                          <Component id="ModificarDataNaix" alignment="0" max="32767" attributes="0"/>
                           <Component id="ModificarEmail" alignment="0" max="32767" attributes="0"/>
                           <Component id="ModificarCognom2" alignment="0" max="32767" attributes="0"/>
                           <Component id="ModificarCognom1" alignment="0" max="32767" attributes="0"/>
                           <Component id="ModificarNom" alignment="0" max="32767" attributes="0"/>
                           <Component id="ModificarCiutat" max="32767" attributes="0"/>
+                          <Component id="ModificarDataNaix" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -129,10 +129,10 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ModificarDataNaix" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ModificarDataNaix" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ModificarAdreca" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CercarField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cercar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -329,11 +329,6 @@
         <Property name="text" type="java.lang.String" value="Data Naix."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="ModificarDataNaix">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarDataNaixActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sexe"/>
@@ -425,6 +420,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CercarFieldActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ModificarDataNaix">
     </Component>
   </SubComponents>
 </Form>

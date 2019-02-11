@@ -24,10 +24,8 @@ public class Alta_incidencies extends javax.swing.JFrame {
         System.out.println(Public.usuari_incidencia + " - " + Public.zona_indicencia);
         Color bg_color = Config.parseColor();           //variable per guardar el color
         getContentPane().setBackground(bg_color);       //aplicar el color al background
-        /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
+        /* Canviem la tipografia a la que hi ha en l'arxiu de gui.conf */
         Config.canviarFont(rootPane);
-        
-        
     }
 
     /**
@@ -246,7 +244,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        System.out.println(Public.seleccio_zona);
+        /*System.out.println(Public.seleccio_zona);
         if (Public.seleccio_zona) {
             jLabel3.setText("Has seleccionat " + Public.zona_indicencia.getNom());
         }
@@ -254,7 +252,7 @@ public class Alta_incidencies extends javax.swing.JFrame {
         if (Public.seleccio_user) {
             jLabel6.setText("Has seleccionat " + Public.usuari_incidencia.getNom() + " " + Public.usuari_incidencia.getCognom1()
                     + " " + Public.usuari_incidencia.getCognom2());
-        }
+        }*/
     }//GEN-LAST:event_formWindowGainedFocus
     /**
      * Boto que porta a una finestra on podem seleccionar un usuari

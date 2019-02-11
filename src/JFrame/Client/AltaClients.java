@@ -21,6 +21,7 @@ public class AltaClients extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Alta client");
+        DataNaixement.setDateFormatString(Auxiliar.DATE_FORMAT);
 
         Color bg_color = Config.parseColor();           //variable per guardar el color
         getContentPane().setBackground(bg_color);       //aplicar el color al background

@@ -6,6 +6,7 @@ import Biblioteques.Config;
 import Public.Public;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,7 +65,6 @@ public class ModificarClients extends javax.swing.JFrame {
         ModificarEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        ModificarDataNaix = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         ModificarSexe = new javax.swing.JComboBox<>();
         ModificarTelefon = new javax.swing.JTextField();
@@ -80,6 +80,7 @@ public class ModificarClients extends javax.swing.JFrame {
         Modificar = new javax.swing.JButton();
         Cercar = new javax.swing.JButton();
         CercarField = new javax.swing.JTextField();
+        ModificarDataNaix = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -144,12 +145,6 @@ public class ModificarClients extends javax.swing.JFrame {
         jLabel4.setText("Email");
 
         jLabel6.setText("Data Naix.");
-
-        ModificarDataNaix.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarDataNaixActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Sexe");
 
@@ -244,12 +239,12 @@ public class ModificarClients extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(ModificarAdreca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                            .addComponent(ModificarDataNaix, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ModificarEmail, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ModificarCognom2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ModificarCognom1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ModificarNom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ModificarCiutat))
+                            .addComponent(ModificarCiutat)
+                            .addComponent(ModificarDataNaix))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -303,9 +298,9 @@ public class ModificarClients extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ModificarDataNaix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addComponent(ModificarDataNaix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ModificarAdreca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -341,7 +336,7 @@ public class ModificarClients extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(ModificarTargeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CercarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cercar)
@@ -536,10 +531,6 @@ public class ModificarClients extends javax.swing.JFrame {
         DefaultTableModel model2 = (DefaultTableModel) jTableModificar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
         Auxiliar.actualitzar_taula_client(model2);        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowGainedFocus
-
-    private void ModificarDataNaixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarDataNaixActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ModificarDataNaixActionPerformed
 
     private void ModificarAdrecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarAdrecaActionPerformed
         // TODO add your handling code here:

@@ -48,8 +48,9 @@ public class Llistar_clients extends javax.swing.JFrame {
         Seleccionar = new javax.swing.JButton();
         Enrere = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("S2G1Consultar");
+        setResizable(false);
 
         jTableConsultar1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
