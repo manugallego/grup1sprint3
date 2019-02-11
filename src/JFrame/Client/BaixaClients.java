@@ -43,7 +43,7 @@ public class BaixaClients extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1Baixa = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        textoConfirmacion = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         Cercar = new javax.swing.JButton();
         Confirmar = new javax.swing.JButton();
@@ -80,11 +80,6 @@ public class BaixaClients extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        jTable1Baixa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTable1BaixaFocusLost(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1Baixa);
@@ -130,7 +125,7 @@ public class BaixaClients extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(textoConfirmacion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Cercar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,7 +143,7 @@ public class BaixaClients extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(textoConfirmacion)
                     .addComponent(Confirmar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -323,9 +318,9 @@ public class BaixaClients extends javax.swing.JFrame {
     private javax.swing.JButton Confirmar;
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Enrere;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1Baixa;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel textoConfirmacion;
     // End of variables declaration//GEN-END:variables
 }
