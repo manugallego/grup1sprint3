@@ -6,7 +6,8 @@ import Biblioteques.Registrar;
 import JFrame.Incidencia.Incidencies_menu;
 import JFrame.Zona.Gestio_zones;
 import JFrame.Client.MenuClients;
-import java.io.IOException;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -23,20 +24,21 @@ public class Main extends javax.swing.JFrame {
      * @throws java.io.IOException
      */
     public Main() {
+        try{
+            Config.lecturaConfig();
+        }
+        catch(Exception e){
+            Auxiliar.escriure_error("Error: " + e);
+        }
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio del parc");
 
-        if (Config.arxiuConfig.exists()) {
-            try {
-                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
-            } catch (IOException ex) {
-                Auxiliar.escriure_error("Error: " + ex);
-            }
-        }
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
         
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**
@@ -48,43 +50,44 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         clients = new javax.swing.JButton();
         zones = new javax.swing.JButton();
         incidencies = new javax.swing.JButton();
         incidencies1 = new javax.swing.JButton();
         sortir = new javax.swing.JButton();
-        lletra = new javax.swing.JButton();
-        fons = new javax.swing.JButton();
+        Configuracio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Roboto Th", 0, 48)); // NOI18N
-        jLabel1.setText("Gestio del parc");
-
-        clients.setText("Clients");
+        clients.setText("Gestió Clients");
         clients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientsActionPerformed(evt);
             }
         });
 
-        zones.setText("Zones");
+        zones.setText("Gestió Zones");
         zones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zonesActionPerformed(evt);
             }
         });
 
-        incidencies.setText("Incidencies");
+        incidencies.setText("Gestió Incidències");
         incidencies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incidenciesActionPerformed(evt);
             }
         });
 
-        incidencies1.setText("Dades Test");
+        incidencies1.setText("Carregar Dades Test");
         incidencies1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incidencies1ActionPerformed(evt);
@@ -98,76 +101,48 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        lletra.setText("Lletra");
-        lletra.addActionListener(new java.awt.event.ActionListener() {
+        Configuracio.setText("Configuració");
+        Configuracio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lletraActionPerformed(evt);
+                ConfiguracioActionPerformed(evt);
             }
         });
-
-        fons.setText("Color de Fons");
-        fons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fonsActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(fons)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lletra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sortir)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(incidencies1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(incidencies, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zones, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clients, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(clients)
-                .addGap(18, 18, 18)
-                .addComponent(zones)
-                .addGap(18, 18, 18)
-                .addComponent(incidencies)
-                .addGap(18, 18, 18)
-                .addComponent(incidencies1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sortir)
-                    .addComponent(lletra)
-                    .addComponent(fons))
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Configuracio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sortir)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(clients, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zones, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(incidencies, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(incidencies1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(clients)
+                .addGap(18, 18, 18)
+                .addComponent(zones)
+                .addGap(18, 18, 18)
+                .addComponent(incidencies)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(incidencies1)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sortir)
+                    .addComponent(Configuracio))
+                .addContainerGap())
         );
 
         pack();
@@ -218,17 +193,20 @@ public class Main extends javax.swing.JFrame {
      */
     private void incidencies1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incidencies1ActionPerformed
         Registrar.carregar_test();
+        JOptionPane.showMessageDialog(null, "S'han carregat dades de prova!");
     }//GEN-LAST:event_incidencies1ActionPerformed
 
-    private void lletraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lletraActionPerformed
-        FontConfig fontConfig = new FontConfig();
-        fontConfig.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lletraActionPerformed
+    private void ConfiguracioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracioActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Configuracio conf = new Configuracio();
+        conf.setVisible(true);
+    }//GEN-LAST:event_ConfiguracioActionPerformed
 
-    private void fonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fonsActionPerformed
-        Config.colorFons(jPanel1);
-    }//GEN-LAST:event_fonsActionPerformed
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -275,13 +253,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Configuracio;
     private javax.swing.JButton clients;
-    private javax.swing.JButton fons;
     private javax.swing.JButton incidencies;
     private javax.swing.JButton incidencies1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton lletra;
     private javax.swing.JButton sortir;
     private javax.swing.JButton zones;
     // End of variables declaration//GEN-END:variables

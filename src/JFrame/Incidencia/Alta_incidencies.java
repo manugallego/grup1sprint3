@@ -2,7 +2,7 @@ package JFrame.Incidencia;
 
 import Biblioteques.*;
 import Public.Public;
-import java.io.IOException;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -24,7 +24,10 @@ public class Alta_incidencies extends javax.swing.JFrame {
         System.out.println(Public.usuari_incidencia + " - " + Public.zona_indicencia);
         
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
+        
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
     }
 
     /**

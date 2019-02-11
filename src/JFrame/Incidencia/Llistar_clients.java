@@ -4,12 +4,9 @@ package JFrame.Incidencia;
 import Biblioteques.Auxiliar;
 import Biblioteques.Cercadors;
 import Biblioteques.Config;
-import JFrame.Client.*;
 import javax.swing.table.DefaultTableModel;
 import Public.Public;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
@@ -28,15 +25,11 @@ public class Llistar_clients extends javax.swing.JFrame {
         setTitle("Elegir client");
         this.setLocationRelativeTo(null);
         
-        if (Config.arxiuConfig.exists()) {
-            try {
-                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
-            } catch (IOException ex) {
-                Auxiliar.escriure_error("Error: "+ex);
-            }
-        }
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+        
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**
@@ -48,13 +41,12 @@ public class Llistar_clients extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsultar1 = new javax.swing.JTable();
         jTextField1BuscarConsulta = new javax.swing.JTextField();
-        jButton3BuscarConsulta = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BuscarConsulta = new javax.swing.JButton();
+        Seleccionar = new javax.swing.JButton();
+        Enrere = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S2G1Consultar");
@@ -88,68 +80,59 @@ public class Llistar_clients extends javax.swing.JFrame {
             }
         });
 
-        jButton3BuscarConsulta.setText("Cerca");
-        jButton3BuscarConsulta.addActionListener(new java.awt.event.ActionListener() {
+        BuscarConsulta.setText("Cerca");
+        BuscarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3BuscarConsultaActionPerformed(evt);
+                BuscarConsultaActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Seleccionar.setText("Seleccionar");
+        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SeleccionarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Enrere");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Enrere.setText("Enrere");
+        Enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                EnrereActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3BuscarConsulta)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3BuscarConsulta)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarConsulta)
+                        .addGap(18, 18, 18)
+                        .addComponent(Seleccionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Enrere)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1BuscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarConsulta)
+                    .addComponent(Seleccionar)
+                    .addComponent(Enrere))
+                .addContainerGap())
         );
 
         pack();
@@ -158,18 +141,14 @@ public class Llistar_clients extends javax.swing.JFrame {
      * Boto per anar enrere
      * @param evt 
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*******************************************************************/
-        MenuClients obj = new MenuClients(); //creem la nova finestra MenuClients
-        obj.setVisible(true);                           //la fem visible
+    private void EnrereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrereActionPerformed
         dispose();                                      //eliminem la finestra actual
-        /*******************************************************************/
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_EnrereActionPerformed
     /**
      * Boto per a fer una cerca
      * @param evt 
      */
-    private void jButton3BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3BuscarConsultaActionPerformed
+    private void BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarConsultaActionPerformed
         DefaultTableModel model1 = (DefaultTableModel) jTableConsultar1.getModel(); //Creem un nova taula i la igualem a la creada amb swing
 	String paraulaCercada;
         paraulaCercada = jTextField1BuscarConsulta.getText();
@@ -180,7 +159,7 @@ public class Llistar_clients extends javax.swing.JFrame {
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null,"No s'ha trobat cap resultat");
         }
-    }//GEN-LAST:event_jButton3BuscarConsultaActionPerformed
+    }//GEN-LAST:event_BuscarConsultaActionPerformed
     
     private void jTextField1BuscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1BuscarConsultaActionPerformed
         // TODO add your handling code here:
@@ -194,7 +173,7 @@ public class Llistar_clients extends javax.swing.JFrame {
      * Boto per a guardar l'usuari seleccionat
      * @param evt 
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         elements = jTableConsultar1.getSelectedRows();
         
         /*Comprovem si l'usuari ha seleccionat mes d'una fila de la taula i carreguem les dades*/
@@ -214,7 +193,7 @@ public class Llistar_clients extends javax.swing.JFrame {
                 dispose();
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,10 +236,9 @@ public class Llistar_clients extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3BuscarConsulta;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton BuscarConsulta;
+    private javax.swing.JButton Enrere;
+    private javax.swing.JButton Seleccionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConsultar1;
     private javax.swing.JTextField jTextField1BuscarConsulta;

@@ -7,7 +7,7 @@ package JFrame.Incidencia;
 
 import Biblioteques.*;
 import JFrame.Main;
-import java.io.IOException;
+import java.awt.Color;
 
 public class Incidencies_menu extends javax.swing.JFrame {
 
@@ -18,18 +18,12 @@ public class Incidencies_menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Gestio d'incidencies");
-
-        /* If per si existeix el color de fons al arxiu s'execute */
-        if (Config.arxiuConfig.exists()) {
-            try {
-                jPanel1.setBackground(Config.llegirColorFons());             //Implementar el color de fons al jPanel
-            } catch (IOException ex) {
-                Auxiliar.escriure_error("Error: " + ex);
-            }
-        }
         
+        Color bg_color = Config.parseColor();           //variable per guardar el color
+        getContentPane().setBackground(bg_color);       //aplicar el color al background
+                
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
-        Config.aplicarFont(rootPane);
+        Config.canviarFont(rootPane);
     }
 
     /**
@@ -41,7 +35,6 @@ public class Incidencies_menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         alta_incidencies = new javax.swing.JButton();
         consultar_incidencies = new javax.swing.JButton();
         modificar_incidencies = new javax.swing.JButton();
@@ -86,38 +79,6 @@ public class Incidencies_menu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(informeIncidencies)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(baixa_incidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(modificar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(alta_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(consultar_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(118, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(alta_incidencies)
-                .addGap(18, 18, 18)
-                .addComponent(consultar_incidencies)
-                .addGap(18, 18, 18)
-                .addComponent(modificar_incidencies)
-                .addGap(18, 18, 18)
-                .addComponent(baixa_incidencia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(informeIncidencies)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-
         enrere.setText("Enrere");
         enrere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +90,15 @@ public class Incidencies_menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(alta_incidencies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultar_incidencies, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modificar_incidencies, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(baixa_incidencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(informeIncidencies, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enrere)
@@ -138,60 +107,25 @@ public class Incidencies_menu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(alta_incidencies)
+                .addGap(18, 18, 18)
+                .addComponent(consultar_incidencies)
+                .addGap(18, 18, 18)
+                .addComponent(modificar_incidencies)
+                .addGap(18, 18, 18)
+                .addComponent(baixa_incidencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(informeIncidencies)
+                .addGap(18, 18, 18)
                 .addComponent(enrere)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
-     * Anar a alta
-     *
-     * @param evt
-     */
-    private void alta_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_incidenciesActionPerformed
-        setVisible(false);
-        Alta_incidencies alta = new Alta_incidencies();
-        alta.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_alta_incidenciesActionPerformed
-    /**
-     * Anar a llistar
-     *
-     * @param evt
-     */
 
-    private void consultar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_incidenciesActionPerformed
-        setVisible(false);
-        Llistar_incidencies llistar = new Llistar_incidencies();
-        llistar.setVisible(true);
-    }//GEN-LAST:event_consultar_incidenciesActionPerformed
-    /**
-     * Anar a modificar
-     *
-     * @param evt
-     */
-
-    private void modificar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_incidenciesActionPerformed
-        setVisible(false);
-        Modificar_incidencies modificar = new Modificar_incidencies();
-        modificar.setVisible(true);
-    }//GEN-LAST:event_modificar_incidenciesActionPerformed
-
-    /**
-     * Anar a suprimir
-     *
-     * @param evt
-     */
-
-    private void baixa_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_incidenciaActionPerformed
-        setVisible(false);
-        Suprimir_incidencies suprimir = new Suprimir_incidencies();
-        suprimir.setVisible(true);
-    }//GEN-LAST:event_baixa_incidenciaActionPerformed
-    /**
+   /**
      * Boto per anar enrere
      *
      * @param evt
@@ -210,6 +144,40 @@ public class Incidencies_menu extends javax.swing.JFrame {
             Auxiliar.escriure_error("Error: " + ex);
         }
     }//GEN-LAST:event_informeIncidenciesActionPerformed
+
+    private void baixa_incidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixa_incidenciaActionPerformed
+        setVisible(false);
+        Suprimir_incidencies baixa = new Suprimir_incidencies();
+        baixa.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_baixa_incidenciaActionPerformed
+
+   /**
+     * Anar a modificar
+     *
+     * @param evt
+     */
+
+    private void modificar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_incidenciesActionPerformed
+        setVisible(false);
+        Modificar_incidencies modificar = new Modificar_incidencies();
+        modificar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_modificar_incidenciesActionPerformed
+
+    private void consultar_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_incidenciesActionPerformed
+        setVisible(false);
+        Llistar_incidencies llistar = new Llistar_incidencies();
+        llistar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_consultar_incidenciesActionPerformed
+
+    private void alta_incidenciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alta_incidenciesActionPerformed
+        setVisible(false);
+        Alta_incidencies alta = new Alta_incidencies();
+        alta.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_alta_incidenciesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +224,6 @@ public class Incidencies_menu extends javax.swing.JFrame {
     private javax.swing.JButton consultar_incidencies;
     private javax.swing.JButton enrere;
     private javax.swing.JButton informeIncidencies;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificar_incidencies;
     // End of variables declaration//GEN-END:variables
 }
