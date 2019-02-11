@@ -195,8 +195,8 @@ public class BaixaClients extends javax.swing.JFrame {
             posicio = -1; //Posicio igualada a -1 per si no trobo cap objecte
             posicio = Cercadors.cercar_ID_client(posicio, client_aux);
             Confirmar.setVisible(true);
-            textoConfirmacion.setText("Segur que vols eliminar: " + Public.arrayPersona.get(posicio).getNom()+"?");
-            textoConfirmacion.setVisible(true);
+            //textoConfirmacion.setText("Segur que vols eliminar: " + Public.arrayPersona.get(posicio).getNom()+"?");
+            //textoConfirmacion.setVisible(true);
 
 
         }
@@ -213,7 +213,7 @@ public class BaixaClients extends javax.swing.JFrame {
 
         Cercadors.cerca_Client(model3, paraulaCercada1);
          Confirmar.setVisible(false);
-         textoConfirmacion.setVisible(false);
+         //textoConfirmacion.setVisible(false);
         if (Cercadors.cerca_Client(model3, paraulaCercada1) == false) {
             /*Missatge d'avís*/
             JOptionPane.showMessageDialog(null, "No s'ha trobat cap resultat");
@@ -264,18 +264,18 @@ public class BaixaClients extends javax.swing.JFrame {
         Auxiliar.actualitzar_taula_client(model2);
         /*tornem a fer invisible la confirmacio*/
         Confirmar.setVisible(false);
-        textoConfirmacion.setVisible(false);
+        //textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_ConfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /*Inicialitzem la confirmacio de la baixa en invisible*/
         Confirmar.setVisible(false);
-        textoConfirmacion.setVisible(false);
+        //textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void jTable1BaixaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1BaixaFocusLost
         Confirmar.setVisible(false);
-        textoConfirmacion.setVisible(false);
+        //textoConfirmacion.setVisible(false);
     }//GEN-LAST:event_jTable1BaixaFocusLost
 
     /**
@@ -327,6 +327,5 @@ public class BaixaClients extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1Baixa;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel textoConfirmacion;
     // End of variables declaration//GEN-END:variables
 }
