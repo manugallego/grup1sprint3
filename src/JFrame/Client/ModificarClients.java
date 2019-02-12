@@ -441,6 +441,7 @@ public class ModificarClients extends javax.swing.JFrame {
                     && !ModificarEmail.getText().isEmpty() && !ModificarDataNaix.getText().isEmpty() && !ModificarAdreca.getText().isEmpty()
                     && !ModificarCiutat.getText().isEmpty() && !ModificarProvincia.getText().isEmpty() && !ModificarCP.getText().isEmpty()
                     && !ModificarNumDoc.getText().isEmpty() && !ModificarTelefon.getText().isEmpty() && !ModificarTargeta.getText().isEmpty()) {
+
                 Public.arrayPersona.get(posicio).setNom(ModificarNom.getText()); //Guardar a l'array el nom introduit
                 Public.arrayPersona.get(posicio).setCognom1(ModificarCognom1.getText()); //Guardar a l'array el cognnom1 introduit
                 Public.arrayPersona.get(posicio).setCognom2(ModificarCognom2.getText()); //Guardar a l'array el cognom2 introduit

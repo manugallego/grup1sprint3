@@ -2,21 +2,15 @@ package Biblioteques;
 
 import ClassesPrincipals.*;
 import Public.Public;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -88,11 +82,14 @@ public class Auxiliar {
         String fitxerOut = "./gestio_parc/logs/syslog.log";
         File fitxer_sortida = new File(fitxerOut);
         fitxer_sortida.getParentFile().mkdirs();
-
+        
         try {
-            PrintStream escriptor = new PrintStream(fitxer_sortida);
+            FileOutputStream fos = new FileOutputStream(fitxer_sortida, true);
+            PrintStream escriptor = new PrintStream(fos);
 
             escriptor.println(text);
+            
+            escriptor.close();
 
         } catch (FileNotFoundException e) {
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors
@@ -113,9 +110,12 @@ public class Auxiliar {
         fitxer_sortida.getParentFile().mkdirs();
 
         try {
-            PrintStream escriptor = new PrintStream(fitxer_sortida);
+            FileOutputStream fos = new FileOutputStream(fitxer_sortida, true);
+            PrintStream escriptor = new PrintStream(fos);
 
             escriptor.println(text);
+            
+            escriptor.close();
 
         } catch (FileNotFoundException e) {
             Auxiliar.escriure_error("Error: " + e);     //Escribim l'error en el fitxer d'errors
@@ -140,10 +140,12 @@ public class Auxiliar {
                 File fitxer_sortida = new File(fitxerOut);
                 fitxer_sortida.getParentFile().mkdirs();
                 PrintStream escriptor = new PrintStream(fitxer_sortida);
+                
                 Iterator<Incidencies> itIncidencia = Public.arrayIncidencies.iterator();
                 while (itIncidencia.hasNext()) {
                     escriptor.println(itIncidencia.next());
                 }
+                
                 escriptor.close();
                 JOptionPane.showMessageDialog(null, "S'ha generat un arxiu CSV");
             }

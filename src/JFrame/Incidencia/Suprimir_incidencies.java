@@ -257,10 +257,20 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
             posicio = Cercadors.cerca_ID_incidencia(posicio, inc_aux);
             System.out.println(posicio);
             if (posicio == -1) {
-                JOptionPane.showMessageDialog(null, "No s'ha pogut borrar la zona");
+                JOptionPane.showMessageDialog(null, "Error: No s'ha pogut borrar la incidència");
             } else {
-                Public.arrayIncidencies.remove(posicio);
 
+                String incidencia_log = Public.arrayIncidencies.get(posicio).gettitolIncidencia() + " "
+                        + Public.arrayIncidencies.get(posicio).getdescripcioIncidencia() + " "
+                        + Public.arrayIncidencies.get(posicio).getlloc() + " "
+                        + Public.arrayIncidencies.get(posicio).getuser() + " "
+                        + Public.arrayIncidencies.get(posicio).getdate();
+
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha eliminat la incidència [" + incidencia_log + "]";
+                Auxiliar.escriure_log(text_logs);
+
+                Public.arrayIncidencies.remove(posicio);
 
                 /*fem invisible la confirmacio*/
                 jLabel1.setVisible(false);
@@ -271,6 +281,7 @@ public class Suprimir_incidencies extends javax.swing.JFrame {
                 Auxiliar.actualitzar_taula_incidencies(tabla);
                 //Obrir la finestra de confirmacio
                 JOptionPane.showMessageDialog(null, "Incidencia eliminada");
+
             }
         }
 

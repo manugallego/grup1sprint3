@@ -25,7 +25,7 @@ public class AltaClients extends javax.swing.JFrame {
 
         Color bg_color = Config.parseColor();           //variable per guardar el color
         getContentPane().setBackground(bg_color);       //aplicar el color al background
-        
+
         /*Canviem la tipografia a la que hi ha en l'arxiu de fonts.txt*/
         Config.canviarFont(rootPane);
     }
@@ -274,19 +274,20 @@ public class AltaClients extends javax.swing.JFrame {
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         try {
             if (Nom.getText().equals("") || Cognom1.getText().equals("") || Cognom2.getText().equals("") || Email.getText().equals("") || Adreca.getText().equals("")
-                    || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("") || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Client no introduit correctament"); //Aquest if busca que tots els camps no estiguen buids i mostrar una alerta
+                    || Ciutat.getText().equals("") || Provincia.getText().equals("") || CodiPostal.getText().equals("")
+                    || NumDoc.getText().equals("") || Telefon.getText().equals("") || Targeta.getText().equals("") || ((JTextField) DataNaixement.getDateEditor().getUiComponent()).getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Falten dades!"); //Aquest if busca que tots els camps no estiguen buids i mostrar una alerta
             } else {
                 String dataNaix = ((JTextField) DataNaixement.getDateEditor().getUiComponent()).getText();
-                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), dataNaix, Adreca.getText(), Ciutat.getText(), Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
+                Registrar.registrar_client(Nom.getText(), Cognom1.getText(), Cognom2.getText(), Email.getText(), dataNaix, Adreca.getText(), Ciutat.getText(),
+                        Provincia.getText(), CodiPostal.getText(), TipusDoc.getSelectedItem().toString(), NumDoc.getText(), Sexe.getSelectedItem().toString(), Telefon.getText(), Targeta.getText());
                 JOptionPane.showMessageDialog(null, "Client introduit correctament");  // Recull el la informacio dels JFIELDSTEXT i els envia al metode registrar_client, a continuacio mostra un text
-                
-                /*Imprimim en el fitxer de logs.txt*/
+
+                /* Imprimim en el fitxer de syslog.log */
                 String nom = Nom.getText() + " " + Cognom1.getText() + " " + Cognom2.getText();
                 String text_logs = "S'ha creat el client " + nom;
                 Auxiliar.escriure_log(text_logs);
-                
-                
+
                 Nom.setText("");
                 Cognom1.setText("");
                 Cognom2.setText("");
@@ -300,7 +301,7 @@ public class AltaClients extends javax.swing.JFrame {
                 Telefon.setText("");
                 Targeta.setText("");
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
             Auxiliar.escriure_error("Error: " + e);             //Escribim l'error en el fitxer d'errors

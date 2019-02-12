@@ -83,13 +83,15 @@ public class Registrar {
         Public.arrayZones.add(new Zona("Mexico"));
         /* Mediterrani */
         Public.arrayZones.add(new Zona("Mediterrani"));
+        
         /*USUARIS*/
-        /*Public.arrayPersona.add(new ClasseClient("Paco", "Gutierrez", "Salvador", "abc11", "45254156"));
-        Public.arrayPersona.add(new ClasseClient("Maria", "Pascual", "Pincho", "pass2", "355765"));
-        Public.arrayPersona.add(new ClasseClient("Fran", "Hernandez", "Blasco", "alumne1", "56434556"));
-        Public.arrayPersona.add(new ClasseClient("Alba", "Chapo", "Pascual", "22234", "23443222"));
-        Public.arrayPersona.add(new ClasseClient("Pascual", "Santos", "Silvestre", "455gd3", "343242225"));
-        Public.arrayPersona.add(new ClasseClient("Ramon", "Cajal", "Gutierrez", "2kjh34", "33888227"));*/
+        /*Public.arrayPersona.add(new ClasseClient("Paco", "Gutierrez", "Salvador", "", "45254156"));
+        Public.arrayPersona.add(new ClasseClient("Maria", "Pascual", "Pincho", "", "355765"));
+        Public.arrayPersona.add(new ClasseClient("Fran", "Hernandez", "Blasco", "", "56434556"));
+        Public.arrayPersona.add(new ClasseClient("Alba", "Chapo", "Pascual", "", "23443222"));
+        Public.arrayPersona.add(new ClasseClient("Pascual", "Santos", "Silvestre", "", "343242225"));
+        Public.arrayPersona.add(new ClasseClient("Ramon", "Cajal", "Gutierrez", "", "33888227"));*/
+        
         /*INCIDENCIES*/
         registrar_incidencia("Lavabos bruts", "Els lavabos estan bruts", "Lavabos B1", "Paco Gutierrez Salvador", "1/12/2018");
         registrar_incidencia("Pel en menjar", "Hi habia un pel en el meu menjar", "Asia", "Alba Chapo Pascual", "30/11/2018");

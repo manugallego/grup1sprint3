@@ -34,12 +34,14 @@ public class ClasseClient extends ClassePersona { //Classe en herencia de Classe
      * @param passwd
      * @param targeta
      */
-    /*public ClasseClient(String nom, String cognom1, String cognom2, String email, String passwd, String dataNaix ,String adreca,String ciutat,String provincia,String cp,String tipusDoc ,String numDoc,String sexe,String telefon,String targeta) { //Constructor de classeClient
-		super(nom, cognom1, cognom2, email, passwd, dataNaix, adreca, ciutat, provincia, cp, tipusDoc, numDoc, sexe, telefon);
-		this.targeta = targeta;
-		this.idClient = "ID_" + nextIdClient;
-		nextIdClient++;
-	}*/
+    /*public ClasseClient(String nom, String cognom1, String cognom2, String email, String dataNaix, 
+            String adreca, String ciutat, String provincia, String cp, String tipusDoc, 
+            String numDoc, String sexe, String telefon, String targeta) { //Constructor de classeClient
+        super();
+        this.targeta = targeta;
+        this.idClient = "ID_" + nextIdClient;
+        nextIdClient++;
+    }*/
 
     public String getIdClient() {
         return idClient;

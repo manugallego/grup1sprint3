@@ -24,6 +24,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     int elements[];//guarda la posicio que a fet click el usuari
     int posicio;
     boolean carregar = false;//boolean per a actualitzar el text de la zona i usuari
+    String dades_antigues;
 
     public Modificar_incidencies() {
         initComponents();
@@ -56,15 +57,15 @@ public class Modificar_incidencies extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        TitolIncidencia = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        DescripcioIncidencia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         SeleccionarUsuari = new javax.swing.JButton();
         SeleccionarZona = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        DataIncidencia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         Cercar = new javax.swing.JButton();
@@ -197,7 +198,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(DataIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Carregar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,8 +209,8 @@ public class Modificar_incidencies extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addGap(57, 57, 57)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2)))))
+                                    .addComponent(TitolIncidencia)
+                                    .addComponent(DescripcioIncidencia)))))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -221,16 +222,16 @@ public class Modificar_incidencies extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TitolIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DescripcioIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SeleccionarZona)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataIncidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -279,11 +280,18 @@ public class Modificar_incidencies extends javax.swing.JFrame {
             if (posicio == -1) {
                 JOptionPane.showMessageDialog(null, "No s'ha trobat");
             } else {
-                jTextField1.setText(Public.arrayIncidencies.get(posicio).gettitolIncidencia());
-                jTextField2.setText(Public.arrayIncidencies.get(posicio).getdescripcioIncidencia());
+                TitolIncidencia.setText(Public.arrayIncidencies.get(posicio).gettitolIncidencia());
+                DescripcioIncidencia.setText(Public.arrayIncidencies.get(posicio).getdescripcioIncidencia());
                 jLabel6.setText(Public.arrayIncidencies.get(posicio).getlloc());
                 jLabel7.setText(Public.arrayIncidencies.get(posicio).getuser());
-                jTextField5.setText(Public.arrayIncidencies.get(posicio).getdate());
+                DataIncidencia.setText(Public.arrayIncidencies.get(posicio).getdate());
+
+                /*Guardem les dades antigues per escriure-les en els logs*/
+                dades_antigues = Public.arrayIncidencies.get(posicio).gettitolIncidencia() + " "
+                        + Public.arrayIncidencies.get(posicio).getdescripcioIncidencia() + " "
+                        + Public.arrayIncidencies.get(posicio).getlloc() + " "
+                        + Public.arrayIncidencies.get(posicio).getuser() + " "
+                        + Public.arrayIncidencies.get(posicio).getdate();
             }
         }
         jLabel6.setText("Has seleccionat " + Public.arrayIncidencies.get(posicio).getlloc());
@@ -296,34 +304,61 @@ public class Modificar_incidencies extends javax.swing.JFrame {
      * @param evt
      */
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        Public.arrayIncidencies.get(posicio).settitolIncidencia(jTextField1.getText());
-        Public.arrayIncidencies.get(posicio).setdescripcioIncidencia(jTextField2.getText());
-        Public.arrayIncidencies.get(posicio).setlloc(Public.zona_indicencia.getNom());
-        Public.arrayIncidencies.get(posicio).setuser(Public.usuari_incidencia.getNom()
-                + " " + Public.usuari_incidencia.getCognom1() + " " + Public.usuari_incidencia.getCognom2());
-        Public.arrayIncidencies.get(posicio).setdate(jTextField5.getText());
+        try {
+            if (!TitolIncidencia.getText().isEmpty() && !DescripcioIncidencia.getText().isEmpty() && !DataIncidencia.getText().isEmpty() && Auxiliar.isDateValid(DataIncidencia.getText())) {
+                Public.arrayIncidencies.get(posicio).settitolIncidencia(TitolIncidencia.getText());
+                Public.arrayIncidencies.get(posicio).setdescripcioIncidencia(DescripcioIncidencia.getText());
+                Public.arrayIncidencies.get(posicio).setlloc(Public.zona_indicencia.getNom());
+                Public.arrayIncidencies.get(posicio).setuser(Public.usuari_incidencia.getNom()
+                        + " " + Public.usuari_incidencia.getCognom1() + " " + Public.usuari_incidencia.getCognom2());
+                Public.arrayIncidencies.get(posicio).setdate(DataIncidencia.getText());
 
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount(0);
+                /*Guardem les noves dades per escriure-les en el fitxer de logs*/
+                String dades_noves = TitolIncidencia.getText() + " "
+                        + DescripcioIncidencia.getText() + " "
+                        + Public.zona_indicencia.getNom() + " "
+                        + Public.usuari_incidencia.getNom() + " "
+                        + Public.usuari_incidencia.getCognom1() + " "
+                        + Public.usuari_incidencia.getCognom2() + " "
+                        + DataIncidencia.getText() + " ";
 
-        Iterator<Incidencies> iterando = Public.arrayIncidencies.iterator();
-        while (iterando.hasNext()) {
-            Incidencies incidencia_aux = iterando.next();
-            tabla.addRow(new Object[]{incidencia_aux.getid(),
-                incidencia_aux.gettitolIncidencia(),
-                incidencia_aux.getdescripcioIncidencia(),
-                incidencia_aux.getlloc(),
-                incidencia_aux.getuser(),
-                incidencia_aux.getdate()
-            });
+                DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+                tabla.setRowCount(0);
+
+                Iterator<Incidencies> iterando = Public.arrayIncidencies.iterator();
+                while (iterando.hasNext()) {
+                    Incidencies incidencia_aux = iterando.next();
+                    tabla.addRow(new Object[]{incidencia_aux.getid(),
+                        incidencia_aux.gettitolIncidencia(),
+                        incidencia_aux.getdescripcioIncidencia(),
+                        incidencia_aux.getlloc(),
+                        incidencia_aux.getuser(),
+                        incidencia_aux.getdate()
+                    });
+                }
+
+                /*Missatge de confirmacio*/
+                JOptionPane.showMessageDialog(null, "Canvis aplicats");
+
+                TitolIncidencia.setText("");
+                DescripcioIncidencia.setText("");
+                DataIncidencia.setText("");
+                jLabel6.setVisible(false);
+                jLabel7.setVisible(false);
+
+                /*Imprimim en el fitxer de logs.txt*/
+                String text_logs = "S'ha modificat la incidència ["+ dades_antigues
+                        +"] per ["+ dades_noves +"]";
+                Auxiliar.escriure_log(text_logs);
+                
+                Modificar.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en les dades introduïdes!");
+            }
+
+        } catch (Exception e) {
+            Auxiliar.escriure_error("Error: " + e);
         }
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField5.setText("");
-        jLabel6.setVisible(false);
-        jLabel7.setVisible(false);
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -358,7 +393,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         paraulaCercada = this.jTextField6.getText();    //guarda les dades del text field a una variable per comparar en les dades de la taula
         Cercadors.cercar_incidencia(tabla, paraulaCercada);
     }//GEN-LAST:event_CercarActionPerformed
-    
+
     /**
      * Boto per a assignar una zona a una incidencia
      *
@@ -368,7 +403,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         Llistar_zona llistar = new Llistar_zona();
         llistar.setVisible(true);
     }//GEN-LAST:event_SeleccionarZonaActionPerformed
-    
+
     /**
      * Boto per assignar un usuari a una incidencia
      *
@@ -378,7 +413,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
         Llistar_clients llistar = new Llistar_clients();
         llistar.setVisible(true);
     }//GEN-LAST:event_SeleccionarUsuariActionPerformed
-    
+
     /**
      * Accio quan la finestra obte 'focus'
      *
@@ -399,7 +434,7 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusGained
-    
+
     /**
      * Boto per anar enrere
      *
@@ -453,10 +488,13 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Carregar;
     private javax.swing.JButton Cercar;
+    private javax.swing.JTextField DataIncidencia;
+    private javax.swing.JTextField DescripcioIncidencia;
     private javax.swing.JButton Enrere;
     private javax.swing.JButton Modificar;
     private javax.swing.JButton SeleccionarUsuari;
     private javax.swing.JButton SeleccionarZona;
+    private javax.swing.JTextField TitolIncidencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -464,9 +502,6 @@ public class Modificar_incidencies extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

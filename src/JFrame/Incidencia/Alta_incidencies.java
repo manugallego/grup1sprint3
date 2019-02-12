@@ -210,15 +210,23 @@ public class Alta_incidencies extends javax.swing.JFrame {
 
                 if (Auxiliar.isDateValid(dataIncidencia)) {
                     Registrar.registrar_incidencia(nomIncidencia, descIncidencia, zonaIncidencia, usuIncidencia, dataIncidencia);
+
+                    /* Imprimim en el fitxer de syslog.log */
+                    String incidencia_log = nomIncidencia + " " + descIncidencia + " " + zonaIncidencia + " "+usuIncidencia+ " "+dataIncidencia;
+                    String text_logs = "S'ha creat la incidència: " + incidencia_log;
+                    Auxiliar.escriure_log(text_logs);
+
                     JOptionPane.showMessageDialog(null, "Incidencia introduida correctament");
                     //jLabel3.setText("No has seleccionat cap zona");
                     //jLabel6.setText("No has seleccionat cap usuari");
                     jTextField1.setText("");    //buidar el camp de títol
                     jTextField2.setText("");    //buidar el camp de descripció
                     jDateChooser1.setCalendar(null);   //buidar el camp de data
+
                     Incidencies_menu menu = new Incidencies_menu();
                     this.setVisible(false);
                     menu.setVisible(true);
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Error: Introdueix una data valida");
                 }

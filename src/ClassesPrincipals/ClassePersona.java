@@ -1,64 +1,68 @@
 package ClassesPrincipals;
+
 /**
- * Classe amb els constructors, setters i getters dels objectes tipus ClassePersona (persona)
+ * Classe amb els constructors, setters i getters dels objectes tipus
+ * ClassePersona (persona)
+ *
  * @author Ferran Climent
  */
 public class ClassePersona {
-	/* Atributs */
-        private int id_usuari;
-        private String nom;
-	private String cognom1;
-	private String cognom2;
-	private String email;
-        private String data_naixement;
-        private String adreca;
-        private String ciutat;
-        private String provincia;
-        private String codi_postal;
-        private String tipus_document;
-        private String numero_document;
-        private String sexe;
-        private String telefon;
-        
-        
-	private static int nextIdPersona;
-	private static int numPersones;
-    
-        /**
-         * Constructor sense pas de parametres de classePersona
-         */
-	public ClassePersona() { 
-    	numPersones++;
-    	id_usuari = nextIdPersona;
-    	nextIdPersona++;
+
+    /* Atributs */
+    private int id_usuari;
+    private String nom;
+    private String cognom1;
+    private String cognom2;
+    private String email;
+    private String data_naixement;
+    private String adreca;
+    private String ciutat;
+    private String provincia;
+    private String codi_postal;
+    private String tipus_document;
+    private String numero_document;
+    private String sexe;
+    private String telefon;
+
+    private static int nextIdPersona;
+    private static int numPersones;
+
+    /**
+     * Constructor sense pas de parametres de classePersona
+     */
+    public ClassePersona() {
+        numPersones++;
+        id_usuari = nextIdPersona;
+        nextIdPersona++;
     }
+
     /**
      * Constructor de ClassePersona amb pas de parametres
+     *
      * @param nom
      * @param cognom1
      * @param cognom2
-     * @param passwd 
      */
-    public ClassePersona(String nom, String cognom1, String cognom2, String email, String dataNaix ,String adreca,String ciutat,String provincia,
-            String cp,String tipusDoc ,String numDoc,String sexe,String telefon) { //Costructor de classePersona amb un increment de num de persones
-    	numPersones++;
-    	this.nom = nom;
-    	this.cognom1 = cognom1;
-    	this.cognom2 = cognom2;
+    public ClassePersona(String nom, String cognom1, String cognom2, String email,
+            String dataNaix, String adreca, String ciutat, String provincia,
+            String cp, String tipusDoc, String numDoc, String sexe, String telefon) { //Costructor de classePersona amb un increment de num de persones
+        numPersones++;
+        this.nom = nom;
+        this.cognom1 = cognom1;
+        this.cognom2 = cognom2;
         this.email = email;
         this.data_naixement = dataNaix;
         this.adreca = adreca;
-        this.ciutat =ciutat;
+        this.ciutat = ciutat;
         this.provincia = provincia;
         this.codi_postal = cp;
-        this.tipus_document =tipusDoc;
-        this.numero_document =numDoc;
+        this.tipus_document = tipusDoc;
+        this.numero_document = numDoc;
         this.sexe = sexe;
         this.telefon = telefon;
-        
-            
-    	this.id_usuari = nextIdPersona;
-    	nextIdPersona++;
+
+        this.id_usuari = nextIdPersona;
+        nextIdPersona++;
     }
 
     public int getId_usuari() {
@@ -181,18 +185,12 @@ public class ClassePersona {
         ClassePersona.nextIdPersona = nextIdPersona;
     }
 
-	
+    public static int getNumPersones() {
+        return numPersones;
+    }
 
-	public static int getNumPersones() {
-		return numPersones;
-	}
-
-	public static void setNumPersones(int numPersones) {
-		ClassePersona.numPersones = numPersones;
-	}
-
-	
-
+    public static void setNumPersones(int numPersones) {
+        ClassePersona.numPersones = numPersones;
+    }
 
 }
-
