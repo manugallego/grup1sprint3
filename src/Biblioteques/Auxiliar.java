@@ -85,7 +85,7 @@ public class Auxiliar {
         Date datahora = new Date();
 
         text = "[" + datahora + "]" + " - " + text;
-        String fitxerOut = "./logs/syslog.log";
+        String fitxerOut = "./gestio_parc/logs/syslog.log";
         File fitxer_sortida = new File(fitxerOut);
         fitxer_sortida.getParentFile().mkdirs();
 
@@ -108,7 +108,7 @@ public class Auxiliar {
         Date datahora = new Date();
 
         text = "[" + datahora + "]" + " - " + text;
-        String fitxerOut = "./logs/error.log";
+        String fitxerOut = "./gestio_parc/logs/error.log";
         File fitxer_sortida = new File(fitxerOut);
         fitxer_sortida.getParentFile().mkdirs();
 
@@ -123,8 +123,7 @@ public class Auxiliar {
     }
 
     /**
-     * Funció guardarInforme Imprimeix tot el array de Habitacions en un arxiu
-     * de text
+     * Funció guardarInforme Imprimeix tot el array de Incidencies en un arxiu CSV
      *
      */
     public static void guardarInformeIncidencies() {
@@ -137,7 +136,7 @@ public class Auxiliar {
             if (Public.arrayIncidencies.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "No hi ha incidències!");
             } else {
-                String fitxerOut = "./informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
+                String fitxerOut = "./gestio_parc/informes/InformeIncidencies-" + dia + '-' + mes + '-' + any + ".csv";
                 File fitxer_sortida = new File(fitxerOut);
                 fitxer_sortida.getParentFile().mkdirs();
                 PrintStream escriptor = new PrintStream(fitxer_sortida);
@@ -146,7 +145,7 @@ public class Auxiliar {
                     escriptor.println(itIncidencia.next());
                 }
                 escriptor.close();
-                JOptionPane.showMessageDialog(null, "S'ha generat un arxiu CSV!");
+                JOptionPane.showMessageDialog(null, "S'ha generat un arxiu CSV");
             }
         } catch (FileNotFoundException e) {
             Auxiliar.escriure_error("Error: " + e);

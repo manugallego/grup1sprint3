@@ -25,7 +25,7 @@ import javax.swing.JColorChooser;
  */
 public class Config {
 
-    public static File arxiuConfig = new File("config/gui.conf"); //Declarem el fitxer per llegir la configuracio
+    public static File arxiuConfig = new File("gestio_parc/config/gui.conf"); //Declarem el fitxer per llegir la configuracio
 
     public static Color parseColor() { //Metode per interpretar el arxiu
         try {
@@ -87,7 +87,8 @@ public class Config {
      * @param mida
      */
     public static void guardarConfig() {
-        File fitxer_sortida = new File("config/gui.conf");
+        File fitxer_sortida = new File("gestio_parc/config/gui.conf");
+        fitxer_sortida.getParentFile().mkdirs();
 
         try {
             PrintStream escriptor = new PrintStream(fitxer_sortida);
